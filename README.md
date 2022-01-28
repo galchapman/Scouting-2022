@@ -2,15 +2,20 @@
 ## TODO:
 ### Gal:
 0. Add .gitignore ✔
-1. Add docker file
-2. copy old server
-3. login
-4. custom form format
-5. main scouter menu
-6. admin panel
-7. statistics
-8. last, and definitely list themes
+1. copy old server ✔
+2. login
+3. custom form format
+4. main scouter menu
+5. admin panel
+6. statistics
+7. last, and definitely list themes
 ### Ori:
 1. decide the statistics
 ### Mayan:
 1. css styles
+
+## Usage
+Install sqlite3 using npm.  
+`$ npm install sqlite3`
+To run this project
+`$ node main.js`
