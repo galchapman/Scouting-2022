@@ -9,6 +9,9 @@ function handle(req, res) {
 
 	if (!req.headers.cookie) {
 		body = "You got no cookie :(";
+	} else if (sessions.get_seesion(cookies['session']) === undefined) {
+		body = `Your session in no longer valid. please update it`
+		res.setHeader('Set-Cookie', 'session=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT')
 	} else {
 		body = `You loged in as ${sessions.get_seesion(cookies['session']).name}`
 	}

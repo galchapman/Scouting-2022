@@ -1,7 +1,6 @@
 //Load HTTP module
 const http = require("http");
 const fs = require('fs');
-const { parse } = require('querystring');
 const db = require('./database.js')
 
 const urls = {'index': get_js_file, 'main.css': get_file, 'users': get_js_file, 'login': get_js_file}
@@ -14,14 +13,6 @@ const port = 3000;
 
 function read_file(filename) {
 	return fs.readFileSync(filename, 'utf8')
-}
-
-function handle_post_request(url, data, response) {
-	db.insert_user(data.name)
-
-	response.statusCode = 200;
-	response.setHeader('Content-Type', 'text/html');
-	response.end(read_file('www/' + url));
 }
 
 let loaded_files = {}
@@ -84,23 +75,7 @@ const server = http.createServer((req, res) => {
 		}
 
 		// Simple Read
-		if (req.method === "GET") {
-			urls[page](req, res)
-		// post data
-		} else if (req.method === "POST") {
-			let body = '';
-
-			req.on('data', function (data) {
-				body += data.toString();
-
-				// likly dDos
-				if (body.length > 1e6)
-					request.connection.destroy();
-			});
-			req.on('end', () => {
-				handle_post_request(req.url, parse(body), res)
-			})
-		}
+		urls[page](req, res)
 	} catch (error) {
 		console.log(error)
 	}

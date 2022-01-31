@@ -21,11 +21,24 @@ function new_session(id) {
 }
 
 
+function login(id, name, permissions_level) {
+	var session = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2)
+	
+	sessions[session] = new Object
+	sessions[session].id = id
+	sessions[session].name = name
+	sessions[session].permissions_level = permissions_level
+
+	return session
+}
+
+
 function get_seesion(session) {
 	return sessions[session]
 }
 
 module.exports = {
 	new_session: new_session,
-	get_seesion: get_seesion
+	get_seesion: get_seesion,
+	login: login
 }
