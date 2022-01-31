@@ -4,8 +4,8 @@ const fs = require('fs');
 const { parse } = require('querystring');
 const db = require('./database.js')
 
-const urls = {'index': get_js_file, 'main.css': get_file, 'users.template.html': get_file, 'login': get_js_file}
-const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users.template.html'}
+const urls = {'index': get_js_file, 'main.css': get_file, 'users': get_js_file, 'login': get_js_file}
+const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users'}
 
 // const hostname = '127.0.0.1';
 const hostname = '192.168.1.72';

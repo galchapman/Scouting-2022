@@ -26,8 +26,6 @@
 				
 				var url = `http://${window.location.toString().split('/')[2]}/login?token=${mint_token(id)}`
 
-				console.log(url);
-
 				document.getElementById("qr-code").src = `https://api.qrserver.com/v1/create-qr-code/?data=${url}&amp;size=300x300`; 
 			}
 		</script>
@@ -41,22 +39,7 @@
 						NAME
 					</th>
 				</tr>
-				<tr onclick="SelectUser(0)">
-					<td>
-						0
-					</td>
-					<td>
-						Gal
-					</td>
-				</tr>
-				<tr onclick="SelectUser(1)">
-					<td>
-						1
-					</td>
-					<td>
-						Ori
-					</td>
-				</tr>
+				${USERS}
 			</table>
 		</div>
 	</body>

@@ -8,11 +8,13 @@ function new_session(id) {
 	sessions[session] = new Object
 
 	db.get_user_name(id, (err, rows) => {
-		console.log(rows)
-		console.log(sessions)
-		sessions[session] = new Object
-		sessions[session].name = rows[0].NAME
-		sessions[session].id = rows[0].ID
+		try {
+			sessions[session] = new Object
+			sessions[session].name = rows[0].NAME
+			sessions[session].id = rows[0].ID
+		} catch {
+			sessions[session] = undefined
+		}
 	})
 
 	return session
