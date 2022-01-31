@@ -4,10 +4,11 @@ const fs = require('fs');
 const { parse } = require('querystring');
 const db = require('./database.js')
 
-const urls = {'index.html': get_file, 'main.css': get_file, 'users.html': get_users}
-const redirects = {'': 'index.html'}
+const urls = {'index': get_js_file, 'main.css': get_file, 'users.template.html': get_file, 'login': get_js_file}
+const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users.template.html'}
 
-const hostname = '127.0.0.1';
+// const hostname = '127.0.0.1';
+const hostname = '192.168.1.72';
 const port = 3000;
 
 
@@ -15,24 +16,46 @@ function read_file(filename) {
 	return fs.readFileSync(filename, 'utf8')
 }
 
-function handle_post_request(url, data, responce) {
+function handle_post_request(url, data, response) {
 	db.insert_user(data.name)
 
-	responce.statusCode = 200;
-	responce.setHeader('Content-Type', 'text/html');
-	responce.end(read_file('www/' + url));
+	response.statusCode = 200;
+	response.setHeader('Content-Type', 'text/html');
+	response.end(read_file('www/' + url));
+}
+
+let loaded_files = {}
+function load_file(filename) {
+	if (!(filename in loaded_files)) {
+		loaded_files[filename] = read_file('www/' + filename)
+	}
+	return loaded_files[filename]
 }
 
 function get_file(req, res) {
+	var page = req.url.split('?')[0];
 	res.statusCode = 200;
-	if (req.url.endsWith('.html')) {
+	if (page.endsWith('.html')) {
 		res.setHeader('Content-Type', 'text/html');
-	} else if (req.url.endsWith('.css')) {
+	} else if (page.endsWith('.css')) {
 		res.setHeader('Content-Type', 'text/css');
 	} else {
 		res.setHeader('Content-Type', 'text/plain');
 	}
-	res.end(read_file('www/' + req.url))
+	// TODO: Add cashing
+	res.end(load_file(req.url.split('?')[0]))
+}
+
+let loaded_modules = {}
+function load_module(name) {
+	if (!(name in load_module)) {
+		loaded_modules[name] = require(`./www/${name}.js`)
+	}
+	return loaded_modules[name]
+}
+
+function get_js_file(req, res) {
+	load_module(req.url.split('?')[0]).handle(req, res)
 }
 
 function get_users(req, res) {
@@ -46,7 +69,7 @@ function get_users(req, res) {
 			res.setHeader('Content-Type', 'text/html');
 			console.log(rows);
 
-			let message = '<!DOCTYPE HTML><html><head><link rel="stylesheet" href="main.css"></head>';
+			let message = '<!DOCTYPE HTML><html><head><link rel="stylesheet" href="main.css"><title>Users</title></head>';
 
 			message += "<body><table class=\"fl-table\"><tr><th>ID</th><th>Name</th></tr>"
 
@@ -63,38 +86,49 @@ function get_users(req, res) {
 
 //Create HTTP server and listen on port 3000 for requests
 const server = http.createServer((req, res) => {
-	// parse url
-	if (req.url[0] == '/') // remove leading '/'
-		req.url = req.url.substring(1);
-	// redirect url
-	if (req.url in redirects) {
-		req.url = redirects[req.url]
-	// if url isn't valid
-	} else if (!(req.url in urls)) {
-		console.log("new message " + req.method + "@" + req.url)
-		res.statusCode = 404;
-		res.setHeader('Content-Type', 'text/html')
-		res.end('Not Found :(')
-		return
-	}
+	try {
+		// parse url
+		var page = req.url.split('?')[0];
+		if (page[0] == '/') { // remove leading '/'
+			req.url = req.url.substring(1);
+			page = page.substring(1);
+		}
+		// redirect url
+		if (page in redirects) {
+			page = redirects[page]
+			if (req.url.split('?').length == 2)
+				req.url = page + req.url.split('?')[1]
+			else
+				req.url = page
+		// if url isn't valid
+		} else if (!(page in urls)) {
+			console.log("new message " + req.method + "@" + page)
+			res.statusCode = 404;
+			res.setHeader('Content-Type', 'text/html')
+			res.end('Not Found :(')
+			return
+		}
 
-	// Simple Read
-	if (req.method == "GET") {
-		urls[req.url](req, res)
-	// post data
-	} else if (req.method == "POST") {
-		var body = '';
+		// Simple Read
+		if (req.method === "GET") {
+			urls[page](req, res)
+		// post data
+		} else if (req.method === "POST") {
+			let body = '';
 
-		req.on('data', function (data) {
-			body += data.toString();
+			req.on('data', function (data) {
+				body += data.toString();
 
-			// likly dDos
-			if (body.length > 1e6)
-				request.connection.destroy();
-		});
-		req.on('end', () => {
-			handle_post_request(req.url, parse(body), res)
-		})
+				// likly dDos
+				if (body.length > 1e6)
+					request.connection.destroy();
+			});
+			req.on('end', () => {
+				handle_post_request(req.url, parse(body), res)
+			})
+		}
+	} catch (error) {
+		console.log(error)
 	}
 });
 

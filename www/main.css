@@ -1,0 +1,40 @@
+body {
+	background-color: #21262d;
+	font-size: 150%;
+	font-family: Verdana, sans-serif;
+	color: #1f6feb;
+}
+
+.users-table {
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px #ffffff;
+	border-collapse: collapse;
+	text-align: center;
+	width: 100%
+}
+
+.users-table table, td, th {
+	border: 2px solid #0c2d6b;
+}
+
+.qr-code-container {
+	padding-bottom: 30px;
+}
+
+.qr-code-container .selected-user {
+	text-align: center;
+	padding: 20px 20px;
+	color: #a5d6ff;
+}
+
+.qr-code {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0;
+	padding-right: 0;
+	background-color: white;
+	height: 300px;
+	width: 300px;
+	display: block;
+}
