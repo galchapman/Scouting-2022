@@ -1,8 +1,34 @@
 body {
+	margin: 0;
 	background-color: #21262d;
 	font-size: 150%;
 	font-family: Verdana, sans-serif;
 	color: #1f6feb;
+}
+
+.nav-bar {
+	background-color: #161b22;
+	margin: 0 0 10px 0; 
+	overflow: hidden;
+}
+
+.nav-bar a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.nav-bar a:hover {
+	background-color: #484f58;
+	color: black;
+}
+
+.nav-bar a.active {
+	background-color: #FF5F1F;
+	color: white;
 }
 
 .users-table {
@@ -33,8 +59,52 @@ body {
 	margin-right: auto;
 	padding-left: 0;
 	padding-right: 0;
-	background-color: white;
 	height: 300px;
 	width: 300px;
 	display: block;
+}
+
+.login-container {
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	padding-top: 60px;
+}
+
+.login-header {
+	text-align: center;
+}
+
+.login-form {
+	text-align: left;
+	margin: 5% auto 15% auto;
+	border: 2px solid #30363d;
+	border-radius: 6px;
+	width: 400px;
+	padding: 20px;
+}
+
+.login-form input[type=text], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	box-sizing: border-box;
+	background-color: #010409;
+	color: #1f6feb;
+	border-radius: 5px;
+	border: 0px;
+}
+
+.login-form button {
+	background-color: #FF5F1F;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 5px;
+	border: 0px;
 }
