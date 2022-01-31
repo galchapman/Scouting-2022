@@ -58,32 +58,6 @@ function get_js_file(req, res) {
 	load_module(req.url.split('?')[0]).handle(req, res)
 }
 
-function get_users(req, res) {
-	db.get_users((error, rows) => {
-		if (error) {
-			res.statusCode = 402;
-			res.setHeader('Content-Type', 'text/plain');
-			res.end("Internal server error: " + error);
-		} else {
-			res.statusCode = 200;
-			res.setHeader('Content-Type', 'text/html');
-			console.log(rows);
-
-			let message = '<!DOCTYPE HTML><html><head><link rel="stylesheet" href="main.css"><title>Users</title></head>';
-
-			message += "<body><table class=\"fl-table\"><tr><th>ID</th><th>Name</th></tr>"
-
-			rows.forEach(row => {
-				message += "<tr><td>" + row.ID + "</td><td>" + row.NAME + "</td></tr>"
-			});
-			message += "</table></body></html>";
-
-
-			res.end(message)
-		}
-	})
-}
-
 //Create HTTP server and listen on port 3000 for requests
 const server = http.createServer((req, res) => {
 	try {
