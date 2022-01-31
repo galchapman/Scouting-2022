@@ -1,10 +1,15 @@
 //Load HTTP module
 const http = require("http");
 const fs = require('fs');
-const db = require('./database.js')
+const sessions = require('./sessions.js')
+const util = require('./util.js')
 
 const urls = {'index': get_js_file, 'main.css': get_file, 'users': get_js_file, 'login': get_js_file}
 const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users'}
+
+const permissions = {
+	'users': ['Manager']
+}
 
 // const hostname = '127.0.0.1';
 const hostname = '192.168.1.72';
@@ -49,6 +54,21 @@ function get_js_file(req, res) {
 	load_module(req.url.split('?')[0]).handle(req, res)
 }
 
+
+function check_permission(permission, req) {
+	var cookies = util.get_cookies(req.headers.cookie)
+	var session = sessions.get_seesion(cookies["session"])
+	if (permission == undefined) {
+		return true;
+	} else if (session == undefined) {
+		return false;
+	} else if (session.permission_level == "Admin") {
+		return true;
+	} else {
+		return session.permission_level == permission;
+	}
+}
+
 //Create HTTP server and listen on port 3000 for requests
 const server = http.createServer((req, res) => {
 	try {
@@ -74,8 +94,14 @@ const server = http.createServer((req, res) => {
 			return
 		}
 
-		// Simple Read
-		urls[page](req, res)
+		// check permissions
+		if (check_permission(permissions[page], req)) {
+			urls[page](req, res)
+		} else {
+			res.statusCode = 403;
+			res.setHeader('Content-Type', 'text/plain')
+			res.end("You don't have access to this page")
+		}
 	} catch (error) {
 		console.log(error)
 	}

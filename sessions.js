@@ -12,6 +12,7 @@ function new_session(id) {
 			sessions[session] = new Object
 			sessions[session].name = rows[0].NAME
 			sessions[session].id = rows[0].ID
+			sessions[session].permission_level = undefined
 		} catch {
 			sessions[session] = undefined
 		}
@@ -21,13 +22,13 @@ function new_session(id) {
 }
 
 
-function login(id, name, permissions_level) {
+function login(id, name, permission_level) {
 	var session = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2)
 	
 	sessions[session] = new Object
 	sessions[session].id = id
 	sessions[session].name = name
-	sessions[session].permissions_level = permissions_level
+	sessions[session].permission_level = permission_level
 
 	return session
 }
