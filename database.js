@@ -48,10 +48,15 @@ function initDatabase() {
 	)
 }
 
+function runSQL(query, callback) {
+	db.all(query, [], callback)
+}
+
 
 module.exports = {
 	insert_user: insert_user,
 	get_users: get_users,
 	get_user_name: get_user_name,
-	login_user: login_user
+	login_user: login_user,
+	runSQL: runSQL
 }

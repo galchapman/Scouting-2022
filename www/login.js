@@ -3,7 +3,6 @@ const sessions = require('../sessions')
 const db = require('../database')
 const { parse } = require('querystring');
 const fs = require('fs');
-const { login_user } = require('../database');
 
 
 function mint(user_id) {

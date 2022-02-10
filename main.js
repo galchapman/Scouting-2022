@@ -5,12 +5,13 @@ const sessions = require('./sessions.js')
 const util = require('./util.js');
 const adduser = require("./www/adduser.js");
 
-const urls = {'index': get_js_file, 'main.css': get_file, 'users': get_js_file, 'login': get_js_file, 'adduser': get_js_file, 'favicon.ico': get_file_bin, robots: get_js_file}
-const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users', 'adduser.html': 'adduser'}
+const urls = {'index': get_js_file, 'main.css': get_file, 'users': get_js_file, 'login': get_js_file, 'adduser': get_js_file, 'favicon.ico': get_file_bin, 'robots': get_js_file, 'sql': get_js_file}
+const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users', 'adduser.html': 'adduser', 'sql.html': 'sql'}
 
 const permissions = {
 	'users': 'Manager',
-	'adduser': 'Admin'
+	'adduser': 'Admin',
+	'sql': 'Admin'
 }
 
 // const hostname = '127.0.0.1';
