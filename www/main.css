@@ -63,7 +63,7 @@ body {
 	width: 100%
 }
 
-.users-table table, td, th {
+.users-table table, .users-table td, .users-table th {
 	border: 2px solid #0c2d6b;
 }
 
@@ -109,7 +109,7 @@ form {
 	padding: 20px;
 }
 
-form input[type=text], input[type=password] {
+form input[type=text], form input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -160,7 +160,7 @@ form button {
 	font-weight: 600;
 }
 
-.switch ::before, ::after {
+.switch ::before, .switch ::after {
 	box-sizing: border-box;
 	border-width: 0;
 	border-style: solid;
@@ -211,6 +211,7 @@ form button {
 	width: 0;
 	height: 0;
 	position: absolute;
+	visibility: hidden;
 }
 
 .toggle input:checked + label {
