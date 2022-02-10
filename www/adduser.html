@@ -11,14 +11,22 @@
 			<a href="./adduser.html">Create user</a>
 		</div>
 		<div class="form-container adduser">
-			<form method="POST" action="adduser.html">
+			<form method="POST" action="adduser.html" dir="ltr">
 				<h3>Add a new user</h3>
 				<label for="new-username-field">Username</label>
 				<input id="new-username-field" type="text" name="username" placeholder="username" required>
 				<label for="new-password-field">Password</label>
 				<input id="new-password-field" type="password" name="password" placeholder="password">
-				<label for="permission-field">Permission</label>
-				<input id="permission-field" type="text" name="permission-level" placeholder="">
+				<div class="toggle" style="padding: auto;">
+					<input type="radio" name="permission-level" value="Admin" id="0" hidden>
+					<label for="0">Admin</label>
+					<input type="radio" name="permission-level" value="Viewer" id="1" hidden>
+					<label for="1">Viewer</label>
+					<input type="radio" name="permission-level" value="Manager" id="2" hidden>
+					<label for="2">Manager</label>
+					<input type="radio" name="permission-level" value="None" id="3" hidden checked>
+					<label for="3">None</label>
+				</div>
 				<button type="submit">Add user</button>
 			</form>
 		</div>

@@ -19,16 +19,20 @@ function handle(req, res) {
 		});
 		req.on('end', () => {
 			var body_parsed = parse(body)
-			if ('username' in body_parsed && 'password' in body_parsed) {
-				if ('permission-level' in body_parsed) {
-					db.insert_user(body_parsed['username'], body_parsed['password'], body_parsed['permission-level'])
-				} else {
-					db.insert_user(body_parsed['username'], body_parsed['password'], null)
-				}
+			if ('username' in body_parsed && 'password' in body_parsed && 'permission-level' in body_parsed) {
+				db.insert_user(body_parsed['username'], body_parsed['password'], body_parsed['permission-level'], 
+				(_, error) => {
+					if (error == null) {
+						res.statusCode = 303;
+						res.setHeader('Location', 'adduser.html')
+						res.end()
+					} else {
+						res.statusCode = 402;
+						res.setHeader('Content-Type', 'text/plain');
+						res.end("Internal server error: " + error.toString());
+					}
+				})
 			}
-			res.statusCode = 303;
-			res.setHeader('Location', 'adduser.html')
-			res.end()
 		})
 	}
 }

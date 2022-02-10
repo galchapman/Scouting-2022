@@ -8,9 +8,9 @@ let db = new sqlite3.Database('database.db');
 initDatabase()
 
 
-function insert_user(name, password, permissions) {
+function insert_user(name, password, permissions, callback) {
 	bcrypt.hash(password, 4).then((hash) => {
-		db.run("INSERT INTO USERS (NAME, PASSWORD, PERMISSION_LEVEL) VALUES (?, ?, ?)", [name, hash, permissions])
+		db.run("INSERT INTO USERS (NAME, PASSWORD, PERMISSION_LEVEL) VALUES (?, ?, ?)", [name, hash, permissions], callback)
 	})
 }
 
