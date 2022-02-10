@@ -3,8 +3,6 @@ const files = fs.readdirSync('robots/');
 const util = require('../util')
 
 
-console.log(files)
-
 function handle(req, res) {
 	if (req.method == "GET") {
 		var prams = util.get_prams(req.url)
@@ -14,8 +12,11 @@ function handle(req, res) {
 			res.setHeader('Content-Type', 'image/jpeg')
 			res.end(fs.readFileSync('robots/' + prams.team + '.jpeg'));
 		} else {
-			res.statusCode = 404;
-			res.end('NotFound');
+			// res.statusCode = 404;
+			// res.end('NotFound');
+			res.statusCode = 200;
+			res.setHeader('Content-Type', 'image/jpeg')
+			res.end(fs.readFileSync('robots/18833.jpeg'));
 		}
 	} else {
 		res.statusCode = 400;
