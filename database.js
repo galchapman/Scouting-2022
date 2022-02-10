@@ -10,7 +10,7 @@ initDatabase()
 
 function insert_user(name, password, permissions) {
 	bcrypt.hash(password, 4).then((hash) => {
-		db.run("INSERT INTO USERS (NAME, PASSWORD, PREMISSION_LEVEL) VALUES (?, ?, ?)", [name, hash, permissions])
+		db.run("INSERT INTO USERS (NAME, PASSWORD, PERMISSION_LEVEL) VALUES (?, ?, ?)", [name, hash, permissions])
 	})
 }
 
@@ -43,7 +43,7 @@ function initDatabase() {
 			ID INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
 			NAME TEXT UNIQUE NOT NULL,
 			PASSWORD TEXT,
-			PERMISSION_LEVEL TEXT NOT NULL
+			PERMISSION_LEVEL TEXT
 		)`
 	)
 }

@@ -1,9 +1,31 @@
+@media (prefers-color-scheme: light) {
+	:root {
+		--text-color: black;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--text-color: white;
+		--text-box-background-color: #424242;
+		--background-color: #21262d;
+	}
+}
+
+* {
+	user-select: none;
+}
+  
+*:focus {
+	outline: none;
+}
+
 body {
 	margin: 0;
-	background-color: #21262d;
+	background-color: var(--background-color);
 	font-size: 150%;
 	font-family: Verdana, sans-serif;
-	color: #1f6feb;
+	color: var(--text-color);
 }
 
 .nav-bar {
@@ -64,7 +86,7 @@ body {
 	display: block;
 }
 
-.login-container {
+.form-container {
 	left: 0;
 	right: 0;
 	width: 100%;
@@ -73,11 +95,11 @@ body {
 	padding-top: 60px;
 }
 
-.login-header {
+.form-header {
 	text-align: center;
 }
 
-.login-form {
+form {
 	text-align: left;
 	margin: 5% auto 15% auto;
 	border: 2px solid #30363d;
@@ -86,19 +108,19 @@ body {
 	padding: 20px;
 }
 
-.login-form input[type=text], input[type=password] {
+form input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
 	box-sizing: border-box;
 	background-color: #323335;
-	color: #1f6feb;
+	color: #777777;
 	border-radius: 5px;
 	border: 0px;
 }
 
-.login-form button {
+form button {
 	background-color: #FF5F1F;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -107,4 +129,70 @@ body {
 	width: 100%;
 	border-radius: 5px;
 	border: 0px;
+}
+
+.switch {
+	--text-opacity: 1;
+	background-color: rgba(49,130,206,var(--text-opacity));;
+	color: rgba(49,130,206,var(--text-opacity));
+	position: relative;
+	padding: .25rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	height: 2.5rem;
+	font-weight: 600;
+	align-items: center;
+	display: inline-flex;
+	border-radius: .375rem;
+	--bg-opacity: 1;
+	background-color: #edf2f7;
+	background-color: rgba(237,242,247,var(--bg-opacity));
+	list-style: none;
+	margin: 0
+}
+
+.switch li {
+	position: relative;
+	display: flex;
+	height: 2rem;
+	color: rgba(49,130,206,var(--text-opacity));
+	font-weight: 600;
+}
+
+.switch ::before, ::after {
+	box-sizing: border-box;
+	border-width: 0;
+	border-style: solid;
+	border-color: #e2e8f0;
+}
+
+.switch input[type="radio"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	white-space: nowrap;
+	border-width: 0;
+	box-sizing: border-box;
+	line-height: inherit;
+	color: inherit;
+	font-family: inherit;
+	font-size: 100%;
+}
+
+.switch label {
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
+	padding-left: .5rem;
+	padding-right: .5rem;
+	padding-top: .25rem;
+	padding-bottom: .25rem;
+	line-height: 1.5rem;
+	font-size: .875rem;
+	height: 2rem;
+	border-radius: .25rem;
+	--bg-opacity: 1;
+	background-color: rgba(255,255,255,var(--bg-opacity));
 }

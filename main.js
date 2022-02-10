@@ -2,18 +2,25 @@
 const http = require("http");
 const fs = require('fs');
 const sessions = require('./sessions.js')
-const util = require('./util.js')
+const util = require('./util.js');
+const adduser = require("./www/adduser.js");
 
-const urls = {'index': get_js_file, 'main.css': get_file, 'users': get_js_file, 'login': get_js_file}
-const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users'}
+const urls = {'index': get_js_file, 'main.css': get_file, 'users': get_js_file, 'login': get_js_file, 'adduser': get_js_file, 'favicon.ico': get_file_bin}
+const redirects = {'': 'index', 'index.html': 'index', 'users.html': 'users', 'adduser.html': 'adduser'}
 
 const permissions = {
-	'users': ['Manager']
+	'users': 'Manager',
+	'adduser': 'Admin'
 }
 
 // const hostname = '127.0.0.1';
 const hostname = '192.168.1.72';
 const port = 3000;
+
+
+function read_file_binary(filename) {
+	return fs.readFileSync(filename)
+}
 
 
 function read_file(filename) {
@@ -22,9 +29,16 @@ function read_file(filename) {
 
 let loaded_files = {}
 function load_file(filename) {
-	if (!(filename in loaded_files)) {
+	// if (!(filename in loaded_files)) {
 		loaded_files[filename] = read_file('www/' + filename)
-	}
+	// }
+	return loaded_files[filename]
+}
+
+function load_file_bin(filename) {
+	// if (!(filename in loaded_files)) {
+		loaded_files[filename] = read_file_binary('www/' + filename)
+	// }
 	return loaded_files[filename]
 }
 
@@ -42,6 +56,18 @@ function get_file(req, res) {
 	res.end(load_file(req.url.split('?')[0]))
 }
 
+function get_file_bin(req, res) {
+	var page = req.url.split('?')[0];
+	res.statusCode = 200;
+	if (page.endsWith('.ico')) {
+		res.setHeader('Content-Type', 'image/x-icon')
+	} else {
+		res.setHeader('Content-Type', 'text/plain');
+	}
+	// TODO: Add cashing
+	res.end(load_file_bin(req.url.split('?')[0]))
+}
+
 let loaded_modules = {}
 function load_module(name) {
 	if (!(name in load_module)) {
@@ -56,6 +82,9 @@ function get_js_file(req, res) {
 
 
 function check_permission(permission, req) {
+	if (process.argv.length > 2 && 'test' == process.argv[2])
+		return true;
+
 	var cookies = util.get_cookies(req.headers.cookie)
 	var session = sessions.get_seesion(cookies["session"])
 	if (permission == undefined) {
