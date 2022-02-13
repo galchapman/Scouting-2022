@@ -1,5 +1,10 @@
 package main
 
+import "Scouting-2022/server"
+
 func main() {
-	println("Hello, World!")
+	_, err := server.NewServer()
+	if err != nil {
+		panic(err)
+	}
 }

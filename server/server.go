@@ -7,7 +7,7 @@ type Server struct {
 }
 
 func NewServer() (*Server, error) {
-	db, err := database.NewDataBase("./database.sqlite")
+	db, err := database.NewDataBase("./database.sqlite3")
 	if err != nil {
 		return nil, err
 	} else {
