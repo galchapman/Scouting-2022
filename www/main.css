@@ -27,7 +27,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	margin: 0;
 	background-color: var(--color-background-color);
-	font-size: 150%;
+	font-size: 230%;
 	font-family: Verdana, sans-serif;
 	color: black;
 	direction:rtl;
@@ -67,7 +67,7 @@ body {
 	width: 100%
 }
 
-.users-table table, .users-table td, .users-table th {
+.users-table table, td, th {
 	border: 2px solid #0c2d6b;
 }
 
@@ -104,7 +104,7 @@ body {
 	text-align: center;
 }
 
-.login-container form {
+.login-form {
 	text-align: left;
 	margin: 5% auto 15% auto;
 	border: 2px solid #30363d;
@@ -113,19 +113,19 @@ body {
 	padding: 20px;
 }
 
-.login-container input[type=text], form input[type=password] {
+.login-form input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
 	box-sizing: border-box;
 	background-color: #323335;
-	color: #777777;
+	color: #1f6feb;
 	border-radius: 5px;
 	border: 0px;
 }
 
-.login-container button {
+.login-form button {
 	background-color: #FF5F1F;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -136,75 +136,10 @@ body {
 	border: 0px;
 }
 
-.switch {
-	--text-opacity: 1;
-	background-color: rgba(49,130,206,var(--text-opacity));;
-	color: rgba(49,130,206,var(--text-opacity));
-	position: relative;
-	padding: .25rem;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	height: 2.5rem;
-	font-weight: 600;
-	align-items: center;
-	display: inline-flex;
-	border-radius: .375rem;
-	--bg-opacity: 1;
-	background-color: #edf2f7;
-	background-color: rgba(237,242,247,var(--bg-opacity));
-	list-style: none;
-	margin: 0
-}
-
-.switch li {
-	position: relative;
-	display: flex;
-	height: 2rem;
-	color: rgba(49,130,206,var(--text-opacity));
-	font-weight: 600;
-}
-
-.switch ::before, .switch ::after {
-	box-sizing: border-box;
-	border-width: 0;
-	border-style: solid;
-	border-color: #e2e8f0;
-}
-
-.switch input[type="radio"] {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0,0,0,0);
-	white-space: nowrap;
-	border-width: 0;
-	box-sizing: border-box;
-	line-height: inherit;
-	color: inherit;
-	font-family: inherit;
-	font-size: 100%;
-}
-
-.switch label {
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
-	padding-left: .5rem;
-	padding-right: .5rem;
-	padding-top: .25rem;
-	padding-bottom: .25rem;
-	line-height: 1.5rem;
-	font-size: .875rem;
-	height: 2rem;
-	border-radius: .25rem;
-	--bg-opacity: 1;
-	background-color: rgba(255,255,255,var(--bg-opacity));
-}
-
 .scouting-form-container {
 	color: var(--text);
 	text-align: center;
+	font-weight: 500;
 }
 
 .scouting-form-container button {
@@ -249,9 +184,9 @@ body {
 	border-radius: 6px;
 	border: 2px solid var(--color-input-border);
 	padding: 0;
-	height: 2cm;
-	width: 2cm;
-	font-size: 1.25cm;
+	height: 4.2cm;
+	width: 4.2cm;
+	font-size: 2.7cm;
 	text-align: center;
 	margin: 0 10px 0 10px;
 	background-color: var(--color-input-box);
@@ -279,12 +214,12 @@ body {
 	box-sizing: border-box;
 	color: var(--color-white);
 	cursor: pointer;
-	font-size: 2cm;
+	font-size: 4cm;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 450;
 	font-style: normal;
-	height: 2cm;
-	width: 2cm;
+	height: 4cm;
+	width: 4cm;
 	padding: 0 0;
 	text-align: center;
 	user-select: none;
@@ -292,52 +227,57 @@ body {
 	box-shadow: 0ch;
 }
 
+/* Toggle Class */
+
 .toggle {
-	font-size: 0;
-	direction: ltr;
-	display: flex;
-	justify-content: center;
-	padding: 10px;
-	overflow: visible;
+    font-size: 0;
+    direction: ltr;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    overflow: visible;
 }
 
 .toggle input {
-	width: 0;
-	height: 0;
-	position: absolute;
+    width: 0;
+    height: 0;
+    position: absolute;
 	visibility: hidden;
 }
 
 .toggle input:checked + label {
-	background-color: #ff6600;
-	color: #FFF;
-	box-shadow: 0 0 10px orangered;
-	border-color: #000000;
-	z-index: auto;
+    background-color: #ff6600;
+    color: #FFF;
+    box-shadow: 0 0 10px orangered;
+    border-color: #000000;
+    z-index: auto;
+	
 }
 
 .toggle input + label:first-of-type {
-	border-radius: 6px 0 0 6px;
+    border-radius: 6px 0 0 6px;
+    
 }
 
 .toggle input + label:last-of-type {
-	border-radius: 0 6px 6px 0;
+    border-radius: 0 6px 6px 0;
+    
 }
 
 .toggle input + label {
-	margin: 0;
-	padding: 0.75rem 2rem;
-	box-sizing: border-box;
-	position: relative;
-	display: inline-block;
-	border: solid 1px rgb(0, 0, 0);
-	background-color: var(--background-color);
-	font-size: 1rem;
-	line-height: 140%;
-	font-weight: 600;
-	text-align: center;
-	box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-	transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+    margin: 0;
+    padding: 2.6rem 3.8rem;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border: solid 1px rgb(0, 0, 0);
+    background-color: var(--background-color);
+    font-size: 2.8rem;
+    line-height: 120%;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    
 }
 
 /* Counter Class */
@@ -353,7 +293,64 @@ body {
 .secandtitle {
 	text-align: center; 
 	text-shadow: 1.5px 1.5px rgba(90, 89, 88, 0.856); 
-	font-size: 50px; 
+	font-size: 75px; 
 	font-weight: 500; 
 	
 }
+
+/* Toggle Class */
+
+.togle {
+    font-size: 0;
+    direction: ltr;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    overflow: visible;
+}
+
+.togle input {
+    width: 0;
+    height: 0;
+    position: absolute;
+	visibility: hidden;
+}
+
+.togle input:checked + label {
+    background-color: #ff6600;
+    color: #FFF;
+    box-shadow: 0 0 10px orangered;
+    border-color: #000000;
+    z-index: auto;
+	
+}
+
+.togle input + label:first-of-type {
+    border-radius: 6px 0 0 6px;
+    
+}
+
+.togle input + label:last-of-type {
+    border-radius: 0 6px 6px 0;
+    
+}
+
+.togle input + label {
+    margin: 0;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border: solid 1px rgb(0, 0, 0);
+    background-color: var(--background-color);
+    font-size: 2.2rem;
+    line-height: 120%;
+    font-weight: 1000;
+    text-align: center;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    /* transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out; */
+}
+
+
+
+

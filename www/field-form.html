@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="main.css">
+		<script>
+			function dec(id) {
+				var element = document.getElementById(id);
+				element.value = Math.max(0, parseInt(element.value)-1)
+			}
+			function inc(id) {
+				var element = document.getElementById(id);
+				element.value = Math.min(99, parseInt(element.value)+1)
+			}
+
+			var current_page=0;
+			function next_page() {
+				document.getElementById("page" + current_page).hidden = true;
+				current_page++;
+				document.getElementById("page" + current_page).hidden = false;
+				 scroll(0, 0);
+			}
+
+			function prev_page() {
+				document.getElementById("page" + current_page).hidden = true;
+				current_page--;
+				document.getElementById("page" + current_page).hidden = false;
+				 scroll(0, 0);
+			}
+
+			
+		</script>
+	</head>
+	<title>${GROUP NAME} / ${MATCH}</title>
+	<body>
+		<div class="scouting-form-container">
+			<form class="scouting-form">
+			
+					
+					<br><label class="secandtitle" >טופס צוות נהיגה:</label><br><br>
+
+					<label>שיתוף פעולה בתכנון אסטרטגיה</label>
+				
+					<div class="toggle">
+						<input type="radio" name="Coperation" id="Cop5" value="5">
+						<label for="Cop5">5</label>
+						<input type="radio" name="Coperation" id="Cop4" value="4">
+						<label for="Cop4">4</label>
+						<input type="radio" name="Coperation" id="Cop3" value="3">
+						<label for="Cop3">3</label>
+						<input type="radio" name="Coperation" id="Cop2" value="2">
+						<label for="Cop2">2</label>
+						<input type="radio" name="Coperation" id="Cop1" value="1">
+						<label for="Cop1">1</label>
+					</div>
+
+					<label>תקשורת במשחק</label>
+
+					<div class="toggle">
+						<input type="radio" name="Communication" id="Com5" value="5">
+						<label for="Com5">5</label>
+						<input type="radio" name="Communication" id="Com4" value="4">
+						<label for="Com4">4</label>
+						<input type="radio" name="Communication" id="Com3" value="3">
+						<label for="Com3">3</label>
+						<input type="radio" name="Communication" id="Com2" value="2">
+						<label for="Com2">2</label>
+						<input type="radio" name="Communication" id="Com1" value="1">
+						<label for="Com1">1</label>
+					</div>
+
+					<label>נחמדות</label>
+                
+                    <div class="toggle">
+                        <input type="radio" name="Kind" id="Kind5" value="5">
+                        <label for="Kind5">5</label>
+                        <input type="radio" name="Kind" id="Kind4" value="4">
+                        <label for="Kind4">4</label>
+                        <input type="radio" name="Kind" id="Kind3" value="3">
+                        <label for="Kind3">3</label>
+                        <input type="radio" name="Kind" id="Kind2" value="2">
+                        <label for="Kind2">2</label>
+                        <input type="radio" name="Kind" id="Kind1" value="1">
+                        <label for="Kind1">1</label>
+                    </div>
+
+                    <label>התאמה בסגנון משחק</label>
+
+					<div class="toggle">
+                        <input type="radio" name="Suitability" id="Suit5" value="5">
+                        <label for="Suit5">5</label>
+                        <input type="radio" name="Suitability" id="Suit4" value="4">
+                        <label for="Suit4">4</label>
+                        <input type="radio" name="Suitability" id="Suit3" value="3">
+                        <label for="Suit3">3</label>
+                        <input type="radio" name="Suitability" id="Suit2" value="2">
+                        <label for="Suit2">2</label>
+                        <input type="radio" name="Suitability" id="Suit1" value="1">
+                        <label for="Suit1">1</label>
+                    </div>	
+					
+					<label>הערות</label><br><br>
+					<textarea name="Notes" style="width: 12cm; font-size: 0.52cm; height:5cm; direction: rtl; text-align: right; padding-right: 5px; font-family: Arial, Helvetica, sans-serif; border-radius: 0.1cm; border-color: var(border-color); background-color: var(--color-input-box);"></textarea><br><br><br>	
+
+					<input type="submit" value="הגשת טופס" style="width: 14cm; font-size: 1.1cm; height:1.5cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"><br><br>	
+
+				    
+			</form>
+		</div>
+	</body>
+</html>
