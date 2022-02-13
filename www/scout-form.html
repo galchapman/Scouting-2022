@@ -32,14 +32,14 @@
 			
 		</script>
 	</head>
-	<title>${GROUP NAME} / ${MATCH}</title>
+	<title>${GROUP_NUMBER} / ${MATCH}</title>
 	<body>
 		<div class="scouting-form-container">
 			<div id="page0"  >
 				<h1 >שלום ${USER} </h1>
-				<h2 style="font-size: 140%; ">הקבוצה שלך היא ${GROUP NAME}</h2>
-				<h3 style="font-size: 140%;" >והיא נמצאת בברית ה ${GROUP COLOR}</h3>
-				<img src="../robots/18833.jpeg" class="robot-image" style="width: 16;"><br><br>
+				<h2 style="font-size: 140%; ">הקבוצה שלך היא ${GROUP_NUMBER}</h2>
+				<h3 style="font-size: 140%;" >והיא נמצאת בברית ה ${GROUP_COLOR}</h3>
+				<img src="robots?team=${GROUP_NUMBER}" class="robot-image" style="width: 14;"><br><br>
 				<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;";  onclick="next_page()"> <-- הבנתי והכל נכון, לטופס</button>
 				
 			</div>
@@ -51,7 +51,7 @@
 					
 					<br><label class="secandtitle" >פרטים ואוטנומי:</label><br><br>
 
-					<label style="font-size: 1.5cm;">מיקום הקבוצה במגרש</label><br><br>  
+					<label style="font-size: 1.3cm;">מיקום בקבוצה במגרש (ביחס לרובוט השני)</label><br><br>  
 				
 					<div class="toggle">
 						<input type="radio" name="Location" id="PosCarosel" value="קרוסלה">
@@ -61,7 +61,7 @@
 					</div><br>
 
 
-					<label>מה נמצא על הקו המקוקו מול הקבוצה?</label><br><br>  
+					<label>מה נמצא על הנקודות מול הרובוט?</label><br><br>  
 				
 					<div class="toggle">
 						<input type="radio" name="DottedLine" value="ברווז" id="Duck">
@@ -84,28 +84,28 @@
 					</div><br>
 
 					
-					<label>כמה אלמנטים שמו ביחידת האחסון?</label><br><br>
+					<label>כמה אלמנטים שמו באחסון? (הריבוע)</label><br><br>
 					<div class="counter">
 					<input type="button" onclick="dec('AutoStorage')" value="-"/>
 					<input type="number" placeholder="0" id="AutoStorage" name="AutoStorage" value="0">
 					<input type="button" onclick="inc('AutoStorage')" value="+" style="font-weight: bold;"/>
 					</div><br>
 					
-					<label>כמה אלמנטים במרכז ההפצה?</label><br><br>
+					<label style="font-size: 1.5cm;">כמה אלמנטים במגדל?</label><br><br>
 					<div class="counter">
 					<input type="button" onclick="dec('AutoShipping')" value="-"/>
 					<input type="number" placeholder="0" id="AutoShipping" name="AutoShipping" value="0">
 					<input type="button" onclick="inc('AutoShipping')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br>
 
-					<label>כמה אלמנטים במרכז המשותף?</label><br><br>
+					<label>כמה אלמנטים במרכז המשותף? </label><br><br>
 					<div class="counter">
 					<input type="button" onclick="dec('AutoShared')" value="-"/>
 					<input type="number" placeholder="0" id="AutoShared" name="AutoShared" value="0">
 					<input type="button" onclick="inc('AutoShared')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br>
 					
-					<label>באיזה שלב ממוקמת הקוביה המסומנת? </label><br><br>  
+					<label>באיזה שלב ממוקמת הקוביה הראשונה? (המסומנת בX)</label><br><br>  
 				
 					<div class="toggle">
 						<input type="radio" name="CubeLevel" id="3" value="3">
@@ -144,7 +144,7 @@
 					<label class="secandtitle">טלאופ ואנד גיים:</label><br><br>
 					
 
-					<label style="font-size: 1.5cm;">כמה אלמנטים שמו ביחידת האחסון?</label><br><br>
+					<label style="font-size: 1.5cm;">כמה אלמנטים שמו באחסון? (ריבוע)</label><br><br>
 					<div class="counter">
 					<input type="button" onclick="dec('Storage')" value="-"/>
 					<input type="number" placeholder="0" id="Storage" name="Storage" value="0">
@@ -152,7 +152,7 @@
 					</div><br><br>
 					
 
-					<label>כמה אלמנטים שמו בשלב 1 של ההפצה?</label><br><br>
+					<label>כמה אלמנטים שמו בשלב 1 של המגדל? </label><br><br>
 					<div class="counter">
 					<input type="button" onclick="dec('Shipping1')" value="-"/>
 					<input type="number" placeholder="0" id="Shipping1" name="Shipping1" value="0">
@@ -160,7 +160,7 @@
 					</div><br><br>
 
 
-					<label>כמה אלמנטים שמו בשלב 2 של ההפצה?</label><br><br>
+					<label>כמה אלמנטים שמו בשלב 2 של המגדל? </label><br><br>
 					<div class="counter">
 					<input type="button" onclick="dec('Shipping2')" value="-"/>
 					<input type="number" placeholder="0" id="Shipping2" name="Shipping2" value="0">
@@ -168,7 +168,7 @@
 					</div><br><br>
 
 
-					<label>כמה אלמנטים שמו בשלב 3 של ההפצה?</label><br><br>
+					<label>כמה אלמנטים שמו בשלב 3 של המגדל? </label><br><br>
 					<div class="counter">
 					<input type="button" onclick="dec('Shipping3')" value="-"/>
 					<input type="number" placeholder="0" id="Shipping3" name="Shipping3" value="0">
@@ -190,7 +190,7 @@
 					<input type="button" onclick="inc('TelCarosel')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br><br>
 
-					<label>האם האלמנט של הקבוצה על מרכז ההפצה?</label><br> 
+					<label>האם האלמנט של הקבוצה על מגדל? </label><br> 
 				
 					<div class="toggle">
 						<input type="radio" name="Capping" id="NoTryCap" value="לא ניסו">
@@ -206,9 +206,9 @@
 				
 					<div class="togle">
 						<input type="radio" name="Work" id="NotAtAll" value="לא">
-						<label for="NotAtAll">לא עבד</label>
+						<label for="NotAtAll">בכלל לא</label>
 						<input type="radio" name="Work" id="Most" value="הרוב">
-						<label for="Most">רוב המשחק</label>
+						<label for="Most">רוב זמן המשחק</label>
 						<input type="radio" name="Work" id="AllTelep" value="הכל חוץ מאוטונומי">
 						<label for="AllTelep">הכל חוץ מאוטונומי</label>
 						<input type="radio" name="Work" id="All" checked="checked" value="הכל">
@@ -216,7 +216,7 @@
 					</div><br><br>
 
 					<label style="font-size: 1.5cm;">הערות</label><br><br>
-					<textarea name="Notes" style="width: 21cm; font-size: 1.1cm; height:8.7cm; direction: rtl; text-align: right; padding-right: 5px; font-family: Arial, Helvetica, sans-serif; border-radius: 0.1cm; border-color: var(border-color); background-color: var(--color-input-box);"></textarea><br><br><br>	
+					<textarea name="Notes" style="width: 21cm; font-size: 1.1cm; height:8.7cm; direction: rtl; text-align: right; padding-right: 5px; font-family: Arial, Helvetica, sans-serif; border-radius: 0.1cm; border-color: var(border-color); background-color: var(--color-input-box); color:var(--text)"></textarea><br><br><br>	
 
 					<input type="submit" value="הגשת טופס" style="width:19cm; font-size: 1.7cm; height:2.8cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"><br><br>	
 

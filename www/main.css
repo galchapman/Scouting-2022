@@ -200,8 +200,8 @@ body {
 
 .scouting-form-container .robot-image {
 	border-radius: 10px;
-	max-width: 480px;
-	max-height: 480px;
+	max-width: 780px;
+	max-height: 780px;
 }
 
 
@@ -351,6 +351,9 @@ body {
     /* transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out; */
 }
 
+.titan{
+	font-size: 1.5cm;
+}
 
 
 
