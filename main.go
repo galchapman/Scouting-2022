@@ -6,10 +6,14 @@ import (
 )
 
 func main() {
-	_, err := server.NewServer(secrets.TOA_API_KEY, "2122-ISR-IIS1")
+	s, err := server.NewServer(secrets.TOA_API_KEY, "2122-ISR-IIS1")
 
 	if err != nil {
 		panic(err)
 	}
 
+	err = s.Run()
+	if err != nil {
+		panic(err)
+	}
 }
