@@ -4,8 +4,8 @@ const (
 	ScouterRole     = iota
 	ViewerRole      = iota
 	FieldPlayerRole = iota
-	AdminRole       = iota
 	Manager         = iota
+	AdminRole       = iota
 )
 
 const (
@@ -26,11 +26,11 @@ const (
 )
 
 type User struct {
-	ID         int
-	Name       string
-	Password   []byte
-	ScreenName string
-	Role       int
+	ID             int
+	Name           string
+	hashedPassword []byte
+	ScreenName     string
+	Role           int
 }
 
 type Group struct {
