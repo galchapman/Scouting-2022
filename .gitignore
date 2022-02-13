@@ -408,4 +408,4 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/go,node,python,goland,database
 test/
-secrets.go
+secrets*

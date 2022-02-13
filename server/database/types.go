@@ -82,7 +82,7 @@ type FormAnswer struct {
 type FieldFormAnswer struct {
 	ID      int
 	Scouter *User
-	Team    *Group
+	Team    *Team
 
 	Cooperation   int
 	Communication int
