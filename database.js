@@ -40,11 +40,58 @@ function get_user_name(id, callback) {
 function initDatabase() {
 	db.run(
 		`CREATE TABLE IF NOT EXISTS USERS (
-			ID INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 			NAME TEXT UNIQUE NOT NULL,
 			PASSWORD TEXT,
 			PERMISSION_LEVEL TEXT
-		)`
+		);
+		
+		CREATE TABLE IF NOT EXISTS MATCHS (
+			ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+			RedGroup1 INTEGER NOT NULL,
+			RedGroup2 INTEGER NOT NULL,
+			BlueGroup1 INTEGER NOT NULL,
+			BlueGroup2 INTEGER NOT NULL,
+			RedScouter1 INTEGER NOT NULL,
+			RedScouter2 INTEGER NOT NULL,
+			BlueScouter1 INTEGER NOT NULL,
+			BlueScouter2 INTEGER NOT NULL,
+		);
+
+		CREAT TABLE form_results (
+			USER_ID TEXT NOT NULL,
+			USER_NAME TEXT NOT NULL,
+			GROUP_NAME INT NOT NULL,
+			MATCH INT NOT NULL,
+			GROUP COLOR TEXT NOT NULL,
+			Location TEXT NOT NULL,
+			DottedLine TEXT NOT NULL,
+			AutoCarosel TEXT NOT NULL,
+			AutoStorage  INT NOT NULL,
+			AutoShipping  INT NOT NULL,
+			AutoShared  INT NOT NULL,
+			CubeLevel  INT NOT NULL,
+			Parking TEXT NOT NULL,
+			Storage  INT NOT NULL,
+			Shipping1  INT NOT NULL,
+			Shipping2  INT NOT NULL,
+			Shipping3  INT NOT NULL,
+			Shared  INT NOT NULL,
+			TelCarosel  INT NOT NULL,
+			Capping TEXT NOT NULL,
+			Work TEXT NOT NULL,
+			Notes TEXT NOT NULL,
+		);
+
+		CREAT TABLE field_form(
+			GROUP_NUMBER INT NOT NULL,
+			Coperation  INT NOT NULL,
+			Communication  INT NOT NULL,
+			Kind  INT NOT NULL,
+			Suitability  INT NOT NULL,
+			Notes  TEXT NOT NULL,
+		);	
+		`
 	)
 }
 
