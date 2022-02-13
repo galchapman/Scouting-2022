@@ -33,7 +33,7 @@ type User struct {
 	Role           int
 }
 
-type Group struct {
+type Team struct {
 	TeamNumber int
 	Name       string
 }
@@ -41,10 +41,10 @@ type Group struct {
 type Game struct {
 	ID int
 
-	Red1  *Group
-	Red2  *Group
-	Blue1 *Group
-	Blue2 *Group
+	Red1  *Team
+	Red2  *Team
+	Blue1 *Team
+	Blue2 *Team
 
 	ScouterRed1  *User
 	ScouterRed2  *User
@@ -55,7 +55,7 @@ type Game struct {
 type FormAnswer struct {
 	ID       int
 	Scouter  *User
-	Team     *Group
+	Team     *Team
 	Game     *Game
 	Alliance int
 	Location int

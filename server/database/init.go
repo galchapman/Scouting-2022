@@ -8,7 +8,12 @@ func (db *Database) init() error {
 	    PASSWORD TEXT NOT NULL,
 	    SCREEN_NAME TEXT NOT NULL,
 	    ROLE INTEGER NOT NULL
-	)
+	);
+
+	CREATE TABLE IF NOT EXISTS GROUPS (
+		TEAM INTEGER NOT NULL PRIMARY KEY,
+	    NAME TEXT NOT NULL UNIQUE
+	);
 `)
 	if err != nil {
 		return err
