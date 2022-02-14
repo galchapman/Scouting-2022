@@ -4,15 +4,12 @@ import (
 	"Scouting-2022/server/database"
 	"math/rand"
 	"net/http"
-	"os"
 	"strconv"
 )
 
 type Session struct {
-	user *database.User
+	user database.User
 }
-
-var loginHtml []byte
 
 func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 	switch req.Method {
@@ -36,18 +33,12 @@ func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 				return
 			}
 			// Get user
-			var user *database.User
-			var ok bool
-			if user, ok = server.users[UID]; !ok { // Check if user is already loaded
-				var newUser database.User
-				newUser, err = server.db.GetUser(UID)
-				if err != nil {
-					http.Error(w, "User is not in our database", 400)
-					println("ERROR session:42 " + err.Error())
-					return
-				}
-				server.users[UID] = &newUser
-				user = &newUser
+			var user database.User
+			user, err = server.db.GetUser(UID)
+			if err != nil {
+				http.Error(w, "Invalid request parameters for this action", 400)
+				println("ERROR session:32 " + err.Error())
+				return
 			}
 			server.addSession(session, user)
 			// Returns session
@@ -58,23 +49,7 @@ func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 				println("ERROR session:55 " + err.Error())
 			}
 		} else {
-			if loginHtml == nil {
-				content, err := os.ReadFile("www/login.html")
-				if err != nil {
-					http.Error(w, "Not Found", 404)
-					println("ERROR session:62 " + err.Error())
-					return
-				}
-				loginHtml = content
-			}
-
-			w.Header().Set("Content-Type", "text/html")
-			w.WriteHeader(200)
-			_, err := w.Write(loginHtml)
-			if err != nil {
-				println("ERROR session:72 " + err.Error())
-				return
-			}
+			http.ServeFile(w, req, "www/login.html")
 		}
 		break
 	case http.MethodPost:
@@ -102,15 +77,8 @@ func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		var pUser *database.User
-		var ok bool
-		if pUser, ok = server.users[user.ID]; !ok {
-			server.users[user.ID] = &user
-			pUser = &user
-		}
-
 		session := GenerateUniqueSessionValue()
-		server.addSession(session, pUser)
+		server.addSession(session, user)
 
 		w.Header().Set("Set-Cookie", "session="+session)
 		w.Header().Set("Location", "/")
@@ -134,7 +102,7 @@ func GenerateUniqueSessionValue() string {
 	return string(b)
 }
 
-func (server *Server) addSession(session string, user *database.User) {
+func (server *Server) addSession(session string, user database.User) {
 	defer server.mu.Unlock()
 	server.mu.Lock()
 	server.sessions[session] = Session{user: user}

@@ -18,6 +18,7 @@ func (server *Server) getEvent(eventKey string) (Event, error) {
 
 	for _, participant := range participants {
 		event.groups[participant.TeamNumber] = database.Team{TeamNumber: participant.TeamNumber, Name: participant.Team.TeamNameShort}
+		_, _ = server.db.InsertTeam(participant.TeamNumber, participant.Team.TeamNameShort)
 	}
 
 	return event, err

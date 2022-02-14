@@ -10,7 +10,7 @@ import (
 type Server struct {
 	db       *database.Database
 	client   *toa_api.TOAClient
-	users    map[int]*database.User
+	users    map[int]database.User
 	sessions map[string]Session
 	event    Event
 	http     http.Server
@@ -29,7 +29,7 @@ func NewServer(TOAApiKey string, eventKey string) (*Server, error) {
 	_, _ = db.NewUser("Admin", "password", "Admin", "Admin")
 
 	self = &Server{db: db, client: toa_api.NewTOAClient(TOAApiKey, "Megiddo Lions Scouting System"),
-		users:    make(map[int]*database.User),
+		users:    make(map[int]database.User),
 		sessions: make(map[string]Session),
 		http:     http.Server{Addr: ":80"},
 		servMux:  http.NewServeMux()}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Scouters</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="scouting-form" style="font-size: 1.5cm; text-align: center; font-family: Arial, Helvetica, sans-serif; color: var(--text); ">
+    <label for="file">Input File</label><br>
+    <input type="file" name="photo" accept=".csv" id="file" style="display: none;"/>
+    <button class="scouting-form" style="width: 16px; font-size: 0.8cm; height:1.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif; ">Update</button>
+
+</div>
+<table style="width:100%" dir="ltr">
+    <colgroup>
+        <col span="2" style="background-color: rgb(219, 219, 219);">
+        <col span="4" style="background-color: #fd8383">
+        <col span="4" style="background-color: #8e82ff">
+    </colgroup>
+    <tr>
+        <th style="background-color: rgb(165, 165, 165);">Match</th>
+        <th style="background-color: rgb(165, 165, 165);">Cube</th>
+        <th style="background-color: #ff3737;">Red1</th>
+        <th style="background-color: #ff3737;">RedUser1</th>
+        <th style="background-color: #ff3737;">Red2</th>
+        <th style="background-color: #ff3737;">RedUser2</th>
+        <th style="background-color: #4b37ff">Blue1</th>
+        <th style="background-color: #4b37ff">BlueUser1</th>
+        <th style="background-color: #4b37ff">Blue2</th>
+        <th style="background-color: #4b37ff">BlueUser2</th>
+    </tr>
+    ${Data}
+</table>
+</body>
+</html>

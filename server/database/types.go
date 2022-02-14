@@ -41,22 +41,22 @@ type Team struct {
 type Game struct {
 	ID int
 
-	Red1  *Team
-	Red2  *Team
-	Blue1 *Team
-	Blue2 *Team
+	Red1  Team
+	Red2  Team
+	Blue1 Team
+	Blue2 Team
 
-	ScouterRed1  *User
-	ScouterRed2  *User
-	ScouterBlue1 *User
-	ScouterBlue2 *User
+	ScouterRed1  User
+	ScouterRed2  User
+	ScouterBlue1 User
+	ScouterBlue2 User
 }
 
 type FormAnswer struct {
 	ID       int
-	Scouter  *User
-	Team     *Team
-	Game     *Game
+	Scouter  User
+	Team     Team
+	Game     Game
 	Alliance int
 	Location int
 	// Auto
@@ -64,7 +64,6 @@ type FormAnswer struct {
 	AutoDuck       uint8 // Fake bool
 	AutoStorage    uint8 // Fake bool
 	AutoShipping   uint8 // Fake bool
-	AutoShared     uint8 // Fake bool
 	CubeLevel      int
 	Parking        uint8 // Fake bool
 	// Teleop
@@ -81,8 +80,8 @@ type FormAnswer struct {
 
 type FieldFormAnswer struct {
 	ID      int
-	Scouter *User
-	Team    *Team
+	Scouter User
+	Team    Team
 
 	Cooperation   int
 	Communication int
