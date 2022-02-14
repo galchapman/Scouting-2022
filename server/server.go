@@ -7,12 +7,13 @@ import (
 )
 
 type Server struct {
-	db      *database.Database
-	client  *toa_api.TOAClient
-	users   map[int]database.User
-	event   Event
-	http    http.Server
-	servMux *http.ServeMux
+	db       *database.Database
+	client   *toa_api.TOAClient
+	users    map[int]database.User
+	sessions map[string]Session
+	event    Event
+	http     http.Server
+	servMux  *http.ServeMux
 }
 
 func NewServer(TOAApiKey string, eventKey string) (*Server, error) {
@@ -39,10 +40,17 @@ func NewServer(TOAApiKey string, eventKey string) (*Server, error) {
 	return self, nil
 }
 
+func serveFile(w http.ResponseWriter, req *http.Request) {
+	http.ServeFile(w, req, "www"+req.URL.Path)
+}
+
 func (server *Server) configHTTP() {
 	server.http.Handler = server.servMux
 
-	server.servMux.HandleFunc("/robots", server.handleRobots)
+	server.servMux.HandleFunc("/robots.html", server.handleRobots)
+	server.servMux.HandleFunc("/", server.handleIndex)
+	server.servMux.HandleFunc("/main.css", serveFile)
+	server.servMux.HandleFunc("/favicon.ico", serveFile)
 }
 
 func (server *Server) Run() error {
