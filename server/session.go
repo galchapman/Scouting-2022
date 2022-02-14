@@ -23,6 +23,11 @@ func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 			w.Header().Set("Location", "/")
 			w.WriteHeader(http.StatusSeeOther)
 		} else if query.Has("mint") {
+			if _, session := server.checkSession(req); session == nil || session.user.Role < database.ManagerRole {
+				http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+				return
+			}
+
 			session := GenerateUniqueSessionValue()
 			UID, err := strconv.Atoi(query.Get("mint"))
 			if err != nil {

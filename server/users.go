@@ -1,6 +1,7 @@
 package server
 
 import (
+	"Scouting-2022/server/database"
 	"fmt"
 	"net/http"
 	"os"
@@ -10,6 +11,12 @@ import (
 var usersHtml string
 
 func (server *Server) handleUsers(w http.ResponseWriter, req *http.Request) {
+
+	if _, session := server.checkSession(req); session == nil || session.user.Role < database.ManagerRole {
+		http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+		return
+	}
+
 	if usersHtml == "" {
 		content, err := os.ReadFile("www/users.html")
 		if err != nil {
