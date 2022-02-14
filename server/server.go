@@ -4,16 +4,18 @@ import (
 	"Scouting-2022/server/database"
 	"Scouting-2022/server/toa_api"
 	"net/http"
+	"sync"
 )
 
 type Server struct {
 	db       *database.Database
 	client   *toa_api.TOAClient
-	users    map[int]database.User
+	users    map[int]*database.User
 	sessions map[string]Session
 	event    Event
 	http     http.Server
 	servMux  *http.ServeMux
+	mu       sync.Mutex
 }
 
 func NewServer(TOAApiKey string, eventKey string) (*Server, error) {
@@ -24,10 +26,13 @@ func NewServer(TOAApiKey string, eventKey string) (*Server, error) {
 	if err != nil {
 		return nil, err
 	}
+	_, _ = db.NewUser("Admin", "password", "Admin", "Admin")
+
 	self = &Server{db: db, client: toa_api.NewTOAClient(TOAApiKey, "Megiddo Lions Scouting System"),
-		users:   make(map[int]database.User),
-		http:    http.Server{Addr: ":80"},
-		servMux: http.NewServeMux()}
+		users:    make(map[int]*database.User),
+		sessions: make(map[string]Session),
+		http:     http.Server{Addr: ":80"},
+		servMux:  http.NewServeMux()}
 	// get event info from The orange alliance api
 	self.event, err = self.getEvent(eventKey)
 	if err != nil {
@@ -49,6 +54,8 @@ func (server *Server) configHTTP() {
 
 	server.servMux.HandleFunc("/robots.html", server.handleRobots)
 	server.servMux.HandleFunc("/", server.handleIndex)
+	server.servMux.HandleFunc("/index.html", server.handleIndex)
+	server.servMux.HandleFunc("/login.html", server.handleLogin)
 	server.servMux.HandleFunc("/main.css", serveFile)
 	server.servMux.HandleFunc("/favicon.ico", serveFile)
 }

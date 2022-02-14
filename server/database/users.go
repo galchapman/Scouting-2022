@@ -6,7 +6,7 @@ import (
 	_ "golang.org/x/crypto/bcrypt"
 )
 
-func (db *Database) newUser(name string, password string, screenName string, role string) (User, error) {
+func (db *Database) NewUser(name string, password string, screenName string, role string) (User, error) {
 	roleValue := parseRole(role)
 	if roleValue == -1 {
 		return User{}, errors.New("Invalid role: " + role)
@@ -33,16 +33,29 @@ func (db *Database) newUser(name string, password string, screenName string, rol
 	return user, err
 }
 
-func (db *Database) getUser(ID int) (User, error) {
+func (db *Database) GetUser(ID int) (User, error) {
 	var user User
 	user = User{ID: ID}
 
-	res, err := db.db.Query("SELECT * FROM USERS WHERE ID = $1", ID)
+	res, err := db.db.Query("SELECT NAME, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE ID = $1", ID)
 	if err != nil {
 		return user, nil
 	}
 
-	err = res.Scan(user.Name, user.hashedPassword, user.ScreenName, user.Role)
+	err = res.Scan(&user.Name, &user.hashedPassword, &user.ScreenName, &user.Role)
+	if err != nil {
+		return user, err
+	}
+	return user, err
+}
+
+func (db *Database) GetUserByName(name string) (User, error) {
+	var user User
+	user = User{Name: name}
+
+	res := db.db.QueryRow("SELECT ID, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE NAME = $1", name)
+
+	err := res.Scan(&user.ID, &user.hashedPassword, &user.ScreenName, &user.Role)
 	if err != nil {
 		return user, err
 	}
