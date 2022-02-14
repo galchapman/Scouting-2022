@@ -59,6 +59,7 @@ func (server *Server) configHTTP() {
 	server.servMux.HandleFunc("/favicon.ico", serveFile)
 	server.servMux.HandleFunc("/login.html", server.handleLogin)
 	server.servMux.HandleFunc("/users.html", server.handleUsers)
+	server.servMux.HandleFunc("/management.html", server.handleManagement)
 }
 
 func (server *Server) Run() error {
