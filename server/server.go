@@ -52,12 +52,13 @@ func serveFile(w http.ResponseWriter, req *http.Request) {
 func (server *Server) configHTTP() {
 	server.http.Handler = server.servMux
 
-	server.servMux.HandleFunc("/robots.html", server.handleRobots)
 	server.servMux.HandleFunc("/", server.handleIndex)
 	server.servMux.HandleFunc("/index.html", server.handleIndex)
-	server.servMux.HandleFunc("/login.html", server.handleLogin)
+	server.servMux.HandleFunc("/robots.html", server.handleRobots)
 	server.servMux.HandleFunc("/main.css", serveFile)
 	server.servMux.HandleFunc("/favicon.ico", serveFile)
+	server.servMux.HandleFunc("/login.html", server.handleLogin)
+	server.servMux.HandleFunc("/users.html", server.handleUsers)
 }
 
 func (server *Server) Run() error {

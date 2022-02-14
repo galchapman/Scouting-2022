@@ -9,7 +9,7 @@ func parseRole(role string) int {
 	case "FieldPlayer":
 		return FieldPlayerRole
 	case "Manager":
-		return Manager
+		return ManagerRole
 	case "Admin":
 		return AdminRole
 	default:

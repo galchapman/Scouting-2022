@@ -37,12 +37,9 @@ func (db *Database) GetUser(ID int) (User, error) {
 	var user User
 	user = User{ID: ID}
 
-	res, err := db.db.Query("SELECT NAME, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE ID = $1", ID)
-	if err != nil {
-		return user, nil
-	}
+	res := db.db.QueryRow("SELECT NAME, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE ID = $1", ID)
 
-	err = res.Scan(&user.Name, &user.hashedPassword, &user.ScreenName, &user.Role)
+	err := res.Scan(&user.Name, &user.hashedPassword, &user.ScreenName, &user.Role)
 	if err != nil {
 		return user, err
 	}
@@ -64,4 +61,23 @@ func (db *Database) GetUserByName(name string) (User, error) {
 
 func (user *User) TryLoggingIn(password string) error {
 	return bcrypt.CompareHashAndPassword(user.hashedPassword, []byte(password))
+}
+
+func (db *Database) GetScouters() ([]User, error) {
+	var users []User
+
+	rows, err := db.db.Query("SELECT ID, NAME, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE ROLE != $1 AND ROLE != $2", AdminRole, ManagerRole)
+	if err != nil {
+		return nil, err
+	}
+
+	for rows.Next() {
+		var user User
+		err = rows.Scan(&user.ID, &user.Name, &user.hashedPassword, &user.ScreenName, &user.Role)
+		if err != nil {
+			return nil, err
+		}
+		users = append(users, user)
+	}
+	return users, nil
 }

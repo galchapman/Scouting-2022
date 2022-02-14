@@ -4,7 +4,7 @@ const (
 	ScouterRole     = iota
 	ViewerRole      = iota
 	FieldPlayerRole = iota
-	Manager         = iota
+	ManagerRole     = iota
 	AdminRole       = iota
 )
 

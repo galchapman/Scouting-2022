@@ -5,7 +5,6 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
-	"regexp"
 	"strconv"
 )
 
@@ -13,20 +12,19 @@ type Session struct {
 	user *database.User
 }
 
-var autoLogin = regexp.MustCompile("login.html?session=(?P<Session>[a-zA-Z0-9]{16})")
-var mintSession = regexp.MustCompile("login.html?mint=(?P<UID>[0-9]+)")
 var loginHtml []byte
 
 func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 	switch req.Method {
 	case http.MethodGet:
-		if autoLogin.MatchString(req.URL.String()) {
-			w.Header().Set("Set-Cookie", string(autoLogin.FindSubmatch([]byte(req.URL.String()))[0]))
+		query := req.URL.Query()
+		if query.Has("session") {
+			w.Header().Set("Set-Cookie", "session="+query.Get("session"))
 			w.Header().Set("Location", "/")
 			w.WriteHeader(http.StatusSeeOther)
-		} else if mintSession.MatchString(req.URL.String()) {
+		} else if query.Has("mint") {
 			session := GenerateUniqueSessionValue()
-			UID, err := strconv.Atoi(string(mintSession.FindSubmatch([]byte(req.URL.String()))[0]))
+			UID, err := strconv.Atoi(query.Get("mint"))
 			if err != nil {
 				http.Error(w, "Invalid request parameters for this action", 400)
 				println("ERROR session:32 " + err.Error())

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+        <title>Users Management</title>
+    </head>
+    <body style="direction: ltr">
+        <div class="nav-bar">
+            <a href="/" class="active">Main</a>
+            ${nav-bar}
+        </div>
+        <div class="qr-code-container">
+            <div id="selected-user" class="selected-user">
+                Selected User: Gal
+            </div>
+            <img id="qr-code" class="qr-code">
+        </div>
+        <script>
+            function mint_token(id) {
+                let xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", `login.html?mint=${id}`, false );
+                xmlHttp.send(null);
+                return xmlHttp.responseText;
+            }
+
+            function SelectUser(row_id) {
+                let row = document.getElementById("users-table").rows[row_id+1];
+                let id = row.cells[0].innerText;
+                let name = row.cells[1].innerText;
+                document.getElementById("selected-user").innerText = `Selected User: ${name}`;
+
+                let url = `http://${window.location.toString().split('/')[2]}/login.html?session=${mint_token(id)}`;
+
+                document.getElementById("qr-code").src = `https://api.qrserver.com/v1/create-qr-code/?data=${url}&amp;size=300x300`;
+            }
+        </script>
+        <div>
+            <table id="users-table" class="users-table">
+                <tr>
+                    <th style="width: 20%">
+                        ID
+                    </th>
+                    <th style="width: 90%">
+                        NAME
+                    </th>
+                </tr>
+                ${USERS}
+            </table>
+        </div>
+        </body>
+</html>
