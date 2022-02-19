@@ -42,7 +42,7 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 			w.WriteHeader(http.StatusOK)
 			_, _ = w.Write([]byte(table))
 		} else {
-			if assignHtml == "" || true {
+			if assignHtml == "" {
 				content, err := os.ReadFile("www/assign.html")
 				if err != nil {
 					http.Error(w, "Not Found", 404)
@@ -136,28 +136,44 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 			var ok bool
 
 			if game.Red1, ok = server.event.groups[Red1]; !ok {
-
+				http.Error(w, strconv.Itoa(Red1)+" one Team was not Found", http.StatusNotFound)
+				return
 			}
 
-			game.Red2, ok = server.event.groups[Red2]
-			game.Blue1, ok = server.event.groups[Blue1]
-			game.Blue2, ok = server.event.groups[Blue2]
+			if game.Red2, ok = server.event.groups[Red2]; !ok {
+				http.Error(w, strconv.Itoa(Red2)+" Team was not Found", http.StatusNotFound)
+				return
+			}
+
+			if game.Blue1, ok = server.event.groups[Blue1]; !ok {
+				http.Error(w, strconv.Itoa(Blue1)+" one Team was not Found", http.StatusNotFound)
+				return
+			}
+
+			if game.Blue2, ok = server.event.groups[Blue2]; !ok {
+				http.Error(w, strconv.Itoa(Blue2)+" Team was not Found", http.StatusNotFound)
+				return
+			}
 
 			game.ScouterRed1, err = server.db.GetUserByName(line[3])
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 			game.ScouterRed2, err = server.db.GetUserByName(line[5])
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 			game.ScouterBlue1, err = server.db.GetUserByName(line[7])
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 			game.ScouterBlue2, err = server.db.GetUserByName(line[9])
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 
 			err = server.db.InsertGame(game)
