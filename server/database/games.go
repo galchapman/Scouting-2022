@@ -67,7 +67,7 @@ func (db *Database) GetGame(ID int) (Game, error) {
 	var ScoutBlue1 int
 	var ScoutBlue2 int
 
-	row := db.db.QueryRow("SELECT RedTeam1, RedTeam2, BlueTeam1, BlueTeam2, RedScouter1, RedScouter2, BlueScouter1, BlueScouter2 FROM GAMES")
+	row := db.db.QueryRow("SELECT RedTeam1, RedTeam2, BlueTeam1, BlueTeam2, RedScouter1, RedScouter2, BlueScouter1, BlueScouter2 FROM GAMES WHERE ID = $1", ID)
 
 	err := row.Scan(&Red1, &Red2, &Blue1, &Blue2, &ScoutRed1, &ScoutRed2, &ScoutBlue1, &ScoutBlue2)
 	if err != nil {

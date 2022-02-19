@@ -72,7 +72,7 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 
 	switch req.Method {
 	case http.MethodGet:
-		if formHtml == "" || true {
+		if formHtml == "" {
 			content, err := os.ReadFile("www/scout-form.html")
 			if err != nil {
 				http.Error(w, "Not Found", http.StatusNotFound)
@@ -252,11 +252,7 @@ func parseScoutFormAnswer(form url.Values) (database.FormAnswerResponse, error) 
 		return answer, errors.New("field `worked` not found in body")
 	}
 
-	if value, ok := form["notes"]; ok {
-		answer.Notes = value[0]
-	} else {
-		return answer, errors.New("field `notes` not found in body")
-	}
+	answer.Notes = form.Get("notes")
 
 	return answer, nil
 }
