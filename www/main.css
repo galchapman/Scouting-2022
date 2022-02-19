@@ -8,7 +8,7 @@
 @media (prefers-color-scheme: light) {
 	:root {
 		--color-background-color: var(--color-white);
-		--text: var(--color-black);
+		--text: black;
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
 	}
@@ -104,7 +104,7 @@ body {
 	text-align: center;
 }
 
-.login-form {
+.login-container form {
 	text-align: left;
 	margin: 5% auto 15% auto;
 	border: 2px solid #30363d;
@@ -113,7 +113,7 @@ body {
 	padding: 20px;
 }
 
-.login-form input[type=text], input[type=password] {
+.login-container form input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -122,10 +122,10 @@ body {
 	background-color: #323335;
 	color: #1f6feb;
 	border-radius: 5px;
-	border: 0px;
+	border: 0;
 }
 
-.login-form button {
+.login-container form button {
 	background-color: #FF5F1F;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -133,7 +133,7 @@ body {
 	cursor: pointer;
 	width: 100%;
 	border-radius: 5px;
-	border: 0px;
+	border: 0;
 }
 
 .scouting-form-container {
@@ -150,7 +150,7 @@ body {
 	box-sizing: border-box;
 	color: var(--color-white);
 	cursor: pointer;
-	font-family: 'Glyphicons Halflings';
+	font-family: 'Glyphicons Halflings', serif;
 	font-size: 3cm;
 	font-weight: 900;
 	font-style: normal;
@@ -158,9 +158,8 @@ body {
 	width: 4cm;
 	padding: 0 0;
 	text-align: center;
-	user-select: none;
 	touch-action: manipulation;
-	box-shadow: 0ch;
+	box-shadow: 0 0 0 0;
 }
 
 .scouting-form-container input[type=text] {
@@ -193,6 +192,12 @@ body {
 	color: var(--text);
 }
 
+/* Random Chrome stuff */
+.scouting-form-container input::-webkit-outer-spin-button,
+.scouting-form-container input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
 
 .scouting-form-container button:hover {
 	box-shadow: rgb(255, 51, 0) 0 1px 5px; transition-duration: .1s;
@@ -222,14 +227,13 @@ body {
 	width: 4cm;
 	padding: 0 0;
 	text-align: center;
-	user-select: none;
 	touch-action: manipulation;
-	box-shadow: 0ch;
+	box-shadow: 0 0 0 0;
 }
 
 /* Toggle Class */
 
-.toggle {
+.toggle, .small-toggle {
     font-size: 0;
     direction: ltr;
     display: flex;
@@ -238,33 +242,32 @@ body {
     overflow: visible;
 }
 
-.toggle input {
+.toggle input, .small-toggle input {
     width: 0;
     height: 0;
     position: absolute;
 	visibility: hidden;
 }
 
-.toggle input:checked + label {
+.toggle input:checked + label, .small-toggle input:checked + label{
     background-color: #ff6600;
     color: #FFF;
     box-shadow: 0 0 10px orangered;
     border-color: #000000;
     z-index: auto;
-	
 }
 
-.toggle input + label:first-of-type {
+.toggle input + label:first-of-type, .small-toggle input:checked + label:first-of-type {
     border-radius: 6px 0 0 6px;
     
 }
 
-.toggle input + label:last-of-type {
+.toggle input + label:last-of-type, .small-toggle input:checked + label:last-of-type {
     border-radius: 0 6px 6px 0;
     
 }
 
-.toggle input + label {
+.toggle input + label, .small-toggle input + label {
     margin: 0;
     padding: 2.6rem 3.8rem;
     box-sizing: border-box;
@@ -280,6 +283,10 @@ body {
     
 }
 
+.small-toggle input + label {
+	padding: 1rem 2rem; !important;
+}
+
 /* Counter Class */
 
 .counter {
@@ -290,65 +297,12 @@ body {
 
 /* Headline Class */
 
-.secandtitle {
+.scouting-form h3 {
 	text-align: center; 
-	text-shadow: 1.5px 1.5px rgba(90, 89, 88, 0.856); 
+	text-shadow: 2px 2px rgba(90, 89, 88, 0.856);
 	font-size: 75px; 
 	font-weight: 500; 
 	
-}
-
-/* Toggle Class */
-
-.togle {
-    font-size: 0;
-    direction: ltr;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    overflow: visible;
-}
-
-.togle input {
-    width: 0;
-    height: 0;
-    position: absolute;
-	visibility: hidden;
-}
-
-.togle input:checked + label {
-    background-color: #ff6600;
-    color: #FFF;
-    box-shadow: 0 0 10px orangered;
-    border-color: #000000;
-    z-index: auto;
-	
-}
-
-.togle input + label:first-of-type {
-    border-radius: 6px 0 0 6px;
-    
-}
-
-.togle input + label:last-of-type {
-    border-radius: 0 6px 6px 0;
-    
-}
-
-.togle input + label {
-    margin: 0;
-    padding: 1rem 2rem;
-    box-sizing: border-box;
-    position: relative;
-    display: inline-block;
-    border: solid 1px rgb(0, 0, 0);
-    background-color: var(--background-color);
-    font-size: 2.2rem;
-    line-height: 120%;
-    font-weight: 1000;
-    text-align: center;
-    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-    /* transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out; */
 }
 
 .titan{

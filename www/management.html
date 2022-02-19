@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="main.css">
+        <title>Scouters Managements Page</title>
+    </head>
+    <body class="scouting-form-container">
+        <label for="currentGame" style="font-size: 75px">Current Game</label><br>
+        <div class="counter scouting-form" dir="ltr">
+            <input type="button" onclick="dec('AutoStorage')" value="-"/>
+            <input type="number" value="0" id="currentGame" width="200px"/>
+            <input type="button" onclick="inc('AutoStorage')" value="+" style="font-weight: bold;"/>
+        </div><br>
+        <button style="width: 600px" onclick="startGame()">Start Game</button>
+    </body>
+    <script>
+        const CurrentGame = document.getElementById("currentGame")
+        function dec() {
+            CurrentGame.value = Math.max(0, parseInt(CurrentGame.value)-1)
+        }
+        function inc() {
+            CurrentGame.value = Math.min(99, parseInt(CurrentGame.value)+1)
+        }
+
+        function startGame() {
+            let http = new XMLHttpRequest()
+            http.open("GET", `management.html?start=${CurrentGame.value}`)
+            http.send()
+            inc();
+        }
+    </script>
+</html>
