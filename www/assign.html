@@ -11,16 +11,40 @@
             text-align: center;
             vertical-align: middle;
         }
-    </style>
-</head>
-<body>
-<div class="scouting-form" style="font-size: 1.5cm; text-align: center; font-family: Arial, Helvetica, sans-serif; color: var(--text); ">
-    <label for="file">Input File</label><br>
-    <input type="file" name="photo" accept=".csv" id="file" style="display: none;"/>
-    <button class="scouting-form" style="width: 16px; font-size: 0.8cm; height:1.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif; ">Update</button>
 
+        button {
+            display: inline;
+            user-select: none;
+            background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(70,252,250,1) 70%);
+            border-radius: 0.5cm;
+            border-style: none;
+            box-sizing: border-box;
+            color: var(--color-white);
+            cursor: pointer;
+            font-size: large;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 450;
+            font-style: normal;
+            height: 1cm;
+            width: 4cm;
+            padding: 0 0;
+            text-align: center;
+            touch-action: manipulation;
+            box-shadow: 0 0 0 0;
+        }
+    </style>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body style="padding: 20px;font-size: small; direction: ltr;">
+<div class="scouting-form" style="font-size: 1.5cm; text-align: center; font-family: Arial, Helvetica, sans-serif; color: var(--text); ">
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">Input File</label><br>
+        <input type="file" name="content" accept=".csv" id="file" style="display: none;" hidden required/>
+        <input type="submit" value="Update" style="font-size: large; height: 1cm;">
+    </form>
+    <button onclick="download()">Download</button>
 </div>
-<table style="width:100%" dir="ltr">
+<table style="width:100%; margin: 30px 0 0 0;" dir="ltr">
     <colgroup>
         <col span="2" style="background-color: rgb(219, 219, 219);">
         <col span="4" style="background-color: #fd8383">
@@ -29,16 +53,33 @@
     <tr>
         <th style="background-color: rgb(165, 165, 165);">Match</th>
         <th style="background-color: rgb(165, 165, 165);">Cube</th>
-        <th style="background-color: #ff3737;">Red1</th>
-        <th style="background-color: #ff3737;">RedUser1</th>
-        <th style="background-color: #ff3737;">Red2</th>
-        <th style="background-color: #ff3737;">RedUser2</th>
-        <th style="background-color: #4b37ff">Blue1</th>
-        <th style="background-color: #4b37ff">BlueUser1</th>
-        <th style="background-color: #4b37ff">Blue2</th>
-        <th style="background-color: #4b37ff">BlueUser2</th>
+        <th style="background-color: #ff3737;">Red Team 1</th>
+        <th style="background-color: #ff3737;">Scouter</th>
+        <th style="background-color: #ff3737;">Red Team 2</th>
+        <th style="background-color: #ff3737;">Scouter</th>
+        <th style="background-color: #4b37ff">Blue Team 1</th>
+        <th style="background-color: #4b37ff">Scouter</th>
+        <th style="background-color: #4b37ff">Blue Team 2</th>
+        <th style="background-color: #4b37ff">Scouter</th>
     </tr>
-    ${Data}
+    ${DATA}
 </table>
 </body>
+<script>
+    const downloadElement = document.createElement('a');
+    downloadElement.hidden = true;
+    function download() {
+        let http = new XMLHttpRequest();
+        http.open("GET", "assign.html", null);
+        http.setRequestHeader("Content-Type", "text/csv");
+        http.send();
+
+        downloadElement.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(http.responseText));
+        downloadElement.setAttribute('download', 'assign.csv');
+
+        document.body.appendChild(downloadElement);
+        downloadElement.click();
+        document.body.removeChild(downloadElement);
+    }
+</script>
 </html>

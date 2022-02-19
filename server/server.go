@@ -62,7 +62,7 @@ func (server *Server) configHTTP() {
 	server.servMux.HandleFunc("/users.html", server.handleUsers)
 	server.servMux.HandleFunc("/management.html", server.handleManagement)
 	server.servMux.HandleFunc("/form.html", server.handleForm)
-	server.servMux.HandleFunc("/assign.html", server.handleForm)
+	server.servMux.HandleFunc("/assign.html", server.handleAssign)
 
 	server.http.Handler = gziphandler.GzipHandler(server.http.Handler)
 }

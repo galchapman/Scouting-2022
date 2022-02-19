@@ -39,7 +39,8 @@ type Team struct {
 }
 
 type Game struct {
-	ID int
+	ID       int
+	GameType int
 
 	Red1  Team
 	Red2  Team

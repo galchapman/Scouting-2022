@@ -410,3 +410,4 @@ cython_debug/
 test/
 secrets/
 robots/
+go.sum
