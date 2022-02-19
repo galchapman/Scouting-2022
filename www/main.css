@@ -192,6 +192,12 @@ body {
 	color: var(--text);
 }
 
+/* Random Chrome stuff */
+.scouting-form-container input::-webkit-outer-spin-button,
+.scouting-form-container input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
 
 .scouting-form-container button:hover {
 	box-shadow: rgb(255, 51, 0) 0 1px 5px; transition-duration: .1s;
