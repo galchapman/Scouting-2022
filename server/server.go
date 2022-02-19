@@ -3,6 +3,7 @@ package server
 import (
 	"Scouting-2022/server/database"
 	"Scouting-2022/server/toa_api"
+	"github.com/NYTimes/gziphandler"
 	"net/http"
 	"sync"
 )
@@ -61,6 +62,9 @@ func (server *Server) configHTTP() {
 	server.servMux.HandleFunc("/users.html", server.handleUsers)
 	server.servMux.HandleFunc("/management.html", server.handleManagement)
 	server.servMux.HandleFunc("/form.html", server.handleForm)
+	server.servMux.HandleFunc("/assign.html", server.handleForm)
+
+	server.http.Handler = gziphandler.GzipHandler(server.http.Handler)
 }
 
 func (server *Server) Run() error {
