@@ -60,6 +60,7 @@ func (server *Server) configHTTP() {
 	server.servMux.HandleFunc("/login.html", server.handleLogin)
 	server.servMux.HandleFunc("/users.html", server.handleUsers)
 	server.servMux.HandleFunc("/management.html", server.handleManagement)
+	server.servMux.HandleFunc("/form.html", server.handleForm)
 }
 
 func (server *Server) Run() error {

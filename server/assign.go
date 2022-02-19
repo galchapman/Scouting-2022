@@ -24,6 +24,23 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 			assignHtml = string(content)
 		}
 
+		games, err := server.db.GetGames()
+		if err != nil {
+			http.Error(w, "Not Found", 404)
+			println("ERROR assign:24 " + err.Error())
+			return
+		}
+
+		var gamesTable string
+
+		for _, game := range games {
+			gamesTable += fmt.Sprintf("<tr><td>%d</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td></tr>",
+				game.ID, game.Red1.TeamNumber, game.ScouterRed1.Name, game.Red2.TeamNumber, game.ScouterRed2.Name, game.Blue1.TeamNumber, game.ScouterBlue1.Name, game.Blue2.TeamNumber, game.ScouterBlue2.Name)
+		}
+
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(strings.Replace(assignHtml, "${DATA}", gamesTable, 1)))
+
 		break
 	case http.MethodPost:
 		body, err := io.ReadAll(req.Body)

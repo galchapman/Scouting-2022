@@ -52,3 +52,37 @@ func (db *Database) GetGames() ([]Game, error) {
 
 	return games, nil
 }
+
+func (db *Database) GetGame(ID int) (Game, error) {
+	var game Game
+
+	game.ID = ID
+
+	var Red1 int
+	var Red2 int
+	var Blue1 int
+	var Blue2 int
+	var ScoutRed1 int
+	var ScoutRed2 int
+	var ScoutBlue1 int
+	var ScoutBlue2 int
+
+	row := db.db.QueryRow("SELECT RedTeam1, RedTeam2, BlueTeam1, BlueTeam2, RedScouter1, RedScouter2, BlueScouter1, BlueScouter2 FROM GAMES")
+
+	err := row.Scan(&Red1, &Red2, &Blue1, &Blue2, &ScoutRed1, &ScoutRed2, &ScoutBlue1, &ScoutBlue2)
+	if err != nil {
+		return Game{}, err
+	}
+
+	game.Red1, _ = db.GetTeam(Red1)
+	game.Red2, _ = db.GetTeam(Red2)
+	game.Blue1, _ = db.GetTeam(Blue1)
+	game.Blue2, _ = db.GetTeam(Blue2)
+
+	game.ScouterRed1, _ = db.GetUser(ScoutRed1)
+	game.ScouterRed2, _ = db.GetUser(ScoutRed2)
+	game.ScouterBlue1, _ = db.GetUser(ScoutBlue1)
+	game.ScouterBlue2, _ = db.GetUser(ScoutBlue2)
+
+	return game, nil
+}

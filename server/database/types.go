@@ -58,22 +58,43 @@ type FormAnswer struct {
 	Team     Team
 	Game     Game
 	Alliance int
-	Location int
+	Location string
 	// Auto
-	HasTeamElement bool
-	AutoDuck       uint8 // Fake bool
-	AutoStorage    uint8 // Fake bool
-	AutoShipping   uint8 // Fake bool
-	CubeLevel      int
-	Parking        uint8 // Fake bool
+	TeamElement  string
+	AutoDuck     string
+	AutoStorage  string
+	AutoShipping string
+	CubeLevel    int
+	Parking      string
 	// Teleop
 	Storage      int
 	ShippingLow  int
 	ShippingMid  int
 	ShippingHigh int
-	Shard        int
+	Shared       int
 	TeleopDucks  int
-	Capping      uint8 // Fake bool
+	Capping      string
+	Worked       string
+	Notes        string
+}
+
+type FormAnswerResponse struct {
+	// Auto
+	Location     string
+	TeamElement  string
+	AutoDuck     string
+	AutoStorage  string
+	AutoShipping string
+	CubeLevel    int
+	Parking      string
+	// Teleop
+	Storage      int
+	ShippingLow  int
+	ShippingMid  int
+	ShippingHigh int
+	Shared       int
+	TeleopDucks  int
+	Capping      string
 	Worked       string
 	Notes        string
 }

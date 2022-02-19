@@ -31,7 +31,7 @@
                 document.getElementById("selected-user").innerText = `Selected User: ${name}`;
 
                 let url = `http://${window.location.toString().split('/')[2]}/login.html?session=${mint_token(id)}`;
-
+                console.log(url)
                 document.getElementById("qr-code").src = `https://api.qrserver.com/v1/create-qr-code/?data=${url}&amp;size=300x300`;
             }
         </script>
