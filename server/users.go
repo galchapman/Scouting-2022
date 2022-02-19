@@ -3,6 +3,7 @@ package server
 import (
 	"Scouting-2022/server/database"
 	"fmt"
+	"html"
 	"net/http"
 	"os"
 	"strings"
@@ -37,7 +38,7 @@ func (server *Server) handleUsers(w http.ResponseWriter, req *http.Request) {
 	var userTable string
 
 	for index, scouter := range scouters {
-		userTable += fmt.Sprintf("<tr onclick=\"SelectUser(%d)\"><td>%d</td><td>%s</td>", index, scouter.ID, scouter.Name)
+		userTable += fmt.Sprintf("<tr onclick=\"SelectUser(%d)\"><td>%d</td><td>%s</td>", index, scouter.ID, html.EscapeString(scouter.Name))
 	}
 
 	w.WriteHeader(http.StatusOK)
