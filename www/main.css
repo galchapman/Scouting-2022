@@ -6,6 +6,7 @@
 		--color-text: black;
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
+		--color-placeholder: rgb(66, 66, 66);
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -14,6 +15,7 @@
 		--color-text: white;
 		--color-input-box: #323335;
 		--color-input-border: var(--color-background-color);
+		--color-placeholder: lightgrey;
 	}
 }
 
@@ -27,6 +29,12 @@ body {
 	color: black;
 	direction:rtl;
 }
+
+::placeholder {
+	color: var(--color-placeholder);
+	font-family: Arial, Helvetica, sans-serif;
+	opacity: 1; /* Firefox */
+  }
 
 /* Nav-Bar Styling */
 
@@ -79,6 +87,7 @@ body {
 /* Login Style */
 
 .login-style {
+	color: var(--color-text);
 	left: 0;
 	right: 0;
 	width: 100%;
@@ -98,27 +107,33 @@ body {
 }
 
 
+
 .login-style form input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
 	box-sizing: border-box;
-	background-color: #323335;
+	background-color: var(--color-input-box);
 	color: var(--color-text);
 	border-radius: 5px;
-	border: 0;
+	border: 0.5px solid var(--color-input-border);
+	
 }
 
 
 .login-style form button {
-	background-color: #FF5F1F;
+	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	font-weight: 500;
 	cursor: pointer;
 	width: 100%;
-	border-radius: 5px;
+	border-radius: 8px;
 	border: 0;
 }
 
@@ -198,8 +213,9 @@ body {
 	max-height: 780px;
 }
 
+/* Button Style Class */
 
-.scouting-form input[type=button], .scouting-form input[type=submit] {
+.button-style input[type=button], .button-style input[type=submit] {
 	display: inline;
 	user-select: none;
 	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
