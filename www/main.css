@@ -1,13 +1,6 @@
-:root {
-	--color-button-gradient-1: rgba(63,94,251,1);
-	--color-button-gradient-2: rgba(70,252,250,1);
-
-	--color-white: white;
-}
-
 @media (prefers-color-scheme: light) {
 	:root {
-		--color-background-color: var(--color-white);
+		--color-background-color: white;
 		--text: black;
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
@@ -16,7 +9,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-background-color: #21262d;
-		--text: var(--color-white);
+		--text: white;
 		--color-input-box: #323335;
 		--color-input-border: var(--color-background-color);
 	}
@@ -135,7 +128,7 @@ body {
 	border-radius: 0.5cm;
 	border-style: none;
 	box-sizing: border-box;
-	color: var(--color-white);
+	color: white;
 	cursor: pointer;
 	font-family: 'Glyphicons Halflings', serif;
 	font-size: 3cm;
@@ -204,7 +197,7 @@ body {
 	border-radius: 0.5cm;
 	border-style: none;
 	box-sizing: border-box;
-	color: var(--color-white);
+	color: white;
 	cursor: pointer;
 	font-size: 4cm;
 	font-family: Arial, Helvetica, sans-serif;
