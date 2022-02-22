@@ -7,6 +7,8 @@
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
 		--color-placeholder: rgb(66, 66, 66);
+		--shadow-color: lightgrey
+		
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -16,6 +18,7 @@
 		--color-input-box: #323335;
 		--color-input-border: var(--color-background-color);
 		--color-placeholder: lightgrey;
+		--shadow-color:	black
 	}
 }
 
@@ -298,6 +301,15 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+/* Titan Class */
+
+.titan {
+	color: var(--color-text);
+	font-family: Arial, Helvetica, sans-serif;
+	text-shadow: 2px 2px var(--shadow-color);
+	text-align: center;
 }
 
 
