@@ -33,7 +33,7 @@
 	</head>
 	<body>
 		<div class="form-style">
-			<div id="page0"  >
+			<div id="page0" hidden >
 				<h1 >שלום ${USER} </h1>
 				<h2 style="font-size: 140%; ">הקבוצה שלך היא ${GROUP_NUMBER}</h2>
 				<h3 style="font-size: 140%;" >והיא נמצאת בברית ה${GROUP_COLOR}</h3>
@@ -211,7 +211,16 @@
 
 					<input type="submit" value="הגשת טופס" style="width:19cm; font-size: 1.7cm; height:2.8cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"><br><br>	
 
-				</div>         
+				</div> 
+				<div id="page3"   >
+					<h1 >הטופס נשלח בהצלחה!</h1>
+					<h2 style="font-size: 120%; ">המקצה הבא שלך הוא ${NEXT_MATCH}</h2>
+					<h2 style="font-size: 120%; ">הקבוצה הבאה שלך היא ${GROUP_NUMBER}</h2>
+					<h3 style="font-size: 120%;" >והיא תהיה בברית ה${GROUP_COLOR}</h3>
+					<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>"><br><br>
+					<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="next_page()">לחץ לטופס הבא</button>
+					
+				</div>      
 		
 			</form>
 		</div>
