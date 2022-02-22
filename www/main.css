@@ -1,7 +1,9 @@
+/* Light And Dark System Style */
+
 @media (prefers-color-scheme: light) {
 	:root {
 		--color-background-color: white;
-		--text: black;
+		--color-text: black;
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
 	}
@@ -9,7 +11,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-background-color: #21262d;
-		--text: white;
+		--color-text: white;
 		--color-input-box: #323335;
 		--color-input-border: var(--color-background-color);
 	}
@@ -25,6 +27,8 @@ body {
 	color: black;
 	direction:rtl;
 }
+
+/* Nav-Bar Styling */
 
 .nav-bar {
 	background-color: #161b22;
@@ -51,6 +55,8 @@ body {
 	color: white;
 }
 
+/* QR Code Styling */
+
 .qr-code-container {
 	padding-bottom: 30px;
 }
@@ -70,8 +76,9 @@ body {
 	width: 300px;
 	display: block;
 }
+/* Login Style */
 
-.login-container {
+.login-style {
 	left: 0;
 	right: 0;
 	width: 100%;
@@ -80,11 +87,8 @@ body {
 	padding-top: 60px;
 }
 
-.login-header {
-	text-align: center;
-}
 
-.login-container form {
+.login-style form {
 	text-align: left;
 	margin: 5% auto 15% auto;
 	border: 2px solid #30363d;
@@ -93,19 +97,21 @@ body {
 	padding: 20px;
 }
 
-.login-container form input[type=text], input[type=password] {
+
+.login-style form input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
 	box-sizing: border-box;
 	background-color: #323335;
-	color: #1f6feb;
+	color: var(--color-text);
 	border-radius: 5px;
 	border: 0;
 }
 
-.login-container form button {
+
+.login-style form button {
 	background-color: #FF5F1F;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -116,13 +122,16 @@ body {
 	border: 0;
 }
 
-.scouting-form-container {
-	color: var(--text);
+
+/* Form Style */
+
+.form-style {
+	color: var(--color-text);
 	text-align: center;
 	font-weight: 500;
 }
 
-.scouting-form-container button {
+.form-style button {
 	user-select: none;
 	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
 	border-radius: 0.5cm;
@@ -142,7 +151,7 @@ body {
 	box-shadow: 0 0 0 0;
 }
 
-.scouting-form-container input[type=text] {
+.form-style input[type=text] {
 	-moz-appearance: textfield;
 	/* -webkit-appearance: none; */
 	border-radius: 6px;
@@ -156,7 +165,7 @@ body {
 	color: black;
 }
 
-.scouting-form-container input[type=number] {
+.form-style input[type=number] {
 	display: inline;
 	-moz-appearance: textfield;
 	/* -webkit-appearance: none; */
@@ -169,21 +178,21 @@ body {
 	text-align: center;
 	margin: 0 10px 0 10px;
 	background-color: var(--color-input-box);
-	color: var(--text);
+	color: var(--color-text);
 }
 
 /* Random Chrome stuff */
-.scouting-form-container input::-webkit-outer-spin-button,
-.scouting-form-container input::-webkit-inner-spin-button {
+.form-style input::-webkit-outer-spin-button,
+.form-style input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
 
 
-.scouting-form-container button:hover {
+.form-style button:hover {
 	box-shadow: rgb(255, 51, 0) 0 1px 5px; transition-duration: .1s;
 }
 
-.scouting-form-container .robot-image {
+.form-style .robot-image {
 	border-radius: 10px;
 	max-width: 780px;
 	max-height: 780px;
@@ -274,20 +283,5 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-
-/* Headline Class */
-
-.scouting-form h3 {
-	text-align: center; 
-	text-shadow: 2px 2px rgba(90, 89, 88, 0.856);
-	font-size: 75px; 
-	font-weight: 500; 
-	
-}
-
-.titan{
-	font-size: 1.5cm;
-}
-
 
 
