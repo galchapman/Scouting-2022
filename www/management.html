@@ -6,13 +6,13 @@
         <title>Scouters Managements Page</title>
     </head>
     <body class="form-style">
-        <label for="currentGame" style="font-size: 75px">Current Game</label><br>
+        <label for="currentGame" class="titan" style="font-size: 85px">Current Game</label><br><br>
         <div class="counter button-style" dir="ltr">
             <input type="button" onclick="dec('AutoStorage')" value="-"/>
             <input type="number" value="0" id="currentGame" width="200px"/>
             <input type="button" onclick="inc('AutoStorage')" value="+" style="font-weight: bold;"/>
-        </div><br>
-        <button style="width: 600px" onclick="startGame()">Start Game</button>
+        </div><br><br>
+        <button style="width: 600px; font-size: 100px; font-weight: 500; 	" onclick="startGame()">Start Game</button>
     </body>
     <script>
         const CurrentGame = document.getElementById("currentGame")
