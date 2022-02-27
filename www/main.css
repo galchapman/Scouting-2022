@@ -361,3 +361,29 @@ body {
 
 }
 
+
+
+.blue-button {
+	display: inline;
+	user-select: none;
+	background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);
+	border-radius: 0.5cm;
+	border-style: none;
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	font-size: large;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 450;
+	font-style: normal;
+	height: 1cm;
+	width: 4cm;
+	padding: 0 0;
+	text-align: center;
+	touch-action: manipulation;
+	box-shadow: 0 0 0 0;
+	/* text-shadow: 1px 1px rgb(36, 36, 36)	 */
+	/* text-shadow: 1.2px 1.2px rgb(15, 15, 15) */
+
+}
+

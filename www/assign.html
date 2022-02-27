@@ -16,27 +16,7 @@
         }
 
 
-        button {
-            display: inline;
-            user-select: none;
-            background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(70,223,252,1) 70%);
-            border-radius: 0.5cm;
-            border-style: none;
-            box-sizing: border-box;
-            color: white;
-            cursor: pointer;
-            font-size: large;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 450;
-            font-style: normal;
-            height: 1cm;
-            width: 4cm;
-            padding: 0 0;
-            text-align: center;
-            touch-action: manipulation;
-            box-shadow: 0 0 0 0;
-            text-shadow: 1px 1px rgb(36, 36, 36)	
-        }
+        
     </style>
     <link rel="stylesheet" href="main.css">
 </head>
@@ -45,10 +25,11 @@
     <form method="post" enctype="multipart/form-data">
         <label for="file" class="titan">Input File</label><br>
         <input type="file" name="content" accept=".csv" id="file" style="display: none;" hidden required/>
-        <input type="submit" value="Update" style="font-size: large; height: 1cm; text-shadow: 1.4px 1.4px rgb(15, 15, 15)">
+        <input type="submit" value="Update" style="font-size: large; height: 1cm;">
+        <!-- text-shadow: 1.4px 1.4px rgb(15, 15, 15) -->
         
     </form>
-    <button onclick="download()">Download</button>
+    <button class="blue-button" onclick="download()">Download</button>
 </div>
 <table style="width:100%; margin: 30px 0 0 0;" dir="ltr">
     <colgroup>

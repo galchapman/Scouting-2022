@@ -1,13 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Robots</title>
+	<link rel="stylesheet" href="main.css">
+	<meta charset="UTF-8">
+	<title>Robots</title>
 </head>
-<body>
-<form method="post" enctype="multipart/form-data">
-    <input type="file" id="file_input" accept="image/jpeg" name="image">
-    <input type="submit">
-</form>
+<body style="align-items: center; display: flex; justify-content:center; text-align: center;">
+	<div class="button-style">
+		<form method="post" enctype="multipart/form-data">
+			<!-- <label for="file" class="titan">Input Image</label><br>
+			<input type="file" name="content" accept="image/jpeg" id="file" style="display: none;" hidden required/>
+			<input type="submit" value="Submit" style="font-size:20px; width: 4cm; height: 1cm;"><br> -->
+
+			<div class="pic-center">
+				<div class="pic-form-input">
+					<div class="pic-preview">
+							<img id="file-ip-1-preview">
+							<label for="file-ip-1">Upload Image</label>
+							<input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" hidden required><br>
+
+							<button class="blue-button" style="border-radius:5px;" onclick="KillPreview(event)">kill</button>
+
+					</div>  
+				</div>
+			</div>
+		</form>
+	</div><br><br>
+	 
+
+	
+
+
 </body>
+<style>
+	.pic-center {
+	height:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+	}
+
+	.pic-form-input {
+	width:350px;
+	padding:20px;
+	background:#fff;
+	}
+
+	pic-form-input input {
+	display:none;
+	}
+
+	.pic-form-input label {
+	display:block;
+	width:200px;
+	height:45px;
+	margin-right: 75px;
+	line-height:50px;
+	text-align:center;
+	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+	color:#fff;
+	font-size:20px;
+	font-family:"Open Sans",sans-serif;
+	font-weight:600;
+	border-radius:5px;
+	cursor:pointer;
+	
+	}
+
+	.pic-form-input img {
+	width:100%;
+	display:none;
+	margin-bottom:30px;
+	}
+</style>
+<script>
+	const downloadElement = document.createElement('a');
+	downloadElement.hidden = true;
+	function download() {
+		let http = new XMLHttpRequest();
+		http.open("GET", "assign.html", null);
+		http.setRequestHeader("Content-Type", "image/jpeg");
+		http.send();
+
+		document.body.appendChild(downloadElement);
+		downloadElement.click();
+		document.body.removeChild(downloadElement);
+	}
+
+	function showPreview(event){
+	if(event.target.files.length > 0){
+		var src = URL.createObjectURL(event.target.files[0]);
+		var preview = document.getElementById("file-ip-1-preview");
+		preview.src = src;
+		preview.style.display = "block";
+	}
+	}
+
+	var es = document.forms[0].elements;
+	es[1].onclick = function(){
+		// KillPreview()
+		clearInputFile(es[0]);
+	};
+
+	function clearInputFile(f){
+		if(f.value){
+			try{
+				f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+			} catch(err) {
+			}
+			if(f.value){ //for IE5 ~ IE10
+				var form = document.createElement('form'), ref = f.nextSibling;
+				form.appendChild(f);
+				form.reset();
+				ref.parentNode.insertBefore(f,ref);
+			}
+		}
+	}
+
+
+	function KillPreview(){
+		// if(event.target.files.length > 0){
+			// var src = URL.createObjectURL(event.target.files[0]);
+			var preview = document.getElementById("file-ip-1-preview");
+			preview.src = null;
+		// }
+		// clearInputFile(es[0])
+	}
+</script>
 </html>
