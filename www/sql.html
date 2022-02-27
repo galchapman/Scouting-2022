@@ -2,10 +2,11 @@
 <html>
 	<head>
 	</head>
-	<body>
+	<title>Run sql</title>
+	<body style="text-align: center; font-family: Arial, Helvetica, sans-serif;">
 		<textarea style="width: 100%;" id="query"></textarea><br><br>
-		<button onclick="runSql()">Run sql</button>
-		<h3>Result:</h3>
+		<button style="text-align: center;" onclick="runSql()">Run SQL</button>
+		<h3 style="font-size: 30px;">Result:</h3>
 		<div id="resualt"></div>
 	</body>
 	<style>
@@ -33,7 +34,7 @@
 	}
 
 	button {
-		font-size: 17px;
+		font-size: 40px;
 		font-family: 'Source Sans Pro', sans-serif;
 		border: none;
 		border-radius: 5px;
@@ -48,7 +49,7 @@
 		white-space: nowrap;
 		-moz-user-select: none;
 		user-select: none;
-		background-color: #ff6600;
+		background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
 		color: #ffffff;
 	}
 
