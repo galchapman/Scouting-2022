@@ -1,24 +1,24 @@
-:root {
-	--color-button-gradient-1: rgba(63,94,251,1);
-	--color-button-gradient-2: rgba(70,252,250,1);
-
-	--color-white: white;
-}
+/* Light And Dark System Style */
 
 @media (prefers-color-scheme: light) {
 	:root {
-		--color-background-color: var(--color-white);
-		--text: var(--color-black);
+		--color-background-color: white;
+		--color-text: black;
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
+		--color-placeholder: rgb(66, 66, 66);
+		--shadow-color: lightgrey
+		
 	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-background-color: #21262d;
-		--text: var(--color-white);
+		--color-text: white;
 		--color-input-box: #323335;
 		--color-input-border: var(--color-background-color);
+		--color-placeholder: lightgrey;
+		--shadow-color:	black
 	}
 }
 
@@ -32,6 +32,14 @@ body {
 	color: black;
 	direction:rtl;
 }
+
+::placeholder {
+	color: var(--color-placeholder);
+	font-family: Arial, Helvetica, sans-serif;
+	opacity: 1; /* Firefox */
+  }
+
+/* Nav-Bar Styling */
 
 .nav-bar {
 	background-color: #161b22;
@@ -58,18 +66,7 @@ body {
 	color: white;
 }
 
-.users-table {
-	margin-left: auto;
-	margin-right: auto;
-	border: 1px #ffffff;
-	border-collapse: collapse;
-	text-align: center;
-	width: 100%
-}
-
-.users-table table, td, th {
-	border: 2px solid #0c2d6b;
-}
+/* QR Code Styling */
 
 .qr-code-container {
 	padding-bottom: 30px;
@@ -90,8 +87,10 @@ body {
 	width: 300px;
 	display: block;
 }
+/* Login Style */
 
-.login-container {
+.login-style {
+	color: var(--color-text);
 	left: 0;
 	right: 0;
 	width: 100%;
@@ -100,11 +99,8 @@ body {
 	padding-top: 60px;
 }
 
-.login-header {
-	text-align: center;
-}
 
-.login-form {
+.login-style form {
 	text-align: left;
 	margin: 5% auto 15% auto;
 	border: 2px solid #30363d;
@@ -113,44 +109,55 @@ body {
 	padding: 20px;
 }
 
-.login-form input[type=text], input[type=password] {
+
+
+.login-style form input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	display: inline-block;
 	box-sizing: border-box;
-	background-color: #323335;
-	color: #1f6feb;
+	background-color: var(--color-input-box);
+	color: var(--color-text);
 	border-radius: 5px;
-	border: 0px;
+	border: 0.5px solid var(--color-input-border);
+	
 }
 
-.login-form button {
-	background-color: #FF5F1F;
+
+.login-style form button {
+	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	font-weight: 500;
 	cursor: pointer;
 	width: 100%;
-	border-radius: 5px;
-	border: 0px;
+	border-radius: 8px;
+	border: 0;
 }
 
-.scouting-form-container {
-	color: var(--text);
+
+/* Form Style */
+
+.form-style {
+	color: var(--color-text);
 	text-align: center;
 	font-weight: 500;
 }
 
-.scouting-form-container button {
+.form-style button {
 	user-select: none;
 	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
 	border-radius: 0.5cm;
 	border-style: none;
 	box-sizing: border-box;
-	color: var(--color-white);
+	color: white;
 	cursor: pointer;
-	font-family: 'Glyphicons Halflings';
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 3cm;
 	font-weight: 900;
 	font-style: normal;
@@ -158,12 +165,11 @@ body {
 	width: 4cm;
 	padding: 0 0;
 	text-align: center;
-	user-select: none;
 	touch-action: manipulation;
-	box-shadow: 0ch;
+	box-shadow: 0 0 0 0;
 }
 
-.scouting-form-container input[type=text] {
+.form-style input[type=text] {
 	-moz-appearance: textfield;
 	/* -webkit-appearance: none; */
 	border-radius: 6px;
@@ -177,7 +183,7 @@ body {
 	color: black;
 }
 
-.scouting-form-container input[type=number] {
+.form-style input[type=number] {
 	display: inline;
 	-moz-appearance: textfield;
 	/* -webkit-appearance: none; */
@@ -190,28 +196,36 @@ body {
 	text-align: center;
 	margin: 0 10px 0 10px;
 	background-color: var(--color-input-box);
-	color: var(--text);
+	color: var(--color-text);
+}
+
+/* Random Chrome stuff */
+.form-style input::-webkit-outer-spin-button,
+.form-style input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
 
 
-.scouting-form-container button:hover {
+.form-style button:hover {
 	box-shadow: rgb(255, 51, 0) 0 1px 5px; transition-duration: .1s;
 }
 
-.scouting-form-container .robot-image {
+.form-style .robot-image {
 	border-radius: 10px;
 	max-width: 780px;
 	max-height: 780px;
 }
 
-.scouting-form input[type=button], .scouting-form input[type=submit] {
+/* Button Style Class */
+
+.button-style input[type=button], .button-style input[type=submit] {
 	display: inline;
 	user-select: none;
 	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
 	border-radius: 0.5cm;
 	border-style: none;
 	box-sizing: border-box;
-	color: var(--color-white);
+	color: white;
 	cursor: pointer;
 	font-size: 4cm;
 	font-family: Arial, Helvetica, sans-serif;
@@ -221,14 +235,13 @@ body {
 	width: 4cm;
 	padding: 0 0;
 	text-align: center;
-	user-select: none;
 	touch-action: manipulation;
-	box-shadow: 0ch;
+	box-shadow: 0 0 0 0;
 }
 
 /* Toggle Class */
 
-.toggle {
+.toggle, .small-toggle {
     font-size: 0;
     direction: ltr;
     display: flex;
@@ -237,33 +250,32 @@ body {
     overflow: visible;
 }
 
-.toggle input {
+.toggle input, .small-toggle input {
     width: 0;
     height: 0;
     position: absolute;
 	visibility: hidden;
 }
 
-.toggle input:checked + label {
+.toggle input:checked + label, .small-toggle input:checked + label{
     background-color: #ff6600;
     color: #FFF;
     box-shadow: 0 0 10px orangered;
     border-color: #000000;
     z-index: auto;
-	
 }
 
-.toggle input + label:first-of-type {
+.toggle input + label:first-of-type, .small-toggle input:checked + label:first-of-type {
     border-radius: 6px 0 0 6px;
     
 }
 
-.toggle input + label:last-of-type {
+.toggle input + label:last-of-type, .small-toggle input:checked + label:last-of-type {
     border-radius: 0 6px 6px 0;
     
 }
 
-.toggle input + label {
+.toggle input + label, .small-toggle input + label {
     margin: 0;
     padding: 2.6rem 3.8rem;
     box-sizing: border-box;
@@ -279,6 +291,10 @@ body {
     
 }
 
+.small-toggle input + label {
+	padding: 1rem 2rem; !important;
+}
+
 /* Counter Class */
 
 .counter {
@@ -287,71 +303,13 @@ body {
 	align-items: center;
 }
 
-/* Headline Class */
+/* Titan Class */
 
-.secandtitle {
-	text-align: center; 
-	text-shadow: 1.5px 1.5px rgba(90, 89, 88, 0.856); 
-	font-size: 75px; 
-	font-weight: 500; 
-	
-}
-
-/* Toggle Class */
-
-.togle {
-    font-size: 0;
-    direction: ltr;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    overflow: visible;
-}
-
-.togle input {
-    width: 0;
-    height: 0;
-    position: absolute;
-	visibility: hidden;
-}
-
-.togle input:checked + label {
-    background-color: #ff6600;
-    color: #FFF;
-    box-shadow: 0 0 10px orangered;
-    border-color: #000000;
-    z-index: auto;
-	
-}
-
-.togle input + label:first-of-type {
-    border-radius: 6px 0 0 6px;
-    
-}
-
-.togle input + label:last-of-type {
-    border-radius: 0 6px 6px 0;
-    
-}
-
-.togle input + label {
-    margin: 0;
-    padding: 1rem 2rem;
-    box-sizing: border-box;
-    position: relative;
-    display: inline-block;
-    border: solid 1px rgb(0, 0, 0);
-    background-color: var(--background-color);
-    font-size: 2.2rem;
-    line-height: 120%;
-    font-weight: 1000;
-    text-align: center;
-    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-    /* transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out; */
-}
-
-.titan{
-	font-size: 1.5cm;
+.titan {
+	color: var(--color-text);
+	font-family: Arial, Helvetica, sans-serif;
+	text-shadow: 2px 2px var(--shadow-color);
+	text-align: center;
 }
 
 .custom-file-input::-webkit-file-upload-button {
@@ -378,5 +336,4 @@ body {
   .custom-file-input:active::before {
 	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
-
 

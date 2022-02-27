@@ -1,20 +1,20 @@
 
 <!DOCTYPE HTML>
-<html>
+<html lang="he">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="main.css">
 		<script>
 			function dec(id) {
-				var element = document.getElementById(id);
+				let element = document.getElementById(id);
 				element.value = Math.max(0, parseInt(element.value)-1)
 			}
 			function inc(id) {
-				var element = document.getElementById(id);
+				let element = document.getElementById(id);
 				element.value = Math.min(99, parseInt(element.value)+1)
 			}
 
-			var current_page=0;
+			let current_page=0;
 			function next_page() {
 				document.getElementById("page" + current_page).hidden = true;
 				current_page++;
@@ -28,45 +28,43 @@
 				document.getElementById("page" + current_page).hidden = false;
 				 scroll(0, 0);
 			}
-
-			
 		</script>
+		<title>${GROUP_NUMBER} / ${MATCH}</title>
 	</head>
-	<title>${GROUP_NUMBER} / ${MATCH}</title>
 	<body>
-		<div class="scouting-form-container">
-			<div id="page0"  >
+		<div class="form-style">
+			<div id="page0" hidden >
 				<h1 >שלום ${USER} </h1>
 				<h2 style="font-size: 140%; ">הקבוצה שלך היא ${GROUP_NUMBER}</h2>
-				<h3 style="font-size: 140%;" >והיא נמצאת בברית ה ${GROUP_COLOR}</h3>
-				<img src="robots?team=${GROUP_NUMBER}" class="robot-image" style="width: 14;"><br><br>
-				<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;";  onclick="next_page()"> <-- הבנתי והכל נכון, לטופס</button>
+				<h3 style="font-size: 140%;" >והיא נמצאת בברית ה${GROUP_COLOR}</h3>
+				<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>"><br><br>
+				<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="next_page()"> <-- הבנתי והכל נכון, לטופס</button>
 				
 			</div>
-			<form class="scouting-form">
+			<form class="button-style" method="post">
 				<div id="page1" hidden >
 					
-					<br><input type="button" style="width:19cm; font-size: 1.6cm; height:2.5cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;";  onclick="prev_page()" value="חזרה לפרטים"><br>
+					<br><input type="button" style="width:19cm; font-size: 1.6cm; height:2.5cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="prev_page()" value="חזרה לפרטים">
 
 					
-					<br><label class="secandtitle" >פרטים ואוטנומי:</label><br><br>
+					<h3>פרטים ואוטנומי:</h3>
 
 					<label style="font-size: 1.3cm;">מיקום בקבוצה במגרש (ביחס לרובוט השני)</label><br><br>  
 				
 					<div class="toggle">
-						<input type="radio" name="Location" id="PosCarosel" value="קרוסלה">
-						<label for="PosCarosel">קרוב לקרוסלה</label>
-						<input type="radio" name="Location" id="PosStorage"  value="מחסן" checked="checked">
-						<label for="PosStorage">קרוב למחסן</label>
+						<input type="radio" name="location" id="LocationNear" value="Near">
+						<label for="LocationNear">קרוב לקרוסלה</label>
+						<input type="radio" name="location" id="LocationFar"  value="Far" checked="checked">
+						<label for="LocationFar">קרוב למחסן</label>
 					</div><br>
 
 
 					<label>מה נמצא על הנקודות מול הרובוט?</label><br><br>  
 				
 					<div class="toggle">
-						<input type="radio" name="DottedLine" value="ברווז" id="Duck">
+						<input type="radio" name="team_element" id="Duck" value="Duck" checked="checked">
 						<label for="Duck">ברווז</label>
-						<input type="radio" name="DottedLine" value="פסלון" id="TeamStatue">
+						<input type="radio" name="team_element" id="TeamStatue" value="TeamStatue">
 						<label for="TeamStatue">פסלון קבוצה</label>
 					</div><br>
 
@@ -75,152 +73,154 @@
 					<label>האם הפילו את החפץ מהקרוסלה?</label><br><br>  
 				
 					<div class="toggle">
-						<input type="radio" name="AutoCarosel" value="לא ניסו" id="NoTry" >
+						<input type="radio" name="auto_duck" id="NoTry" value="לא ניסו" checked="checked">
 						<label for="NoTry">לא ניסו</label>
-						<input type="radio" name="AutoCarosel" value="לא הצליחו" id="NoSuccess" >
+						<input type="radio" name="auto_duck" id="NoSuccess" value="לא הצליחו">
 						<label for="NoSuccess">לא הצליחו</label>
-						<input type="radio" name="AutoCarosel"  value="הצליחו" id="Yes">
+						<input type="radio" name="auto_duck" id="Yes" value="הצליחו">
 						<label for="Yes">כן</label>
 					</div><br>
 
 					
-					<label style="font-size: 1.1cm;">כמה אלמנטים שמו בריבוע האחסון?</label><br><br>
+					<label for="auto_storage">כמה אלמנטים שמו באחסון? (הריבוע)</label><br><br>
 					<div class="counter">
-					<input type="button" onclick="dec('AutoStorage')" value="-"/>
-					<input type="number" placeholder="0" id="AutoStorage" name="AutoStorage" value="0">
-					<input type="button" onclick="inc('AutoStorage')" value="+" style="font-weight: bold;"/>
+						<input type="button" onclick="dec('auto_storage')" value="-"/>
+						<input type="number" placeholder="0" id="auto_storage" name="auto_storage" value="0">
+						<input type="button" onclick="inc('auto_storage')" value="+" style="font-weight: bold;"/>
 					</div><br>
 					
-					<label style="font-size: 1.2cm;">כמה אלמנטים שמו במגדל?</label><br><br>
-					<div class="counter">
-					<input type="button" onclick="dec('AutoShipping')" value="-"/>
-					<input type="number" placeholder="0" id="AutoShipping" name="AutoShipping" value="0">
-					<input type="button" onclick="inc('AutoShipping')" value="+" style="font-weight: bold;"/><br><br>
-					</div><br>
-
-					<label style="font-size: 1.1cm;">כמה אלמנטים שמו במרכז המשותף? </label><br><br>
-					<div class="counter">
-					<input type="button" onclick="dec('AutoShared')" value="-"/>
-					<input type="number" placeholder="0" id="AutoShared" name="AutoShared" value="0">
-					<input type="button" onclick="inc('AutoShared')" value="+" style="font-weight: bold;"/><br><br>
+					<label for="auto_shipping" style="font-size: 1.5cm;">כמה אלמנטים במגדל?</label><br><br>
+						<div class="counter">
+						<input type="button" onclick="dec('auto_shipping')" value="-"/>
+						<input type="number" placeholder="0" id="auto_shipping" name="auto_shipping" value="0">
+						<input type="button" onclick="inc('auto_shipping')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br>
 					
 					<label>באיזה שלב ממוקמת הקוביה הראשונה? (המסומנת בX)</label><br><br>  
 				
 					<div class="toggle">
-						<input type="radio" name="CubeLevel" id="3" value="3">
-						<label for="3">גבוה</label>
-						<input type="radio" name="CubeLevel" id="2" value="2" >
-						<label for="2">אמצע</label>
-						<input type="radio" name="CubeLevel" id="1" value="1">
-						<label for="1">נמוך</label>
-						<input type="radio" name="CubeLevel" id="0" value="0">
+						<input type="radio" name="cube_level" id="3" value="3">
+						<label for="3">3</label>
+						<input type="radio" name="cube_level" id="2" value="2" >
+						<label for="2">2</label>
+						<input type="radio" name="cube_level" id="1" value="1">
+						<label for="1">1</label>
+						<input type="radio" name="cube_level" id="0" value="0" checked="checked">
 						<label for="0">לא ממוקמת</label>
 					</div><br>
 
 					<label>חנייה</label><br><br> 
 				
-					<div class="togle">
-						<input type="radio" name="Parking" id="FullWarehouse" value="מחסן מלא">
+					<div class="small-toggle">
+						<input type="radio" name="parking" id="FullWarehouse" value="full warehouse">
 						<label for="FullWarehouse">מחסן מלא</label>
-						<input type="radio" name="Parking" id="PartWarehouse" value="מחסן חלקי">
+						<input type="radio" name="parking" id="PartWarehouse" value="partial warehouse">
 						<label for="PartWarehouse">מחסן חלקי</label>
-						<input type="radio" name="Parking" id="FullStorage" value="אחסון מלא">
+						<input type="radio" name="parking" id="FullStorage" value="full storage">
 						<label for="FullStorage">אחסון מלא</label>
-						<input type="radio" name="Parking" id="PartStorage" value="אחסון חלקי">
+						<input type="radio" name="parking" id="PartStorage" value="partial storage">
 						<label for="PartStorage">אחסון חלקי</label>
-						<input type="radio" name="Parking" id="None" value="לא חנה" >
+						<input type="radio" name="parking" id="None" value="none" checked="checked">
 						<label for="None">לא חנה</label>
 					</div><br>
 
-					<input type="button" style="width:19cm; font-size: 1.6cm; height:2.5cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;";  onclick="next_page()" value="<-- מעבר לטלאופ ואנד גיים"><br><br>
+					<input type="button" style="width:19cm; font-size: 1.6cm; height:2.5cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="next_page()" value="<-- מעבר לטלאופ ואנד גיים"><br><br>
 
 
 				</div>
 				<div id="page2" hidden  >
 
-					<br><input type="button" style="width:19cm; font-size: 1.6cm; height:2.5cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;";  onclick="prev_page()" value="חזרה לאוטונומי"><br><br>
+					<br><input type="button" style="width:19cm; font-size: 1.6cm; height:2.5cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="prev_page()" value="חזרה לאוטונומי">
 
-					<label class="secandtitle">טלאופ ואנד גיים:</label><br><br>
+					<h3>טלאופ ואנד גיים:</h3>
 					
 
-					<label style="font-size: 1.5cm;">כמה אלמנטים שמו בריבוע האחסון?</label><br><br>
+					<label for="storage" style="font-size: 1.5cm;">כמה אלמנטים שמו באחסון? (ריבוע)</label><br><br>
 					<div class="counter">
-					<input type="button" onclick="dec('Storage')" value="-"/>
-					<input type="number" placeholder="0" id="Storage" name="Storage" value="0">
-					<input type="button" onclick="inc('Storage')" value="+" style="font-weight: bold;"/>
+						<input type="button" onclick="dec('storage')" value="-"/>
+						<input type="number" placeholder="0" id="storage" name="storage" value="0">
+						<input type="button" onclick="inc('storage')" value="+" style="font-weight: bold;"/>
 					</div><br><br>
 					
 
-					<label>כמה אלמנטים שמו בשלב הנמוך של המגדל? </label><br><br>
+					<label for="shipping_low">כמה אלמנטים שמו בשלב 1 של המגדל? </label><br><br>
 					<div class="counter">
-					<input type="button" onclick="dec('Shipping1')" value="-"/>
-					<input type="number" placeholder="0" id="Shipping1" name="Shipping1" value="0">
-					<input type="button" onclick="inc('Shipping1')" value="+" style="font-weight: bold;"/><br><br>
+					<input type="button" onclick="dec('shipping_low')" value="-"/>
+					<input type="number" placeholder="0" id="shipping_low" name="shipping_low" value="0">
+					<input type="button" onclick="inc('shipping_low')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br><br>
 
 
-					<label>כמה אלמנטים שמו בשלב האמצעי של המגדל? </label><br><br>
-					<div class="counter">
-					<input type="button" onclick="dec('Shipping2')" value="-"/>
-					<input type="number" placeholder="0" id="Shipping2" name="Shipping2" value="0">
-					<input type="button" onclick="inc('Shipping2')" value="+" style="font-weight: bold;"/><br><br>
+					<label for="shipping_mid">כמה אלמנטים שמו בשלב 2 של המגדל? </label><br><br>
+						<div class="counter">
+						<input type="button" onclick="dec('shipping_mid')" value="-"/>
+						<input type="number" placeholder="0" id="shipping_mid" name="shipping_mid" value="0">
+						<input type="button" onclick="inc('shipping_mid')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br><br>
 
 
-					<label>כמה אלמנטים שמו בשלב הגבוה של המגדל? </label><br><br>
+					<label for="shipping_high">כמה אלמנטים שמו בשלב 3 של המגדל? </label><br><br>
 					<div class="counter">
-					<input type="button" onclick="dec('Shipping3')" value="-"/>
-					<input type="number" placeholder="0" id="Shipping3" name="Shipping3" value="0">
-					<input type="button" onclick="inc('Shipping3')" value="+" style="font-weight: bold;"/><br><br>
+						<input type="button" onclick="dec('shipping_high')" value="-"/>
+						<input type="number" placeholder="0" id="shipping_high" name="shipping_high" value="0">
+						<input type="button" onclick="inc('shipping_high')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br><br>
 
 
-					<label>כמה אלמנטים במרכז המשותף?</label><br><br>
+					<label for="shared">כמה אלמנטים במרכז המשותף?</label><br><br>
 					<div class="counter">
-					<input type="button" onclick="dec('Shared')" value="-"/>
-					<input type="number" placeholder="0" id="Shared" name="Shared" value="0">
-					<input type="button" onclick="inc('Shared')" value="+" style="font-weight: bold;"/><br><br>
+						<input type="button" onclick="dec('shared')" value="-"/>
+						<input type="number" placeholder="0" id="shared" name="shared" value="0">
+						<input type="button" onclick="inc('shared')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br><br>
 					
-					<label>כמה אלמנטים נפלו מהקרוסלה?</label><br><br>
-					<div class="counter">
-					<input type="button" onclick="dec('TelCarosel')" value="-"/>
-					<input type="number" placeholder="0" id="TelCarosel" name="TelCarosel" value="0">
-					<input type="button" onclick="inc('TelCarosel')" value="+" style="font-weight: bold;"/><br><br>
+					<label for="teleop_ducks">כמה אלמנטים נפלו מהקרוסלה?</label><br><br>
+						<div class="counter">
+						<input type="button" onclick="dec('teleop_ducks')" value="-"/>
+						<input type="number" placeholder="0" id="teleop_ducks" name="teleop_ducks" value="0">
+						<input type="button" onclick="inc('teleop_ducks')" value="+" style="font-weight: bold;"/><br><br>
 					</div><br><br>
 
-					<label>האם האלמנט של הקבוצה על מגדל? </label><br> 
+					<label>האם האלמנט של הקבוצה על מגדל?</label><br>
 				
 					<div class="toggle">
-						<input type="radio" name="Capping" id="NoTryCap" value="לא ניסו">
+						<input type="radio" name="capping" id="NoTryCap" value="לא ניסו" checked="checked">
 						<label for="NoTryCap">לא ניסו</label>
-						<input type="radio" name="Capping" id="NoSuccessCap" value="לא הצליחו">
+						<input type="radio" name="capping" id="NoSuccessCap" value="לא הצליחו">
 						<label for="NoSuccessCap">לא הצליחו</label>
-						<input type="radio" name="Capping" id="YesCap" value="הצליחו">
+						<input type="radio" name="capping" id="YesCap" value="הצליחו">
 						<label for="YesCap">כן</label>
 					</div><br><br>
 
 
 					<label>איך הרובוט עבד?</label><br> 
 				
-					<div class="togle">
-						<input type="radio" name="Work" id="NotAtAll" value="לא">
+					<div class="small-toggle">
+						<input type="radio" name="worked" id="NotAtAll" value="לא">
 						<label for="NotAtAll">בכלל לא</label>
-						<input type="radio" name="Work" id="Most" value="הרוב">
+						<input type="radio" name="worked" id="Most" value="הרוב">
 						<label for="Most">רוב זמן המשחק</label>
-						<input type="radio" name="Work" id="AllTelep" value="הכל חוץ מאוטונומי">
-						<label for="AllTelep">הכל חוץ מאוטונומי</label>
-						<input type="radio" name="Work" id="All" checked="checked" value="הכל">
+						<input type="radio" name="worked" id="AllTeleop" value="הכל חוץ מאוטונומי">
+						<label for="AllTeleop">הכל חוץ מאוטונומי</label>
+						<input type="radio" name="worked" id="All" checked="checked" value="הכל">
 						<label for="All">כל המשחק</label>
 					</div><br><br>
 
-					<label style="font-size: 1.5cm;">הערות</label><br><br>
-					<textarea name="Notes" style="width: 21cm; font-size: 1.1cm; height:8.7cm; direction: rtl; text-align: right; padding-right: 5px; font-family: Arial, Helvetica, sans-serif; border-radius: 0.1cm; border-color: var(border-color); background-color: var(--color-input-box); color:var(--text)"></textarea><br><br><br>	
+					<label for="notes" style="font-size: 1.5cm;">הערות</label><br><br>
+					<textarea id="notes" name="notes" style="width: 21cm; font-size: 1.1cm; height:8.7cm; direction: rtl; text-align: right; padding-right: 5px; font-family: Arial, Helvetica, sans-serif; border-radius: 0.1cm; border-color: var(border-color); background-color: var(--color-input-box); color:var(--text)"></textarea><br><br><br>
 
 					<input type="submit" value="הגשת טופס" style="width:19cm; font-size: 1.7cm; height:2.8cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"><br><br>	
 
-				</div>         
+				</div> 
+				<div id="page3"   >
+					<h1 >הטופס נשלח בהצלחה!</h1>
+					<h2 style="font-size: 120%; ">המקצה הבא שלך הוא ${NEXT_MATCH}</h2>
+					<h2 style="font-size: 120%; ">הקבוצה הבאה שלך היא ${GROUP_NUMBER}</h2>
+					<h3 style="font-size: 120%;" >והיא תהיה בברית ה${GROUP_COLOR}</h3>
+					<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>"><br><br>
+					<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="next_page()">לחץ לטופס הבא</button>
+					
+				</div>      
 		
 			</form>
 		</div>
