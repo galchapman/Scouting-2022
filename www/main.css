@@ -41,8 +41,9 @@ body {
 
 /* Nav-Bar Styling */
 
-.nav-bar {
-	background-color: #161b22;
+.nav-bar { 
+	/* background-color: #161b22; */
+	background-color: #ffb7a1;
 	margin: 0 0 10px 0; 
 	overflow: hidden;
 }
@@ -75,7 +76,10 @@ body {
 .qr-code-container .selected-user {
 	text-align: center;
 	padding: 20px 20px;
-	color: #a5d6ff;
+	color: var(--color-text);
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 600;
+	
 }
 
 .qr-code {
@@ -86,6 +90,9 @@ body {
 	height: 300px;
 	width: 300px;
 	display: block;
+	border: 1.5px solid var(--color-input-border);
+	border-radius: 1.25px;
+	
 }
 /* Login Style */
 
