@@ -2,54 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="main.css">
-    <title>Assign Scouters</title>
-    <style>
-=======
     <title>Assign Scouters</title>
     <style>
         
->>>>>>> 4285d4e2b7bbb4069310ff382b3cee2035ed648b
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
             vertical-align: middle;
-<<<<<<< HEAD
-        }  
-    </style>
-</head>
-<body >
-    <div class="scouting-form-container" style="font-size: 1.5cm; text-align: center; font-family: Arial, Helvetica, sans-serif; color: var(--text); ">
-        <label class="secandtitle" for="file" >Input file</label><br>
-        <input type="file" accept=".csv" id="file" class="custom-file-input"><br>
-<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;">Update</button>
-    
-    </div>
-    <table style="width:100%" dir="ltr">
-        <colgroup>
-            <col span="1" style="background-color: rgb(219, 219, 219);">
-            <col span="4" style="background-color: #fd8383">
-            <col span="4" style="background-color: #8e82ff">
-        </colgroup>
-        <tr>
-            <th style="background-color: rgb(165, 165, 165);">Match</th>
-            <th style="background-color: #ff3737;">Red1</th>
-            <th style="background-color: #ff3737;">RedUser1</th>
-            <th style="background-color: #ff3737;">Red2</th>
-            <th style="background-color: #ff3737;">RedUser2</th>
-            <th style="background-color: #4b37ff">Blue1</th>
-            <th style="background-color: #4b37ff">BlueUser1</th>
-            <th style="background-color: #4b37ff">Blue2</th>
-            <th style="background-color: #4b37ff">BlueUser2</th>
-        </tr>
-        ${Data}
-    </table>
-</body>
-=======
             color: rgb(0, 0, 0);
+            font-weight: 500;
         }
 
 
@@ -83,6 +46,7 @@
         <label for="file" class="titan">Input File</label><br>
         <input type="file" name="content" accept=".csv" id="file" style="display: none;" hidden required/>
         <input type="submit" value="Update" style="font-size: large; height: 1cm; text-shadow: 1.4px 1.4px rgb(15, 15, 15)">
+        
     </form>
     <button onclick="download()">Download</button>
 </div>
@@ -95,16 +59,16 @@
     <tr>
         <th style="background-color: rgb(165, 165, 165); color:black;">Match</th>
         <th style="background-color: rgb(165, 165, 165);color:black;">Cube</th>
-        <th style="background-color: #ff3737;">Red Team 1</th>
-        <th style="background-color: #ff3737;">Scouter</th>
-        <th style="background-color: #ff3737;">Red Team 2</th>
-        <th style="background-color: #ff3737;">Scouter</th>
-        <th style="background-color: #6250ff">Blue Team 1</th>
-        <th style="background-color: #6250ff">Scouter</th>
-        <th style="background-color: #6250ff">Blue Team 2</th>
-        <th style="background-color: #6250ff;">Scouter</th>
+        <th class="red-dag">Red Team 1</th>
+        <th class="red-dag">Scouter</th>
+        <th class="red-dag">Red Team 2</th>
+        <th class="red-dag">Scouter</th>
+        <th class="blue-dag">Blue Team 1</th>
+        <th class="blue-dag">Scouter</th>
+        <th class="blue-dag">Blue Team 2</th>
+        <th class="blue-dag">Scouter</th>
     </tr>
-    <!-- <tr>
+    <tr>
         <td>Match</td>
         <td>Cube</td>
         <td>Red Team 1</td>
@@ -115,7 +79,7 @@
         <td>Scouter</td>
         <td>Blue Team 2</td>
         <td>Scouter</td>
-    </tr> -->
+    </tr>
 
 
 
@@ -139,5 +103,4 @@
         document.body.removeChild(downloadElement);
     }
 </script>
->>>>>>> 4285d4e2b7bbb4069310ff382b3cee2035ed648b
 </html>
