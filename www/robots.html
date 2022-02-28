@@ -20,7 +20,7 @@
 							<input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" hidden required><br>
 
 							<button class="blue-button" style="border-radius:5px;" onclick="KillPreview(event)">kill</button>
-
+							
 					</div>  
 				</div>
 			</div>
@@ -97,35 +97,40 @@
 	}
 	}
 
-	var es = document.forms[0].elements;
-	es[1].onclick = function(){
-		// KillPreview()
-		clearInputFile(es[0]);
-	};
+	// var es = document.forms[0].elements;
+	// es[1].onclick = function(){
+	// 	// KillPreview()
+	// 	clearInputFile(es[0]);
+	// };
 
-	function clearInputFile(f){
-		if(f.value){
-			try{
-				f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
-			} catch(err) {
-			}
-			if(f.value){ //for IE5 ~ IE10
-				var form = document.createElement('form'), ref = f.nextSibling;
-				form.appendChild(f);
-				form.reset();
-				ref.parentNode.insertBefore(f,ref);
-			}
-		}
-	}
+	// function clearInputFile(f){
+	// 	if(f.value){
+	// 		try{
+	// 			f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+	// 		} catch(err) {
+	// 		}
+	// 		if(f.value){ //for IE5 ~ IE10
+	// 			var form = document.createElement('form'), ref = f.nextSibling;
+	// 			form.appendChild(f);
+	// 			form.reset();
+	// 			ref.parentNode.insertBefore(f,ref);
+	// 		}
+	// 	}
+	// }
 
 
 	function KillPreview(){
-		// if(event.target.files.length > 0){
-			// var src = URL.createObjectURL(event.target.files[0]);
+		if(event.target.files.length > 0){
+			var src = URL.createObjectURL(event.target.files[0]);
 			var preview = document.getElementById("file-ip-1-preview");
 			preview.src = null;
-		// }
+			 
+			
+		}
 		// clearInputFile(es[0])
 	}
+
+	
+	
 </script>
 </html>
