@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Tests</title>
+</head>
+<style>
+    body {
+    margin:0px;
+    height:100vh;
+    background: #1283da;
+    }
+
+    .pic-center {
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    }
+
+    .pic-form-input {
+    width:350px;
+    padding:20px;
+    background:#fff;
+    box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377),
+                3px 3px 7px rgba(94, 104, 121, 0.377);
+    }
+
+    pic-form-input input {
+    display:none;
+    }
+
+    .pic-form-input label {
+    display:block;
+    width:45%;
+    height:45px;
+    margin-left: 25%;
+    line-height:50px;
+    text-align:center;
+    background:#1172c2;
+    color:#fff;
+    font-size:15px;
+    font-family:"Open Sans",sans-serif;
+    text-transform:Uppercase;
+    font-weight:600;
+    border-radius:5px;
+    cursor:pointer;
+    }
+
+    .pic-form-input img {
+    width:100%;
+    display:none;
+    margin-bottom:30px;
+    }
+
+</style>
+<body>
+    <div class="pic-center">
+        <div class="pic-form-input">
+            <div class="pic-preview">
+                <img id="file-ip-1-preview">
+                <label for="file-ip-1">Upload Image</label>
+                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" hidden required>
+              </div>
+       
+          
+        </div>
+    </div> 
+    
+
+
+</body>
+<script>
+function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
+</html>

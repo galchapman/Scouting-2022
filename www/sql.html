@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<title>Run sql</title>
+	<body style="text-align: center; font-family: Arial, Helvetica, sans-serif;">
+		<textarea style="width: 100%;" id="query"></textarea><br><br>
+		<button style="text-align: center;" onclick="runSql()">Run SQL</button>
+		<h3 style="font-size: 30px;">Result:</h3>
+		<div id="resualt"></div>
+	</body>
+	<style>
+	table {  
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+	margin: 10px 10px 10px 0;
+	}
+
+	th, td {
+	padding: 15px;
+	}
+
+	th {
+		background-color: #f1f1f1;
+	}
+
+	tr:nth-child(2n+1) td {
+	background-color: #f1f1f1;
+	}
+
+	tr:nth-child(2n) td {
+	background-color: #fff;
+	}
+
+	button {
+		font-size: 40px;
+		font-family: 'Source Sans Pro', sans-serif;
+		border: none;
+		border-radius: 5px;
+		display: inline-block;
+		padding: 6px 18px;
+		vertical-align: middle;
+		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+		text-align: center;
+		cursor: pointer;
+		white-space: nowrap;
+		-moz-user-select: none;
+		user-select: none;
+		background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+		color: #ffffff;
+	}
+
+	</style>
+	<script>
+		const query = document.getElementById("query");
+		const resualt = document.getElementById("resualt")
+		function runSql() {
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "POST", "sql.html", false ); // false for synchronous request
+			xmlHttp.send( query.value );
+			resualt.innerHTML = xmlHttp.responseText;
+		}
+	</script>
+</html>
