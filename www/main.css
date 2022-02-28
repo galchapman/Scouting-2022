@@ -41,8 +41,9 @@ body {
 
 /* Nav-Bar Styling */
 
-.nav-bar {
-	background-color: #161b22;
+.nav-bar { 
+	/* background-color: #161b22; */
+	background-color: #ffb7a1;
 	margin: 0 0 10px 0; 
 	overflow: hidden;
 }
@@ -75,7 +76,10 @@ body {
 .qr-code-container .selected-user {
 	text-align: center;
 	padding: 20px 20px;
-	color: #a5d6ff;
+	color: var(--color-text);
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 600;
+	
 }
 
 .qr-code {
@@ -86,6 +90,9 @@ body {
 	height: 300px;
 	width: 300px;
 	display: block;
+	border: 1.5px solid var(--color-input-border);
+	border-radius: 1.25px;
+	
 }
 /* Login Style */
 
@@ -287,12 +294,12 @@ body {
     line-height: 120%;
     font-weight: 700;
     text-align: center;
-    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 rgba(61, 61, 61, 0);
     
 }
 
 .small-toggle input + label {
-	padding: 1rem 2rem; 
+	padding: 1rem 2rem !important;
 }
 
 /* Counter Class */
@@ -312,4 +319,71 @@ body {
 	text-align: center;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+	visibility: hidden;
+  }
+.custom-file-input::before {
+	content: 'Select some files';
+	display: inline-block;
+	background: linear-gradient(top, #f9f9f9, #e3e3e3);
+	border: 1px solid #999;
+	border-radius: 3px;
+	padding: 5px 8px;
+	outline: none;
+	white-space: nowrap;
+	/* -webkit-user-select: none; */
+	cursor: pointer;
+	text-shadow: 1px 1px #fff;
+	font-weight: 700;
+	font-size: 10pt;
+  }
+  .custom-file-input:hover::before {
+	border-color: black;
+  }
+  .custom-file-input:active::before {
+	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+
+/* Assign Design */
+
+.blue-dag {
+	background-color: #6250ff;
+	/* text-shadow: 0.5px 0.5px rgb(80, 80, 80); */
+	/* text-shadow: 0.5px 0.5px rgb(0, 38, 109); */
+	font-weight: 550;
+
+}
+
+.red-dag {
+	background-color: #ff3737;
+	/* text-shadow: 0.5px 0.5px rgb(112, 0, 0); */
+	font-weight: 550;
+
+}
+
+
+
+.blue-button {
+	display: inline;
+	user-select: none;
+	background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);
+	border-radius: 0.5cm;
+	border-style: none;
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	font-size: large;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 450;
+	font-style: normal;
+	height: 1cm;
+	width: 4cm;
+	padding: 0 0;
+	text-align: center;
+	touch-action: manipulation;
+	box-shadow: 0 0 0 0;
+	/* text-shadow: 1px 1px rgb(36, 36, 36)	 */
+	/* text-shadow: 1.2px 1.2px rgb(15, 15, 15) */
+
+}
 
