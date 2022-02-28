@@ -292,7 +292,7 @@ body {
 }
 
 .small-toggle input + label {
-	padding: 1rem 2rem; !important;
+	padding: 1rem 2rem; 
 }
 
 /* Counter Class */
