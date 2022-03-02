@@ -1,22 +1,49 @@
-
 <!DOCTYPE HTML>
 <html lang="he">
 	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="quiz-main.css">
-		<title>${GROUP_NUMBER} / ${MATCH}</title>
+		<title>חידון הקבוצות !</title>
 	</head>
 	<body>
-		<div class="form-style">
-			<div id="page0"  >
-				<h1 >שלום ${USER} </h1>
-				<h2 style="font-size: 140%; ">הקבוצה שלך היא ${GROUP_NUMBER}</h2>
-				<h3 style="font-size: 140%;" >והיא נמצאת בברית ה${GROUP_COLOR}</h3>
-				<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>"><br><br>
-				<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="next_page()"> <-- הבנתי והכל נכון, לטופס</button>
-				
-			</div>   
-			</form>
-		</div>
+            <br><div>
+				<h1>______________________________?</h1>
+            </div><br>
+
+            <div>
+                <button class="tubbon">לחץ לרמז</button>
+				<h2 id="hint1" hidden>hint1////////////////////////</h2>
+                <h2 id="hint2" hidden>hint2////////////////////////</h2>
+            </div><br><br><br>
+
+            <div>
+                <button class="tubbon">לחץ לתשובה</button>
+				<h2 id="answer" hidden>answer///////////////////////</h2>
+            </div>   
 	</body>
+	<style>
+	body {
+		-webkit-font-smoothing: antialiased;
+		margin: 0;
+		background-color: var(--color-background-color);
+		font-size: 130%;
+		font-family: Verdana, sans-serif;
+		color: black;
+		direction:rtl;
+        text-align: center;
+        
+        
+	}
+
+    .tubbon { 
+        width:22cm;
+        font-family:Arial;
+        height:3.25cm;
+        font-size:1.8cm;
+        text-align:center;
+        direction:ltr;
+
+
+    }
+
+	
+	</style>
 </html>
