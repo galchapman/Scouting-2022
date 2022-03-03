@@ -412,4 +412,56 @@ body {
 }
 
 
+select {
+	/* Reset Select */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: 0;
+	border: 0;
+	box-shadow: none;
+	/* Personalize */
+	flex: 1;
+	padding: 0 1em;
+	color: rgb(255, 255, 255);
+	background-color: #2c3e50;
+	background-image: none;
+	cursor: pointer;
+	text-align: center;
+	font-size: 50px;
+	
+  }
+  /* Remove IE arrow */
+select::-ms-expand {
+	display: none;
+}
+  /* Custom Select wrapper */
+.select {
+	position: relative;
+	display: flex;
+	width: 20em;
+	height: 3em;
+	border-radius: .25em;
+	overflow: hidden;
+	
+	
+}
+/* Arrow */
+.select::after {
+	content: '\25BC';
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1em;
+	background-color: #34495e;
+	pointer-events: none;
+	color: white;
+	
+}
+
+  
+
+
+
+
 

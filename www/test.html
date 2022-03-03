@@ -3,82 +3,76 @@
 <head>
     
     <title>Tests</title>
+    <link href="main.css" rel="stylesheet">
 </head>
 <style>
-    body {
-    margin:0px;
-    height:100vh;
-    background: #1283da;
-    }
 
-    .pic-center {
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
 
-    }
+select {
+  /* Reset Select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: rgb(255, 255, 255);
+  background-color: #2c3e50;
+  background-image: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 50px;
+  
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+  
+  
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e;
+  pointer-events: none;
+  color: white;
+  
+}
 
-    .pic-form-input {
-    width:350px;
-    padding:20px;
-    background:#fff;
-    box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377),
-                3px 3px 7px rgba(94, 104, 121, 0.377);
-    }
 
-    pic-form-input input {
-    display:none;
-    }
 
-    .pic-form-input label {
-    display:block;
-    width:45%;
-    height:45px;
-    margin-left: 25%;
-    line-height:50px;
-    text-align:center;
-    background:#1172c2;
-    color:#fff;
-    font-size:15px;
-    font-family:"Open Sans",sans-serif;
-    text-transform:Uppercase;
-    font-weight:600;
-    border-radius:5px;
-    cursor:pointer;
-    }
-
-    .pic-form-input img {
-    width:100%;
-    display:none;
-    margin-bottom:30px;
-    }
 
 </style>
-<body>
-    <div class="pic-center">
-        <div class="pic-form-input">
-            <div class="pic-preview">
-                <img id="file-ip-1-preview">
-                <label for="file-ip-1">Upload Image</label>
-                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" hidden required>
-              </div>
-       
-          
-        </div>
-    </div> 
-    
+<body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <div style="direction: ltr;">
+    <div class="select">
+      <select >
+        <option value="1">18833</option>
+        <option value="2">12797</option>
+        <option value="3">12363</option>
+      </select>
+    </div>
+  </div>
+  
+
 
 
 </body>
-<script>
-function showPreview(event){
-  if(event.target.files.length > 0){
-    var src = URL.createObjectURL(event.target.files[0]);
-    var preview = document.getElementById("file-ip-1-preview");
-    preview.src = src;
-    preview.style.display = "block";
-  }
-}
-</script>
+
 </html>
