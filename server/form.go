@@ -2,6 +2,7 @@ package server
 
 import (
 	"Scouting-2022/server/database"
+	"database/sql"
 	"errors"
 	"net/http"
 	"net/url"
@@ -66,8 +67,13 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 	if team, ok = currentGameScouters[session.user.ID]; !ok {
 		game, err := server.db.GetNextGame(session.user, currentGame)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
+			if err == sql.ErrNoRows {
+				w.WriteHeader(http.StatusOK)
+				_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+			} else {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
 		}
 
 		if preFormHtml == "" {
@@ -320,8 +326,13 @@ func (server *Server) handlePostForm(w http.ResponseWriter, req *http.Request) {
 
 	game, err = server.db.GetNextGame(session.user, currentGame)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+		if err == sql.ErrNoRows {
+			w.WriteHeader(http.StatusOK)
+			_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+		} else {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 
 	values := make(map[string]string)
