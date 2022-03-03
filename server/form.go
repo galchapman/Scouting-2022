@@ -2,6 +2,7 @@ package server
 
 import (
 	"Scouting-2022/server/database"
+	"database/sql"
 	"errors"
 	"net/http"
 	"net/url"
@@ -14,6 +15,8 @@ var currentGame int
 var currentGameScouters map[int]database.Team
 var formServMutex sync.Mutex
 var formHtml string
+var postFormHtml string
+var preFormHtml string
 
 func (server *Server) handleManagement(w http.ResponseWriter, req *http.Request) {
 	if currentGameScouters == nil {
@@ -47,7 +50,7 @@ func (server *Server) handleManagement(w http.ResponseWriter, req *http.Request)
 		currentGameScouters[game.ScouterBlue1.ID] = game.Blue1
 		currentGameScouters[game.ScouterBlue2.ID] = game.Blue2
 	} else {
-		http.ServeFile(w, req, "www/management.html")
+		http.ServeFile(w, req, "www/start-game.html")
 	}
 }
 
@@ -62,8 +65,52 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 	}
 
 	if team, ok = currentGameScouters[session.user.ID]; !ok {
+		game, err := server.db.GetNextGame(session.user, currentGame)
+		if err != nil {
+			if err == sql.ErrNoRows {
+				w.WriteHeader(http.StatusOK)
+				_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+			} else {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+		}
+
+		if preFormHtml == "" {
+			content, err := os.ReadFile("www/pre-form.html")
+			if err != nil {
+				http.Error(w, "Not Found", http.StatusNotFound)
+				println("ERROR index:15 " + err.Error())
+				return
+			}
+			preFormHtml = string(content)
+		}
+
+		values := make(map[string]string)
+		values["${NEXT_MATCH}"] = strconv.Itoa(game.ID)
+
+		if game.ScouterRed1.ID == session.user.ID {
+			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red1.TeamNumber)
+			values["${GROUP_COLOR}"] = "אדומה"
+		} else if game.ScouterRed2.ID == session.user.ID {
+			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red2.TeamNumber)
+			values["${GROUP_COLOR}"] = "אדומה"
+		} else if game.ScouterBlue1.ID == session.user.ID {
+			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue1.TeamNumber)
+			values["${GROUP_COLOR}"] = "כחולה"
+		} else {
+			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue2.TeamNumber)
+			values["${GROUP_COLOR}"] = "כחולה"
+		}
+
+		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(http.StatusOK)
-		_, _ = w.Write([]byte("You are not a part of this. get out"))
+		text, err := replaceAll(preFormHtml, values)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		_, _ = w.Write([]byte(text))
 		return
 	}
 
@@ -99,9 +146,9 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 		text, err := replaceAll(formHtml, values)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 		_, _ = w.Write([]byte(text))
-
 		break
 	case http.MethodPost:
 		err := req.ParseForm()
@@ -129,7 +176,7 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		w.Header().Set("Location", "/")
+		w.Header().Set("Location", "/post-form.html")
 		w.WriteHeader(http.StatusSeeOther)
 		break
 	default:
@@ -255,4 +302,62 @@ func parseScoutFormAnswer(form url.Values) (database.FormAnswerResponse, error) 
 	answer.Notes = form.Get("notes")
 
 	return answer, nil
+}
+
+func (server *Server) handlePostForm(w http.ResponseWriter, req *http.Request) {
+	if postFormHtml == "" {
+		content, err := os.ReadFile("www/post-form.html")
+		if err != nil {
+			http.Error(w, "Not Found", http.StatusNotFound)
+			println("ERROR index:15 " + err.Error())
+			return
+		}
+		postFormHtml = string(content)
+	}
+
+	var session *Session
+	var game database.Game
+	var err error
+
+	if _, session = server.checkSession(req); session == nil {
+		http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+		return
+	}
+
+	game, err = server.db.GetNextGame(session.user, currentGame)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			w.WriteHeader(http.StatusOK)
+			_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+		} else {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+
+	values := make(map[string]string)
+	values["${NEXT_MATCH}"] = strconv.Itoa(game.ID)
+
+	if game.ScouterRed1.ID == session.user.ID {
+		values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red1.TeamNumber)
+		values["${GROUP_COLOR}"] = "אדומה"
+	} else if game.ScouterRed2.ID == session.user.ID {
+		values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red2.TeamNumber)
+		values["${GROUP_COLOR}"] = "אדומה"
+	} else if game.ScouterBlue1.ID == session.user.ID {
+		values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue1.TeamNumber)
+		values["${GROUP_COLOR}"] = "כחולה"
+	} else {
+		values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue2.TeamNumber)
+		values["${GROUP_COLOR}"] = "כחולה"
+	}
+
+	w.Header().Set("Content-Type", "text/html")
+	w.WriteHeader(http.StatusOK)
+	text, err := replaceAll(postFormHtml, values)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	_, _ = w.Write([]byte(text))
 }
