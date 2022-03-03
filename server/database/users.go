@@ -81,3 +81,16 @@ func (db *Database) GetScouters() ([]User, error) {
 	}
 	return users, nil
 }
+
+func (db *Database) GetNextGame(scouter User, currentGame int) (Game, error) {
+	var gameID int
+
+	row := db.db.QueryRow("SELECT ID FROM GAMES WHERE ID > $1 AND (RED_SCOUTER1 = $2 OR RED_SCOUTER2 = $2 OR BLUE_SCOUTER1 = $2 OR BLUE_SCOUTER2 = $2) ORDER BY ID LIMIT 1", currentGame, scouter.ID)
+
+	err := row.Scan(&gameID)
+	if err != nil {
+		return Game{}, err
+	}
+
+	return db.GetGame(gameID)
+}

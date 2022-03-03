@@ -7,11 +7,11 @@
 		<script>
 			function dec(id) {
 				let element = document.getElementById(id);
-				element.value = Math.max(0, parseInt(element.value)-1)
+				element.value = Math.max(0, parseInt(element.value)-1).toString()
 			}
 			function inc(id) {
 				let element = document.getElementById(id);
-				element.value = Math.min(99, parseInt(element.value)+1)
+				element.value = Math.min(99, parseInt(element.value)+1).toString()
 			}
 
 			let current_page=0;
@@ -211,17 +211,7 @@
 
 					<input type="submit" value="הגשת טופס" style="width:19cm; font-size: 1.7cm; height:2.8cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"><br><br>	
 
-				</div> 
-				<div id="page3" hidden>
-					<h1 >הטופס נשלח בהצלחה!</h1>
-					<h2 style="font-size: 120%; ">המקצה הבא שלך הוא ${NEXT_MATCH}</h2>
-					<h2 style="font-size: 120%; ">הקבוצה הבאה שלך היא ${GROUP_NUMBER}</h2>
-					<h3 style="font-size: 120%;" >והיא תהיה בברית ה${GROUP_COLOR}</h3>
-					<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>"><br><br>
-					<button style="width: 22cm; font-size: 1.8cm; height:3.25cm ; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"  onclick="next_page()">לחץ לטופס הבא</button>
-					
-				</div>      
-		
+				</div>
 			</form>
 		</div>
 	</body>

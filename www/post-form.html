@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Form</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body style="color: var(--color-text); text-align: center;">
+    <h1 >הטופס נשלח בהצלחה!</h1>
+    <h2 style="font-size: 120%; ">המקצה הבא שלך הוא ${NEXT_MATCH}</h2>
+    <h2 style="font-size: 120%; ">הקבוצה הבאה שלך היא ${GROUP_NUMBER}</h2>
+    <h3 style="font-size: 120%;" >והיא תהיה בברית ה${GROUP_COLOR}</h3>
+    <img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>"><br><br>
+    <a href="/form.html">לחץ לטופס הבא</a>
+</body>
+<style>
+    a {
+        -webkit-appearance: button;
+        -moz-appearance: button;
+
+        text-decoration: none;
+        color: var(--color-text);
+    }
+</style>
+</html>
