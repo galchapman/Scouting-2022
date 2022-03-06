@@ -1,0 +1,1407 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+
+
+			/* table.sidebyside {
+				width: 800px;
+				overflow-x: scroll;
+				}
+			table.sidebyside th:nth-child(1), table.sidebyside td:nth-child(1) {
+				width: 300px !important;
+				position:absolute;
+				}
+			table.sidebyside th:nth-child(2), table.sidebyside td:nth-child(2) {
+				padding-left: 300px !important;
+				}
+			table.sidebyside th {
+				background-color: #4b91ea;
+				height: 63px;
+				}	
+			table.sidebyside td:nth-child(1) (odd) {
+				background-color: #fff;
+				}
+			table.sidebyside tr:nth-child (even) > td:nth-child(1) {
+				background-color:  rgba(0,0,0,.05);
+				} */
+
+			table, td {
+				border: 1px solid black;
+  				border-collapse: collapse;
+				background-color: rgb(255, 169, 111);
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			th{
+				border: 1px solid black;
+				background-color: rgb(255, 110, 58);
+  				border-collapse: collapse;
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+				vertical-align: middle;
+				top: 0;
+
+			}
+
+			/* table{
+				border: 1px solid black;
+  				border-collapse: collapse;
+				background-color: rgb(255, 169, 111);
+				font-family: Arial, Helvetica, sans-serif;
+				position: relative	;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			td {
+				border: 1px solid black;
+  				border-collapse: collapse;
+				background-color: rgb(255, 169, 111);
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			th{
+				border: 1px solid black;
+				background-color: rgb(255, 110, 58);
+  				border-collapse: collapse;
+				font-family: Arial, Helvetica, sans-serif;
+				position: sticky;
+				text-align: center;
+				vertical-align: middle;
+				top: 0px;
+				
+			} */
+
+		</style>
+		
+	</head>
+	<title>טבלת מקצים</title>
+	<body style="background-color: rgb(255, 193, 157)">
+		<table style="width:150%">
+			<tr>
+				<th>Match</th>
+				<th>GROUP_NAME</th>
+				<th>GROUP_COLOR</th>
+				<th>Location</th>
+				<th>DottedLine</th>
+				<th>AutoCarosel</th>
+				<th>AutoStorage</th>
+				<th>AutoShipping</th>
+				<th>AutoShared</th>
+				<th>CubeLevel</th>
+				<th>Parking</th>
+				<th>Storage</th>
+				<th>Shipping1</th>
+				<th>Shipping2</th>
+				<th>Shipping3</th>
+				<th>Shared</th>
+				<th>TelCarosel</th>
+				<th>Capping</th>
+				<th>Work</th>
+				<th>Notes</th>
+				<th>USER_NAME</th>
+				<th>USER_ID</th>
+				
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr><tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr><tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>1</td>
+                <td>18833</td>
+                <td>אדום</td>
+                <td>קרוב למחסן</td>
+                <td>פסלון</td>
+                <td>לא ניסו</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>3</td>
+                <td>מחסן מלא</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>11</td>
+                <td>2</td>
+                <td>0</td>
+                <td>הצליחו</td>
+                <td>הכל</td>
+                <td>זה אנחנו</td>
+                <td>אורי</td>
+                <td>2</td>
+			</tr>
+		  </table>
+	</body>
+</html>
