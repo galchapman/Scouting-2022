@@ -15,6 +15,8 @@
 				font-family: Arial, Helvetica, sans-serif;
 				text-align: center;
 				vertical-align: middle;
+				color: black;
+				padding: 1px;
 			}
 
 			th{
@@ -25,6 +27,8 @@
 				text-align: center;
 				vertical-align: middle;
 				top: 0;
+				color: black;
+				font-size: 40px;
 				
 
 			}
@@ -34,7 +38,7 @@
 		${TEAM_NAME}
 		${MATCHES}
 	 -->
-	<body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+	<body  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 		<div class="form-style">
 			<div>
 				<h1 >${GROUP_NUMBER} - ${TEAM_NAME}</h1>
@@ -49,8 +53,9 @@
 				<label>משותף ממוצע: {AVERAGE_SHARED}</label><br>
 				<label>מגדל ממוצע: {AVERAGE_TOWER}</label><br>
 				<label>מחסן ממוצע: {AVERAGE_STORAGE}</label><br>
-				<label>ברווזים ממוצע: {AVERAGE_DUCKS}</label><br><br>
-				
+				<label>ברווזים ממוצע: {AVERAGE_DUCKS}</label><br>
+				<label>הצלחה בכאפ: {PERCENT_CUP}</label><br><br>
+
 				
 
 				
@@ -61,14 +66,6 @@
 				<tr>
 					<th>Match</th>
 					<th>GROUP_COLOR</th>
-					<th>Location</th>
-					<th>DottedLine</th>
-					<th>AutoCarosel</th>
-					<th>AutoStorage</th>
-					<th>AutoShipping</th>
-					<th>AutoShared</th>
-					<th>CubeLevel</th>
-					<th>Parking</th>
 					<th>Storage</th>
 					<th>Shipping1</th>
 					<th>Shipping2</th>
@@ -83,22 +80,13 @@
 				</tr>
 				<tr>
 					<td>1</td>
-					
 					<td>אדום</td>
 					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					<td>0</td>
-					<td>3</td>
-					<td>מחסן מלא</td>
-					<td>0</td>
-					<td>0</td>
 					<td>0</td>
 					<td>11</td>
 					<td>2</td>
 					<td>0</td>
+					<td>1</td>
 					<td>הצליחו</td>
 					<td>הכל</td>
 					
@@ -106,22 +94,13 @@
 				</tr>
 				<tr>
 					<td>1</td>
-					
 					<td>אדום</td>
 					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					<td>0</td>
-					<td>3</td>
-					<td>מחסן מלא</td>
-					<td>0</td>
-					<td>0</td>
 					<td>0</td>
 					<td>11</td>
 					<td>2</td>
 					<td>0</td>
+					<td>1</td>
 					<td>הצליחו</td>
 					<td>הכל</td>
 					
@@ -129,22 +108,13 @@
 				</tr>
 				<tr>
 					<td>1</td>
-					
 					<td>אדום</td>
 					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					<td>0</td>
-					<td>3</td>
-					<td>מחסן מלא</td>
-					<td>0</td>
-					<td>0</td>
 					<td>0</td>
 					<td>11</td>
 					<td>2</td>
 					<td>0</td>
+					<td>1</td>
 					<td>הצליחו</td>
 					<td>הכל</td>
 					
@@ -152,22 +122,13 @@
 				</tr>
 				<tr>
 					<td>1</td>
-					
 					<td>אדום</td>
 					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					<td>0</td>
-					<td>3</td>
-					<td>מחסן מלא</td>
-					<td>0</td>
-					<td>0</td>
 					<td>0</td>
 					<td>11</td>
 					<td>2</td>
 					<td>0</td>
+					<td>1</td>
 					<td>הצליחו</td>
 					<td>הכל</td>
 					
@@ -175,22 +136,13 @@
 				</tr>
 				<tr>
 					<td>1</td>
-					
 					<td>אדום</td>
 					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					<td>0</td>
-					<td>3</td>
-					<td>מחסן מלא</td>
-					<td>0</td>
-					<td>0</td>
 					<td>0</td>
 					<td>11</td>
 					<td>2</td>
 					<td>0</td>
+					<td>1</td>
 					<td>הצליחו</td>
 					<td>הכל</td>
 					
@@ -198,27 +150,109 @@
 				</tr>
 				<tr>
 					<td>1</td>
+					<td>אדום</td>
+					<td>קרוב למחסן</td>
+					<td>0</td>
+					<td>11</td>
+					<td>2</td>
+					<td>0</td>
+					<td>1</td>
+					<td>הצליחו</td>
+					<td>הכל</td>
 					
+					
+				</tr>
+			</table><br><br>
+
+			<table>
+				<tr>
+					<th>Match</th>
+					<th>GROUP_COLOR</th>
+					<th>Location</th>
+					<th>DottedLine</th>
+					<th>AutoCarosel</th>
+					<th>AutoStorage</th>
+					<th>AutoShipping</th>
+					<th>CubeLevel</th>
+					<th>Parking</th>
+					
+					
+					
+					
+				</tr>
+				<tr>
+					<td>1</td>
 					<td>אדום</td>
 					<td>קרוב למחסן</td>
 					<td>פסלון</td>
 					<td>לא ניסו</td>
 					<td>0</td>
 					<td>2</td>
-					<td>0</td>
+					
 					<td>3</td>
 					<td>מחסן מלא</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-					<td>11</td>
-					<td>2</td>
-					<td>0</td>
-					<td>הצליחו</td>
-					<td>הכל</td>
-					
-					
 				</tr>
+				<tr>
+					<td>1</td>
+					<td>אדום</td>
+					<td>קרוב למחסן</td>
+					<td>פסלון</td>
+					<td>לא ניסו</td>
+					<td>0</td>
+					<td>2</td>
+					
+					<td>3</td>
+					<td>מחסן מלא</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>אדום</td>
+					<td>קרוב למחסן</td>
+					<td>פסלון</td>
+					<td>לא ניסו</td>
+					<td>0</td>
+					<td>2</td>
+					
+					<td>3</td>
+					<td>מחסן מלא</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>אדום</td>
+					<td>קרוב למחסן</td>
+					<td>פסלון</td>
+					<td>לא ניסו</td>
+					<td>0</td>
+					<td>2</td>
+					
+					<td>3</td>
+					<td>מחסן מלא</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>אדום</td>
+					<td>קרוב למחסן</td>
+					<td>פסלון</td>
+					<td>לא ניסו</td>
+					<td>0</td>
+					<td>2</td>
+					
+					<td>3</td>
+					<td>מחסן מלא</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>אדום</td>
+					<td>קרוב למחסן</td>
+					<td>פסלון</td>
+					<td>לא ניסו</td>
+					<td>0</td>
+					<td>2</td>
+					
+					<td>3</td>
+					<td>מחסן מלא</td>
+				</tr>
+				
 			</table><br><br>
 
 			<div>
