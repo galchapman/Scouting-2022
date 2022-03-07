@@ -106,11 +106,7 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				panic(err)
 			}
-			game.GameType, err = strconv.Atoi(line[1])
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				panic(err)
-			}
+			game.GameType = line[1]
 
 			Red1, err = strconv.Atoi(line[2])
 			if err != nil {

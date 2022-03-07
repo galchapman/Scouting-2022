@@ -8,23 +8,6 @@ const (
 	AdminRole       = iota
 )
 
-const (
-	RedAlliance  = 0
-	BlueAlliance = 1
-)
-
-const (
-	LocationFar  = 0
-	LocationNear = 1
-)
-
-// Fake bool
-const (
-	Succeed     = 0
-	Failed      = 1
-	HasNotTried = 2
-)
-
 type User struct {
 	ID             int
 	Name           string
@@ -40,7 +23,7 @@ type Team struct {
 
 type Game struct {
 	ID       int
-	GameType int
+	GameType string
 
 	Red1  Team
 	Red2  Team
@@ -63,8 +46,8 @@ type FormAnswer struct {
 	// Auto
 	TeamElement  string
 	AutoDuck     string
-	AutoStorage  string
-	AutoShipping string
+	AutoStorage  int
+	AutoShipping int
 	CubeLevel    int
 	Parking      string
 	// Teleop
@@ -84,8 +67,8 @@ type FormAnswerResponse struct {
 	Location     string
 	TeamElement  string
 	AutoDuck     string
-	AutoStorage  string
-	AutoShipping string
+	AutoStorage  int
+	AutoShipping int
 	CubeLevel    int
 	Parking      string
 	// Teleop
@@ -110,4 +93,22 @@ type FieldFormAnswer struct {
 	Kindness      int
 	Suitability   int
 	Notes         int
+}
+
+type TeamScore struct {
+	TotalScore  int
+	GamesPlayed int
+	Worked      int
+	Notes       []string
+
+	AutoTotalScore int
+
+	AutoStartedNear     int // Amount of times robot started near the audience
+	TotalDucksCountAuto int // Amount of ducks placed when the robot started near the audience
+	TotalTowerScoreAuto int // The sum of points scored on the tower during the autonomous stage when the robot started near the audience
+
+	TotalTowerScore             int
+	TotalSharedScore            int
+	TotalDucksCount             int
+	TotalShippingElementsPlaced int
 }

@@ -207,13 +207,19 @@ func parseScoutFormAnswer(form url.Values) (database.FormAnswerResponse, error) 
 	}
 
 	if value, ok := form["auto_storage"]; ok {
-		answer.AutoStorage = value[0]
+		answer.AutoStorage, err = strconv.Atoi(value[0])
+		if err != nil {
+			return answer, err
+		}
 	} else {
 		return answer, errors.New("field `auto_storage` not found in body")
 	}
 
 	if value, ok := form["auto_shipping"]; ok {
-		answer.AutoShipping = value[0]
+		answer.AutoShipping, err = strconv.Atoi(value[0])
+		if err != nil {
+			return answer, err
+		}
 	} else {
 		return answer, errors.New("field `auto_shipping` not found in body")
 	}
