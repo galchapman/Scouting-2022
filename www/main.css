@@ -423,42 +423,48 @@ select {
 	/* Personalize */
 	flex: 1;
 	padding: 0 1em;
-	color: rgb(255, 255, 255);
-	background-color: #2c3e50;
-	background-image: none;
+	color: white;
+	/* background-color: #ff6600; */
+	background-image: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+	/* background-image: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);; */
 	cursor: pointer;
 	text-align: center;
-	font-size: 50px;
+	font-size: 30px;
 	
   }
   /* Remove IE arrow */
-select::-ms-expand {
+  select::-ms-expand {
 	display: none;
-}
+	
+  }
   /* Custom Select wrapper */
-.select {
+  .select {
 	position: relative;
 	display: flex;
-	width: 20em;
-	height: 3em;
+	width: 400px;
+	height: 50px;
 	border-radius: .25em;
 	overflow: hidden;
 	
 	
-}
-/* Arrow */
-.select::after {
+	
+	
+  }
+  /* Arrow */
+  .select::after {
 	content: '\25BC';
 	position: absolute;
+	text-align: center;
 	top: 0;
 	right: 0;
-	padding: 1em;
-	background-color: #34495e;
+	padding: 7px 1em;
 	pointer-events: none;
 	color: white;
+	font-size: 30px;
 	
-}
-
+	
+  }
+  
   
 
 
