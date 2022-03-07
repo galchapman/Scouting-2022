@@ -464,6 +464,24 @@ select {
 	
 	
   }
+
+
+
+  .fit input[type=number] {
+	display: inline;
+	-moz-appearance: textfield;
+	/* -webkit-appearance: none; */
+	border-radius: 6px;
+	border: 2px solid var(--color-input-border);
+	padding: 0;
+	height: 4.2cm;
+	width: 4.2cm;
+	font-size: 2.7cm;
+	text-align: center;
+	margin: 0 10px 0 10px;
+	background-color: var(--color-input-box);
+	color: var(--color-text);
+}
   
   
 
