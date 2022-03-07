@@ -65,6 +65,9 @@ func (server *Server) configHTTP() {
 	server.servMux.HandleFunc("/post-form.html", server.handlePostForm)
 	server.servMux.HandleFunc("/assign.html", server.handleAssign)
 
+	// API
+	server.servMux.HandleFunc("/api/get_team_games", server.handleGetTeamGames)
+
 	server.http.Handler = gziphandler.GzipHandler(server.http.Handler)
 }
 

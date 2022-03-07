@@ -9,57 +9,57 @@ const (
 )
 
 type User struct {
-	ID             int
-	Name           string
+	ID             int    `json:"id"`
+	Name           string `json:"name"`
 	hashedPassword []byte
 	ScreenName     string
 	Role           int
 }
 
 type Team struct {
-	TeamNumber int
-	Name       string
+	TeamNumber int    `json:"number"`
+	Name       string `json:"name"`
 }
 
 type Game struct {
-	ID       int
-	GameType string
+	ID       int    `json:"id"`
+	GameType string `json:"game_type"`
 
-	Red1  Team
-	Red2  Team
-	Blue1 Team
-	Blue2 Team
+	Red1  Team `json:"red_1"`
+	Red2  Team `json:"red_2"`
+	Blue1 Team `json:"blue_1"`
+	Blue2 Team `json:"blue_2"`
 
-	ScouterRed1  User
-	ScouterRed2  User
-	ScouterBlue1 User
-	ScouterBlue2 User
+	ScouterRed1  User `json:"scouter_red_1"`
+	ScouterRed2  User `json:"scouter_red_2"`
+	ScouterBlue1 User `json:"scouter_blue_1"`
+	ScouterBlue2 User `json:"scouter_blue_2"`
 }
 
 type FormAnswer struct {
-	ID       int
-	Scouter  User
-	Team     Team
-	Game     Game
-	Alliance int
-	Location string
+	ID       int    `json:"id"`
+	Scouter  User   `json:"scouter"`
+	Team     Team   `json:"team"`
+	Game     Game   `json:"game"`
+	Alliance string `json:"alliance"`
+	Location string `json:"location"`
 	// Auto
-	TeamElement  string
-	AutoDuck     string
-	AutoStorage  int
-	AutoShipping int
-	CubeLevel    int
-	Parking      string
+	TeamElement  string `json:"team_element"`
+	AutoDuck     string `json:"auto_duck"`
+	AutoStorage  int    `json:"auto_storage"`
+	AutoShipping int    `json:"auto_shipping"`
+	CubeLevel    int    `json:"cube_level"`
+	Parking      string `json:"parking"`
 	// Teleop
-	Storage      int
-	ShippingLow  int
-	ShippingMid  int
-	ShippingHigh int
-	Shared       int
-	TeleopDucks  int
-	Capping      string
-	Worked       string
-	Notes        string
+	Storage      int    `json:"storage"`
+	ShippingLow  int    `json:"shipping_low"`
+	ShippingMid  int    `json:"shipping_mid"`
+	ShippingHigh int    `json:"shipping_high"`
+	Shared       int    `json:"shared"`
+	TeleopDucks  int    `json:"teleop_ducks"`
+	Capping      string `json:"capping"`
+	Worked       string `json:"worked"`
+	Notes        string `json:"notes"`
 }
 
 type FormAnswerResponse struct {
