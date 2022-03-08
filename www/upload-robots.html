@@ -11,15 +11,20 @@
 			<!-- <label for="file" class="titan">Input Image</label><br>
 			<input type="file" name="content" accept="image/jpeg" id="file" style="display: none;" hidden required/>
 			<input type="submit" value="Submit" style="font-size:20px; width: 4cm; height: 1cm;"><br> -->
-
+			
 			<div class="pic-center">
 				<div class="pic-form-input">
 					<div class="pic-preview">
+							<h2 class="titan" style="margin-bottom: 10px;">Upload Robots</h2>
 							<img id="file-ip-1-preview">
 							<label for="file-ip-1">Upload Image</label>
 							<input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" hidden required><br>
+							<div class="form-style" style="align-items: center;">
+								<label for="group-number-field" style="color: var(--color-text); background: none; font-size: 40px; margin-bottom: 15px;">Number</label>
+								<input id="group-number-field" type="text" name="group-number" placeholder="number" required style="width: 280px;">
+							</div>
+							
 
-							<button class="blue-button" style="border-radius:5px;" onclick="KillPreview(event)">kill</button>
 							
 					</div>  
 				</div>
@@ -32,48 +37,6 @@
 
 
 </body>
-<style>
-	.pic-center {
-	height:100%;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-
-	}
-
-	.pic-form-input {
-	width:350px;
-	padding:20px;
-	background:#fff;
-	}
-
-	pic-form-input input {
-	display:none;
-	}
-
-	.pic-form-input label {
-	display:block;
-	width:200px;
-	height:45px;
-	margin-right: 75px;
-	line-height:50px;
-	text-align:center;
-	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
-	color:#fff;
-	font-size:20px;
-	font-family:"Open Sans",sans-serif;
-	font-weight:600;
-	border-radius:5px;
-	cursor:pointer;
-	
-	}
-
-	.pic-form-input img {
-	width:100%;
-	display:none;
-	margin-bottom:30px;
-	}
-</style>
 <script>
 	const downloadElement = document.createElement('a');
 	downloadElement.hidden = true;
