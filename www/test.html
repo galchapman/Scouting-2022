@@ -5,74 +5,124 @@
     <title>Tests</title>
     <link href="main.css" rel="stylesheet">
 </head>
-<style>
-
-
-select {
-  /* Reset Select */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: 0;
-  border: 0;
-  box-shadow: none;
-  /* Personalize */
-  flex: 1;
-  padding: 0 1em;
-  color: rgb(255, 255, 255);
-  background-color: #2c3e50;
-  background-image: none;
-  cursor: pointer;
-  text-align: center;
-  font-size: 50px;
-  
-}
-/* Remove IE arrow */
-select::-ms-expand {
-  display: none;
-}
-/* Custom Select wrapper */
-.select {
-  position: relative;
-  display: flex;
-  width: 20em;
-  height: 3em;
-  border-radius: .25em;
-  overflow: hidden;
-  
-  
-}
-/* Arrow */
-.select::after {
-  content: '\25BC';
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1em;
-  background-color: #34495e;
-  pointer-events: none;
-  color: white;
-  
-}
-
-
-
-
-</style>
 <body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-  <div style="direction: ltr;">
-    <div class="select">
-      <select >
-        <option value="1">18833</option>
-        <option value="2">12797</option>
-        <option value="3">12363</option>
-      </select>
-    </div>
-  </div>
-  
+  <div>
 
-
-
+    <table style="width:50%" cellpadding = "5" cellspacing = "5" id="StudentScores">
+    
+      <tr>
+        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Student</th>
+        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam1</th> 
+        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam2</th>
+        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam3</th> 
+        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam4</th>
+      </tr>  
+      
+    </table>
+    
 </body>
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script language="javascript" type="text/javascript">
+    
+    
+     //when document is ready
+     $( document ).ready(function() {
+    
+         DynamicTable();
+    
+      });  
+    
+    
+    //URL of the list to be replaced
+    var url= _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('ExamScores')/items";
+    
+    
+    function DynamicTable() {
+    
+           $.ajax({
+                url: url,  
+                method: "GET",  
+                headers: {  
+                    "Accept": "application/json; odata=verbose"  
+                },
+    
+                success: function(data){
+                   
+                data.d.results.forEach(function(item){              
+                
+                //alert("Student.." + item.Title + " " + item.Exam1 + " " + item.Exam2 + " " + item.Exam3 + " " + item.Exam4);
+    
+                   var row= appendTableRow(item);
+                   
+                   //append the formatted row to the table
+     
+                   $("#StudentScores").append(row);          
+                             
+    
+                });    
+    
+                    
+                },
+                error: function(error){
+                       // error handler code goes here
+                  alert("Error Retrieving Data");
+                }
+            });    
+    
+    }
+    
+    
+    function appendTableRow(item)
+    {
+      //dynamically generate row (tr) for the table
+         
+      var row="<tr style=\"width:50%\">";
+      var td= "<td style=\"text-align:center;font-size:15pt; font-weight:bold;\">" + item.Title + "</td>";
+      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam1) + "\">" + item.Exam1 + "</td>";
+      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam2) + "\">" + item.Exam2 + "</td>";
+      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam3) + "\">" + item.Exam3 + "</td>";
+      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam4) + "\">" + item.Exam4 + "</td>";
+    
+      row=row+td + "</tr>";
+    
+      //alert(row);
+    
+      return row; 
+     
+    
+    
+    }
+    
+    function getColor(score)
+    {
+     
+       var background="white";
+    
+       if(score<5)
+        {
+          background="red";
+        }
+        else if(score>=5 && score<8)
+        {
+    
+        background="yellow";
+        }
+        else
+        {
+          background="green";
+        }
+    
+    
+       return background;   
+    
+    }
+    
+    </script>
+    
+    
 
 </html>
