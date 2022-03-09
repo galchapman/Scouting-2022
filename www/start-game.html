@@ -6,15 +6,17 @@
 		<title>Start Games</title>
 	</head>
 	<body style="margin-top:0px ;direction: ltr; align-items: center;">
-		<div class="login-style" style="margin-top:0px ;">
+		<div class="login-style button-style" style="margin-top:0px ;">
 			<h2 class="titan" style="margin-bottom: 20px;">Start Games</h2>
 			<h3 class="titan" style="text-align:center; margin-top: 0 ;margin-bottom: 0;">Match</h3><br>
-			<div class="counter button-style fit" dir="ltr">
-				<input type="button" onclick="dec()" value="-" style="font-size: 120px; height: 120px; "/>
+			<div class="counter fit" dir="ltr">
+				<input type="button" onclick="dec()" value="-" style="font-size: 120px; height: 120px; width: 120px;"/>
 				<input type="number" value="0" id="currentGame" style="width: 120px; height: 120px;" />
-				<input type="button" onclick="inc()" value="+" style="font-weight:bold; font-size:110px; height:120px;"/>
+				<input type="button" onclick="inc()" value="+" style="font-weight:bold; font-size:110px; height:120px;  width: 120px;"/>
 			</div><br>
-			<button style="margin-top: 0; font-size: 40px;" onclick="startGame()">Start</button>
+				<button style="margin: 0; width: 300px; height: 150px; font-size: 100px; display: block; margin-left: auto; margin-right: auto;" onclick="startGame()">Start</button>
+
+			</div>
 		</div>
 	</body>
 	<script>
