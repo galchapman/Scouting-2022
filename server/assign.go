@@ -30,12 +30,12 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 			}
 
 			for _, game := range games {
-				table += fmt.Sprintf("%d,%d,%d,%s,%d,%s,%d,%s,%d,%s,\n",
-					game.ID, game.GameType,
-					game.Red1.TeamNumber, game.ScouterRed1.Name,
-					game.Red2.TeamNumber, game.ScouterRed2.Name,
-					game.Blue1.TeamNumber, game.ScouterBlue1.Name,
-					game.Blue2.TeamNumber, game.ScouterBlue2.Name)
+				table += fmt.Sprintf("%d,%s,%d,%s,%d,%s,%d,%s,%d,%s,\n",
+					game.ID, html.EscapeString(game.GameType),
+					game.Red1.TeamNumber, html.EscapeString(game.ScouterRed1.Name),
+					game.Red2.TeamNumber, html.EscapeString(game.ScouterRed2.Name),
+					game.Blue1.TeamNumber, html.EscapeString(game.ScouterBlue1.Name),
+					game.Blue2.TeamNumber, html.EscapeString(game.ScouterBlue2.Name))
 			}
 
 			w.Header().Set("Content-Type", "text/csv")
@@ -62,8 +62,8 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 			var gamesTable string
 
 			for _, game := range games {
-				gamesTable += fmt.Sprintf("<tr><td>%d</td><td>%d</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td></tr>",
-					game.ID, game.GameType,
+				gamesTable += fmt.Sprintf("<tr><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td><td>%d</td><td>%s</td></tr>",
+					game.ID, html.EscapeString(game.GameType),
 					game.Red1.TeamNumber, html.EscapeString(game.ScouterRed1.Name),
 					game.Red2.TeamNumber, html.EscapeString(game.ScouterRed2.Name),
 					game.Blue1.TeamNumber, html.EscapeString(game.ScouterBlue1.Name),
