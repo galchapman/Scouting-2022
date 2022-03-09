@@ -21,8 +21,7 @@ func (server *Server) handleUsers(w http.ResponseWriter, req *http.Request) {
 	if usersHtml == "" {
 		content, err := os.ReadFile("www/users.html")
 		if err != nil {
-			http.Error(w, "Not Found", http.StatusNotFound)
-			println("ERROR index:15 " + err.Error())
+			http.Error(w, err.Error(), http.StatusNotFound)
 			return
 		}
 		usersHtml = string(content)
@@ -30,8 +29,7 @@ func (server *Server) handleUsers(w http.ResponseWriter, req *http.Request) {
 
 	scouters, err := server.db.GetScouters()
 	if err != nil {
-		http.Error(w, "Error fetching users", http.StatusInternalServerError)
-		println("ERROR index:15 " + err.Error())
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
