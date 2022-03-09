@@ -7,11 +7,11 @@
 		<script>
 			function dec(id) {
 				let element = document.getElementById(id);
-				element.value = Math.max(0, parseInt(element.value)-1)
+				element.value = Math.max(0, parseInt(element.value)-1).toString()
 			}
 			function inc(id) {
 				let element = document.getElementById(id);
-				element.value = Math.min(99, parseInt(element.value)+1)
+				element.value = Math.min(99, parseInt(element.value)+1).toString()
 			}
 
 			
@@ -24,8 +24,8 @@
 				<div>
 					
 					<h3 class="titan" style="font-size: 60px;">פרטים ואוטונומי</h3>
-					
-					<label style="font-size: 1.3cm;">תוצאת קוביה:</label><br><br>  
+
+					<label style="font-size: 1.3cm;">תוצאת קוביה:</label><br><br>
 				
 					<div class="toggle">
 						<input type="radio" name="cube" id="3"  value="C">
