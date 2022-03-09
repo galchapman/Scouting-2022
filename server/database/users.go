@@ -6,31 +6,23 @@ import (
 	_ "golang.org/x/crypto/bcrypt"
 )
 
-func (db *Database) NewUser(name string, password string, screenName string, role string) (User, error) {
+func (db *Database) NewUser(name string, password string, screenName string, role string) error {
 	roleValue := parseRole(role)
 	if roleValue == -1 {
-		return User{}, errors.New("Invalid role: " + role)
+		return errors.New("Invalid role: " + role)
 	}
 
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
-		return User{}, err
+		return err
 	}
 
 	_, err = db.db.Exec("INSERT INTO USERS (NAME, PASSWORD, SCREEN_NAME, ROLE) VALUES ($1, $2, $3, $4)", name, hashedPassword, screenName, roleValue)
 	if err != nil {
-		return User{}, err
+		return err
 	}
 
-	user := User{Name: name, ScreenName: name, hashedPassword: hashedPassword}
-
-	res := db.db.QueryRow("SELECT ID FROM USERS WHERE NAME = $1", name)
-	err = res.Scan(user.ID)
-	if err != nil {
-		return User{}, err
-	}
-
-	return user, err
+	return err
 }
 
 func (db *Database) GetUser(ID int) (User, error) {

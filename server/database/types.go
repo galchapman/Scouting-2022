@@ -1,11 +1,11 @@
 package database
 
 const (
-	ScouterRole     = iota
-	ViewerRole      = iota
-	FieldPlayerRole = iota
-	ManagerRole     = iota
-	AdminRole       = iota
+	ScouterRole    = iota
+	ViewerRole     = iota
+	SupervisorRole = iota
+	ManagerRole    = iota
+	AdminRole      = iota
 )
 
 type User struct {

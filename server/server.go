@@ -61,6 +61,7 @@ func (server *Server) configHTTP() {
 	server.servMux.HandleFunc("/form.html", server.handleForm)
 	server.servMux.HandleFunc("/post-form.html", server.handlePostForm)
 	server.servMux.HandleFunc("/assign.html", server.handleAssign)
+	server.servMux.HandleFunc("/create-user.html", server.handleCreateUser)
 
 	// API
 	server.servMux.HandleFunc("/api/get_team_games", server.handleGetTeamGames)

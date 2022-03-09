@@ -6,8 +6,8 @@ func parseRole(role string) int {
 		return ScouterRole
 	case "Viewer":
 		return ViewerRole
-	case "FieldPlayer":
-		return FieldPlayerRole
+	case "Supervisor":
+		return SupervisorRole
 	case "Manager":
 		return ManagerRole
 	case "Admin":
