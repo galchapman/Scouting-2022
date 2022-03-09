@@ -1,31 +1,7 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 		<style>
-
-
-			/* table.sidebyside {
-				width: 800px;
-				overflow-x: scroll;
-				}
-			table.sidebyside th:nth-child(1), table.sidebyside td:nth-child(1) {
-				width: 300px !important;
-				position:absolute;
-				}
-			table.sidebyside th:nth-child(2), table.sidebyside td:nth-child(2) {
-				padding-left: 300px !important;
-				}
-			table.sidebyside th {
-				background-color: #4b91ea;
-				height: 63px;
-				}	
-			table.sidebyside td:nth-child(1) (odd) {
-				background-color: #fff;
-				}
-			table.sidebyside tr:nth-child (even) > td:nth-child(1) {
-				background-color:  rgba(0,0,0,.05);
-				} */
-
 			table, td {
 				border: 1px solid black;
   				border-collapse: collapse;
@@ -45,8 +21,21 @@
 				top: 0;
 			}
 
+			@media (prefers-color-scheme: light) {
+				body {
+					background-color: white;
+
+				}
+			}
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #21262d;
+				}
+			}
+
 		</style>
-		
+		<title>Data</title>
+
 	</head>
 	<title>טבלת מקצים</title>
 	<body>
@@ -54,14 +43,12 @@
 			<tr>
 				<th>Match</th>
 				<th>USER</th>
-				<th>NAME</th>
-				<th>ALLIANCE</th>
+				<th>TEAM</th>
 				<th>Location</th>
-				<th>DottedLine</th>
-				<th>AutoCarosel</th>
+				<th>TeamElement</th>
+				<th>AutoDuck</th>
 				<th>AutoStorage</th>
 				<th>AutoShipping</th>
-				<th>AutoShared</th>
 				<th>CubeLevel</th>
 				<th>Parking</th>
 				<th>Storage</th>
@@ -69,12 +56,11 @@
 				<th>Shipping2</th>
 				<th>Shipping3</th>
 				<th>Shared</th>
-				<th>TelCarosel</th>
+				<th>Ducks</th>
 				<th>Capping</th>
 				<th>Work</th>
 				<th>Notes</th>
-			</tr>
-			
+				${DATA}
 			</tr>
 		  </table>
 	</body>
