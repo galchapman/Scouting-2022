@@ -1,128 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <title>Tests</title>
-    <link href="main.css" rel="stylesheet">
-</head>
-<body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-  <div>
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+  <script type="text/javascript">
 
-    <table style="width:50%" cellpadding = "5" cellspacing = "5" id="StudentScores">
-    
-      <tr>
-        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Student</th>
-        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam1</th> 
-        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam2</th>
-        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam3</th> 
-        <th style="text-align:center;font-size:20pt;font-weight:bold;background-color:#ADD8E6;">Exam4</th>
-      </tr>  
-      
+  $(document).ready(function(){
+      $('#table_id td.y_n').each(function(){
+          if ($(this).text() == 'N') {
+              $(this).css('background-color','#f00');
+          }
+      });
+  });
+
+  </script>
+
+  </head>
+  <body>
+
+    <table id="table_id">
+    <tr><th>Question</th><th>Y/N?</th></tr>
+    <tr><td>I am me.</td><td class="y_n">Y</td></tr>
+    <tr><td>I am him.</td><td class="y_n">N</td></tr>
+    <tr><td>I am not sure.</td><td class="y_n">N</td></tr>
+    <tr><td>This is a table.</td><td class="y_n">Y</td></tr>
     </table>
-    
-</body>
-    </div>
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
-    <script language="javascript" type="text/javascript">
-    
-    
-     //when document is ready
-     $( document ).ready(function() {
-    
-         DynamicTable();
-    
-      });  
-    
-    
-    //URL of the list to be replaced
-    var url= _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('ExamScores')/items";
-    
-    
-    function DynamicTable() {
-    
-           $.ajax({
-                url: url,  
-                method: "GET",  
-                headers: {  
-                    "Accept": "application/json; odata=verbose"  
-                },
-    
-                success: function(data){
-                   
-                data.d.results.forEach(function(item){              
-                
-                //alert("Student.." + item.Title + " " + item.Exam1 + " " + item.Exam2 + " " + item.Exam3 + " " + item.Exam4);
-    
-                   var row= appendTableRow(item);
-                   
-                   //append the formatted row to the table
-     
-                   $("#StudentScores").append(row);          
-                             
-    
-                });    
-    
-                    
-                },
-                error: function(error){
-                       // error handler code goes here
-                  alert("Error Retrieving Data");
-                }
-            });    
-    
-    }
-    
-    
-    function appendTableRow(item)
-    {
-      //dynamically generate row (tr) for the table
-         
-      var row="<tr style=\"width:50%\">";
-      var td= "<td style=\"text-align:center;font-size:15pt; font-weight:bold;\">" + item.Title + "</td>";
-      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam1) + "\">" + item.Exam1 + "</td>";
-      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam2) + "\">" + item.Exam2 + "</td>";
-      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam3) + "\">" + item.Exam3 + "</td>";
-      td=td + "<td style=\"text-align:center;font-size:15pt; font-weight:bold;background-color:" +  getColor(item.Exam4) + "\">" + item.Exam4 + "</td>";
-    
-      row=row+td + "</tr>";
-    
-      //alert(row);
-    
-      return row; 
-     
-    
-    
-    }
-    
-    function getColor(score)
-    {
-     
-       var background="white";
-    
-       if(score<5)
-        {
-          background="red";
-        }
-        else if(score>=5 && score<8)
-        {
-    
-        background="yellow";
-        }
-        else
-        {
-          background="green";
-        }
-    
-    
-       return background;   
-    
-    }
-    
-    </script>
-    
-    
 
+  </body>
 </html>
