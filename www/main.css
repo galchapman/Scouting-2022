@@ -55,6 +55,7 @@ body {
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 17px;
+	border: 0.8px solid rgb(255, 140, 58);
 }
 
 .nav-bar a:hover {
@@ -63,7 +64,7 @@ body {
 }
 
 .nav-bar a.active {
-	background-color: #FF5F1F;
+	background-color: rgb(255, 150, 74);
 	color: white;
 }
 
