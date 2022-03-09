@@ -190,7 +190,7 @@ body {
 
 /* Button Style Class */
 
-.form-style button, .button-style input[type=button], .button-style input[type=submit] {
+.form-style button, .button-style button, .button-style input[type=button], .button-style input[type=submit] {
 	display: inline;
 	user-select: none;
 	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
