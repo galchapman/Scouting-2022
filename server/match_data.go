@@ -1,6 +1,7 @@
 package server
 
 import (
+	"Scouting-2022/server/database"
 	"fmt"
 	"net/http"
 	"os"
@@ -10,6 +11,12 @@ import (
 var matchDataHtml string
 
 func (server *Server) handleMatchData(w http.ResponseWriter, req *http.Request) {
+
+	if _, session := server.checkSession(req); session == nil || session.user.Role < database.ViewerRole {
+		http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+		return
+	}
+
 	if matchDataHtml == "" {
 		content, err := os.ReadFile("www/match-data.html")
 		if err != nil {

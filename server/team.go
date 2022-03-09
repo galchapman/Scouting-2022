@@ -11,6 +11,12 @@ import (
 var teamPageHtml string
 
 func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
+
+	if _, session := server.checkSession(req); session == nil || session.user.Role < database.ViewerRole {
+		http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+		return
+	}
+
 	if teamPageHtml == "" {
 		content, err := os.ReadFile("www/team-page.html")
 		if err != nil {
