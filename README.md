@@ -11,13 +11,13 @@ package secrets
 
 const TOA_API_KEY = "--- YOUR API KEY ---"
 ```
-And pass the event key as an argument to NewServer in [main.go](main.go).
+And pass the event key as an argument to NewServer in [main.go](main.go).\
 Also you will need to create a directory named robots.
 Then after all that we finally can start our server.
 ```shell
 $ go run .
 ```
-Please note that the default port is 80 So if you have a problem with this you are welcome to change it in [server.go](server.go).
+Please note that the default port is 80 So if you have a problem with this you are welcome to change it in [server.go](server.go).\
 And just like that you are done! The server is running and you are welcome to use it.
 
 ## Project Structure
@@ -40,6 +40,6 @@ The code was writen in about a month while a FTC season was going so we didn't s
 So if you spot a bug please resport it or even better make a pull request with the fix.
 
 ## Credits
-All of the backend - Gal
-Almost all of the front end - Ori
-Some help - Mayan
+All of the backend - Gal\
+Almost all of the front end - Ori\
+Some help - Mayan\
