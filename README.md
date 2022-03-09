@@ -56,5 +56,5 @@ We didn't have a lot of time to debug this so if you spot a bug please resport i
 ## Credits
 
 All the backend + Half of the front end - Gal\
-Half the front end - Ori\
+The other half the front end - Ori\
 Some random stuff here and then - Mayan
