@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="main.css">
 		
-		<title>${GROUP_NUMBER} - ${TEAM_NAME}</title>
+		<title>${GROUP_NUMBER}</title>
 	</head>
 	<style>
 		table, td {
@@ -16,7 +16,11 @@
 				text-align: center;
 				vertical-align: middle;
 				color: black;
-				padding: 1px;
+				padding: 0px;
+				margin: 0px;
+				font-size: 30px;
+				font-weight: 500;
+				
 			}
 
 			th{
@@ -28,16 +32,13 @@
 				vertical-align: middle;
 				top: 0;
 				color: black;
-				font-size: 20px;
+				font-size: 15px;
+				font-weight: 700;
 			}
 	</style>
-	<!--
-		${GROUP_NUMBER}
-		${TEAM_NAME}
-		${MATCHES}
-	 -->
+	
 	<body  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-		<div class="form-style">
+		<div class="form-style" >
 			<div>
 				<h1 >${GROUP_NUMBER} - ${TEAM_NAME}</h1>
 				<h2 style="font-size: 140%; ">מקצים: ${MATCHES}</h2>
@@ -53,29 +54,38 @@
 				<label>ברווזים ממוצע: ${AVERAGE_DUCKS}</label><br>
 				<label>הצלחה בכאפ: ${PERCENT_CUP}</label><br><br>
 
+
+			<div style="align-items: center; padding-right: 2.3cm;">
+				<table style="direction: ltr; width: 90%; align-items: center;">
+					<tr>
+						<th>Match</th>
+						<th>Color</th>
+						<th>Location</th>
+						<th>Line</th>
+						<th>AutoData</th>
+						<th>AutoSto</th>
+						<th>AutoShip</th>
+						<th>CubeLvl</th>
+						<th>Parking</th>
+						<th>Storage</th>
+						<th>Tower1</th>
+						<th>Tower2</th>
+						<th>Tower3</th>
+						<th>Shared</th>
+						<th>Ducks</th>
+						<th>Cap</th>
+						<th>Work</th>
+					</tr>
+					
+	 
+	
+	
+					${DATA}
+				</table>
+
+			</div>
 				
-			<table style="direction: ltr; width: 90%;">
-				<tr>
-					<th>Match</th>
-					<th>Alliance</th>
-					<th>Location</th>
-					<th>DottedLine</th>
-					<th>AutoData</th>
-					<th>AutoStorage</th>
-					<th>AutoShipping</th>
-					<th>CubeLevel</th>
-					<th>Parking</th>
-					<th>Storage</th>
-					<th>Shipping1</th>
-					<th>Shipping2</th>
-					<th>Shipping3</th>
-					<th>Shared</th>
-					<th>Ducks</th>
-					<th>Capping</th>
-					<th>Work</th>
-				</tr>
-				${DATA}
-			</table>
+			
 
 			<div>
 				<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>">
