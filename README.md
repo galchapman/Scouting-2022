@@ -51,7 +51,7 @@ For more reading about the server use the [site documentation](www/README.md).
 
 ## Final Notes
 
-The code was writen in about a month while a FTC season was going so we didn't spend a lot of time on it.
+The code was writen in about a month while a FTC season was going so we didn't spend a lot of time on debugging.
 So if you spot a bug please resport it or even better make a pull request with the fix.
 
 ## Credits
