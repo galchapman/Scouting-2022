@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="he">
+	<head>
+		<title>Quest</title>
+	</head>
+	<body>
+		<!-- <div>
+			<br><div>
+				<h1>______________________________?</h1>
+            </div><br>
+
+            <div>
+                <button class="tubbon">לחץ לרמז</button>
+				<h2 id="hint1" hidden>hint1////////////////////////</h2>
+                <h2 id="hint2" hidden>hint2////////////////////////</h2>
+            </div><br><br><br>
+
+            <div>
+                <button class="tubbon">לחץ לתשובה</button>
+				<h2 id="answer" hidden>answer///////////////////////</h2>
+            </div>
+
+		</div> -->
+            <br><br><br><br><br><br><br><br><br>
+<!-- 
+		<button onclick="toggleText()" class="tubbon">button</button>
+		<p id="hint" style="display: none;">Text</p> -->
+
+		<button onclick="toggleText()" class="tubbon">לחץ לרמז הראשון</button>
+		<p id="hint" style="display: none;">answer///////////////////////</p>
+
+		<button onclick="toggleText1()" class="tubbon">לחץ לרמז השני</button>
+		<p id="hint1" style="display: none;">answer///////////////////////</p>
+
+		<button onclick="toggleText2()" class="tubbon">לחץ לתשובה</button>
+		<p id="hint2" style="display: none;">answer///////////////////////</p>
+
+
+
+
+	</body>
+	<style>
+	body {
+		-webkit-font-smoothing: antialiased;
+		margin: 0;
+		background-color: var(--color-background-color);
+		font-size: 130%;
+		font-family: Verdana, sans-serif;
+		color: black;
+		direction:rtl;
+        text-align: center;
+        
+        
+	}
+
+    .tubbon { 
+        width:22cm;
+        font-family:Arial;
+        height:3.25cm;
+        font-size:1.8cm;
+        text-align:center;
+        direction:ltr;
+
+
+    }
+
+	
+	</style>
+	<script>
+		function ToggleHint1(){
+		  var x = document.getElementById("hint");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+
+		function ToggleHint1(){
+		  var x = document.getElementById("hint1");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+
+		function ToggleHintAnswer(){
+		  var x = document.getElementById("hint2");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+
+		
+	</script>
+	<script>
+        var div1Alias = $.noConflict();
+        var div2Alias = div1Alias.noConflict();
+        jQuery(document).ready(function(){
+             alert(div1Alias( "#div1" ).html());
+             alert(div2Alias( "#div2" ).html());
+        });
+    </script>
+	
+
+</html>

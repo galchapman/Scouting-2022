@@ -2,9 +2,11 @@
 <html lang="he">
 	<head>
 		<title>חידון הקבוצות !</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	</head>
 	<body>
-            <br><div>
+		<!-- <div>
+			<br><div>
 				<h1>______________________________?</h1>
             </div><br>
 
@@ -17,7 +19,28 @@
             <div>
                 <button class="tubbon">לחץ לתשובה</button>
 				<h2 id="answer" hidden>answer///////////////////////</h2>
-            </div>   
+            </div>
+
+		</div> -->
+            <br><br><br><br><br><br><br><br><br>
+
+
+		<button class="tubbon">לחץ לרמז הראשון</button><br><br><br>
+
+		<div class="hint"  id="hint" hidden>
+			<label>answer///////////////////////</label>
+		</div><br>
+
+
+		<button id="button1" class="tubbon">לחץ לרמז השני</button><br><br><br>
+
+		<div class="hint1" id="hint1" hidden>
+			<label >answer///////////////////////</label>
+		</div><br>
+
+
+
+
 	</body>
 	<style>
 	body {
@@ -46,4 +69,30 @@
 
 	
 	</style>
+	<script>
+		$(document).ready(function() {
+			$("button").click(function() {
+			  $(".hint").toggle();
+			  if ($.trim($(this).text()) == 'לחץ לרמז הראשון') {
+				$(this).text('רמז ראשון');
+			  } else {
+				$(this).next('Hide');
+			  }
+			});
+		  }); //this is missing
+
+
+
+		  $(document).ready(function() {
+			$("button1").click(function() {
+			  $(".hint1").toggle();
+			  if ($.trim($(this).text()) == 'לחץ לרמז השני') {
+				$(this).text('רמז שני');
+			  } else {
+				$(this).next('Hide');
+			  }
+			});
+		  }); //this is missing
+	</script>
+
 </html>
