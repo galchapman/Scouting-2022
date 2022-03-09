@@ -43,3 +43,11 @@ func (db *Database) GetTeamsGames() ([]FormAnswer, error) {
 
 	return answers, err
 }
+
+func (db *Database) InsertSuperFormAnswer(answer SupervisorForm) error {
+	_, err := db.db.Exec("INSERT INTO SUPERVISOR_FORM (SCOUTER, GAME, NEAR_RED_INTERFERENCE, NEAR_BLUE_INTERFERENCE, RED1_PENALTY, RED1_NOTES, RED2_PENALTY, RED2_NOTES, BLUE1_PENALTY, BLUE1_NOTES, BLUE2_PENALTY, BLUE2_NOTES) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)",
+		answer.Scouter.ID, answer.Game.ID, answer.NearRedInterference, answer.NearBlueInterference,
+		answer.Red1Penalty, answer.Red1Notes, answer.Red2Penalty, answer.Red2Notes,
+		answer.Blue1Penalty, answer.Blue1Notes, answer.Blue2Penalty, answer.Blue2Notes)
+	return err
+}
