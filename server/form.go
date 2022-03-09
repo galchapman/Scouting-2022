@@ -75,6 +75,7 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 				return
 			}
 		}
+		delete(currentGameScouters, session.user.ID)
 
 		if preFormHtml == "" {
 			content, err := os.ReadFile("www/pre-form.html")
