@@ -2,7 +2,8 @@ package server
 
 import (
 	"Scouting-2022/server/database"
-	"math/rand"
+	"crypto/rand"
+	"math/big"
 	"net/http"
 	"strconv"
 )
@@ -94,12 +95,17 @@ func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 const SessionLength = 16
 
 func GenerateUniqueSessionValue() string {
-	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-	b := make([]byte, SessionLength)
-	for i := range b {
-		b[i] = letterBytes[rand.Intn(len(letterBytes))]
+	const letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	ret := make([]byte, SessionLength)
+	for i := 0; i < SessionLength; i++ {
+		num, err := rand.Int(rand.Reader, big.NewInt(int64(len(letters))))
+		if err != nil {
+			return ""
+		}
+		ret[i] = letters[num.Int64()]
 	}
-	return string(b)
+
+	return string(ret)
 }
 
 func (server *Server) addSession(session string, user database.User) {

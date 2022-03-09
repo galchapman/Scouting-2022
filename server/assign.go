@@ -129,24 +129,22 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 				panic(err)
 			}
 
-			var ok bool
-
-			if game.Red1, ok = server.event.groups[Red1]; !ok {
+			if game.Red1, err = server.db.GetTeam(Red1); err != nil {
 				http.Error(w, strconv.Itoa(Red1)+" one Team was not Found", http.StatusNotFound)
 				return
 			}
 
-			if game.Red2, ok = server.event.groups[Red2]; !ok {
+			if game.Red2, err = server.db.GetTeam(Red1); err != nil {
 				http.Error(w, strconv.Itoa(Red2)+" Team was not Found", http.StatusNotFound)
 				return
 			}
 
-			if game.Blue1, ok = server.event.groups[Blue1]; !ok {
+			if game.Blue1, err = server.db.GetTeam(Red1); err != nil {
 				http.Error(w, strconv.Itoa(Blue1)+" one Team was not Found", http.StatusNotFound)
 				return
 			}
 
-			if game.Blue2, ok = server.event.groups[Blue2]; !ok {
+			if game.Blue2, err = server.db.GetTeam(Red1); err != nil {
 				http.Error(w, strconv.Itoa(Blue2)+" Team was not Found", http.StatusNotFound)
 				return
 			}
