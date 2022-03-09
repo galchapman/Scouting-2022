@@ -28,9 +28,7 @@
 				vertical-align: middle;
 				top: 0;
 				color: black;
-				font-size: 40px;
-				
-
+				font-size: 20px;
 			}
 	</style>
 	<!--
@@ -45,246 +43,45 @@
 				<h2 style="font-size: 140%; ">מקצים: ${MATCHES}</h2>
 			</div>
 				<h2 style="font-size: 140%; ">ממוצעים:</h2>
-				<label>ניקוד ממוצע: {AVERAGE_TOTAL}</label><br>
-				<label>עבודה ממוצע: {AVERAGE_WORK}</label><br><br>
-				<label>אוטונומי ממוצע: {AVERAGE_AUTO}</label><br>
-				<label>הצלחה בברווזים: {PERCENT_DUCK}</label><br>
-				<label>אלמטים אוטונומי ממוצע:{AVERAGE_ELEMENTS_AUTO}</label><br><br>
-				<label>משותף ממוצע: {AVERAGE_SHARED}</label><br>
-				<label>מגדל ממוצע: {AVERAGE_TOWER}</label><br>
-				<label>מחסן ממוצע: {AVERAGE_STORAGE}</label><br>
-				<label>ברווזים ממוצע: {AVERAGE_DUCKS}</label><br>
-				<label>הצלחה בכאפ: {PERCENT_CUP}</label><br><br>
+				<label>ניקוד ממוצע: ${AVERAGE_TOTAL}</label><br>
+				<label>עבודה ממוצע: ${AVERAGE_WORK}</label><br><br>
+				<label>אוטונומי ממוצע: ${AVERAGE_AUTO}</label><br>
+				<label>הצלחה בברווזים: ${PERCENT_DUCK}</label><br>
+				<label>אלמטים אוטונומי ממוצע: ${AVERAGE_ELEMENTS_AUTO}</label><br><br>
+				<label>משותף ממוצע: ${AVERAGE_SHARED}</label><br>
+				<label>מגדל ממוצע: ${AVERAGE_TOWER}</label><br>
+				<label>ברווזים ממוצע: ${AVERAGE_DUCKS}</label><br>
+				<label>הצלחה בכאפ: ${PERCENT_CUP}</label><br><br>
 
 				
-			<table>
+			<table style="direction: ltr; width: 90%;">
 				<tr>
 					<th>Match</th>
-					<th>GROUP_COLOR</th>
+					<th>Alliance</th>
+					<th>Location</th>
+					<th>DottedLine</th>
+					<th>AutoData</th>
+					<th>AutoStorage</th>
+					<th>AutoShipping</th>
+					<th>CubeLevel</th>
+					<th>Parking</th>
 					<th>Storage</th>
 					<th>Shipping1</th>
 					<th>Shipping2</th>
 					<th>Shipping3</th>
 					<th>Shared</th>
-					<th>TelCarosel</th>
+					<th>Ducks</th>
 					<th>Capping</th>
 					<th>Work</th>
-					
-					
-					
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>0</td>
-					<td>11</td>
-					<td>2</td>
-					<td>0</td>
-					<td>1</td>
-					<td>הצליחו</td>
-					<td>הכל</td>
-					
-					
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>0</td>
-					<td>11</td>
-					<td>2</td>
-					<td>0</td>
-					<td>1</td>
-					<td>הצליחו</td>
-					<td>הכל</td>
-					
-					
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>0</td>
-					<td>11</td>
-					<td>2</td>
-					<td>0</td>
-					<td>1</td>
-					<td>הצליחו</td>
-					<td>הכל</td>
-					
-					
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>0</td>
-					<td>11</td>
-					<td>2</td>
-					<td>0</td>
-					<td>1</td>
-					<td>הצליחו</td>
-					<td>הכל</td>
-					
-					
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>0</td>
-					<td>11</td>
-					<td>2</td>
-					<td>0</td>
-					<td>1</td>
-					<td>הצליחו</td>
-					<td>הכל</td>
-					
-					
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>0</td>
-					<td>11</td>
-					<td>2</td>
-					<td>0</td>
-					<td>1</td>
-					<td>הצליחו</td>
-					<td>הכל</td>
-					
-					
-				</tr>
-			</table><br><br>
-
-			<table>
-				<tr>
-					<th>Match</th>
-					<th>GROUP_COLOR</th>
-					<th>Location</th>
-					<th>DottedLine</th>
-					<th>AutoCarosel</th>
-					<th>AutoStorage</th>
-					<th>AutoShipping</th>
-					<th>CubeLevel</th>
-					<th>Parking</th>
-					
-					
-					
-					
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					
-					<td>3</td>
-					<td>מחסן מלא</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					
-					<td>3</td>
-					<td>מחסן מלא</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					
-					<td>3</td>
-					<td>מחסן מלא</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					
-					<td>3</td>
-					<td>מחסן מלא</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					
-					<td>3</td>
-					<td>מחסן מלא</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>אדום</td>
-					<td>קרוב למחסן</td>
-					<td>פסלון</td>
-					<td>לא ניסו</td>
-					<td>0</td>
-					<td>2</td>
-					
-					<td>3</td>
-					<td>מחסן מלא</td>
-				</tr>
-				
-			</table><br><br>
+				${DATA}
+			</table>
 
 			<div>
 				<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>">
-			</div>	
-			
-				
-
-				
-			
-
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
+			</div>
 		</div>
 
-		
+
 	</body>
 </html>

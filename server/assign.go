@@ -24,8 +24,7 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 
 			games, err := server.db.GetGames()
 			if err != nil {
-				http.Error(w, "Not Found", 404)
-				println("ERROR assign:24 " + err.Error())
+				http.Error(w, err.Error(), http.StatusNotFound)
 				return
 			}
 
@@ -45,8 +44,7 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 			if assignHtml == "" {
 				content, err := os.ReadFile("www/assign.html")
 				if err != nil {
-					http.Error(w, "Not Found", 404)
-					println("ERROR assign:24 " + err.Error())
+					http.Error(w, err.Error(), http.StatusNotFound)
 					return
 				}
 				assignHtml = string(content)
@@ -54,8 +52,7 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 
 			games, err := server.db.GetGames()
 			if err != nil {
-				http.Error(w, "Not Found", 404)
-				println("ERROR assign:24 " + err.Error())
+				http.Error(w, err.Error(), http.StatusNotFound)
 				return
 			}
 
