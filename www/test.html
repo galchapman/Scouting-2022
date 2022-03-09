@@ -1,131 +1,113 @@
-<!DOCTYPE html>
-
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Javascript HTML Table - Average Value</title>
-        <meta charset="windows-1252">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-    </head>
+  <title>Test</title>
+  
+  <head>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+  <script type="text/javascript">
 
 
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
-      <script type="text/javascript">
+  $(document).ready(function(){
+      $('#table_id td.format').each(function(){
+          if ($(this).text() >= 5) {
+              $(this).css('color','var(--big-color)');
+          }
+          else $(this).css('color','var(--small-color)')
+      });
+  });
 
+  $(document).ready(function(){
+      $('#table_id td.format1').each(function(){
+          if ($(this).text() >= 8) {
+              $(this).css('color','var(--big-color)');
+          }
+          else $(this).css('color','var(--small-color)')
+      });
+  });
 
-        $(document).ready(function(){
-            $('#table td.format').each(function(){
-                if ($(this).text() >= 5) {
-                    $(this).css('color','var(--big-color)');
-                }
-                else $(this).css('color','var(--small-color)')
-            });
-        });
+  </script>
 
-        $(document).ready(function(){
-            $('#table td.format1').each(function(){
-                if ($(this).text() >= 8) {
-                    $(this).css('color','var(--big-color)');
-                }
-                else $(this).css('color','var(--small-color)')
-            });
-        });
+  
 
-       </script>
+  <style>
+    :root {
+		--big-color: rgb(0, 255, 21);
+    --small-color: rgb(255, 0, 0);
+		
+		
+	}
 
-
-    <style>
-      :root {
-      --big-color: rgb(0, 255, 21);
-      --small-color: rgb(255, 0, 0);
-      
-      
+    table, td {
+            border: 1px solid black;
+              border-collapse: collapse;
+            background-color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
     }
-  
-      table, td {
-              border: 1px solid black;
-                border-collapse: collapse;
-              background-color: white;
-              font-family: Arial, Helvetica, sans-serif;
-              text-align: center;
-              vertical-align: middle;
-              padding: 10px;
-      }
-  
-      th{
-              border: 1px solid black;
-              background-color: rgb(255, 110, 58);
-                border-collapse: collapse;
-              font-family: Arial, Helvetica, sans-serif;
-              text-align: center;
-              vertical-align: middle;
-              top: 0;
-              padding: 10px;
-              
-  
-      }
-  
-     
-    </style>
-  
-    <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; color: black;">
-        <table id="table" >
-          <tr>
-            <th>Group</th>
-            <th>Tower</th>
-            <th>Shared</th>
-          </tr>
-          <tr>
-            <td>18833</td>
-            <td class="format" >5</td>
-            <td class="format1" >1</td>
-          </tr>
-          <tr>
-            <td>12797</td>
-            <td class="format">4</td>
-            <td class="format1">2</td>
-          </tr>
-          <tr>
-            <td>11056</td>
-            <td class="format">2</td>
-            <td class="format1">8</td>
-          </tr>
-          <tr>
-            <td>15637</td>
-            <td class="format">6</td>
-            <td class="format1">1</td>
-          </tr>
-          <tr>
-            <td>17019</td>
-            <td class="format">4</td>
-            <td class="format1">11</td>
-          </tr>
-          <tr>
-            <td>9662</td>
-            <td class="format">5</td>
-            <td class="format1">3</td>
-          </tr>
-        </table>
-        
-        <span id="val"></span>
-        
-        <script>
+
+    th{
+            border: 1px solid black;
+            background-color: rgb(255, 110, 58);
+              border-collapse: collapse;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            vertical-align: middle;
+            top: 0;
+            padding: 10px;
             
-            var table = document.getElementById("table"), avgVal, sumVal = 0, 
-                        rowCount = table.rows.length - 1;// minus the header
-            
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);
-            }
-            
-            document.getElementById("val").innerHTML = "Average Value = " + parseInt(sumVal / rowCount);
-            
-        </script>
-        
-        
-        
-    </body>
+
+    }
+
+   
+  </style>
+
+  </head>
+  <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; color: black;">
+
+  
+
+    <table id="table_id">
+    <tr>
+      <th>Group</th>
+      <th>Tower</th>
+      <th>Shared</th>
+    </tr>
+    <tr>
+      <td>18833</td>
+      <td class="format" >5</td>
+      <td class="format1" >1</td>
+    </tr>
+    <tr>
+      <td>12797</td>
+      <td class="format">4</td>
+      <td class="format1">2</td>
+    </tr>
+    <tr>
+      <td>11056</td>
+      <td class="format">2</td>
+      <td class="format1">8</td>
+    </tr>
+    <tr>
+      <td>15637</td>
+      <td class="format">6</td>
+      <td class="format1">1</td>
+    </tr>
+    <tr>
+      <td>17019</td>
+      <td class="format">4</td>
+      <td class="format1">11</td>
+    </tr>
+    <tr>
+      <td>9662</td>
+      <td class="format">5</td>
+      <td class="format1">3</td>
+    </tr>
+    </table>
     
+
     
+
+  </body>
 </html>
