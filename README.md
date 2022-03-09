@@ -42,3 +42,4 @@ So if you spot a bug please resport it or even better make a pull request with t
 ## Credits
 All of the backend - Gal
 Almost all of the front end - Ori
+Some help - Mayan
