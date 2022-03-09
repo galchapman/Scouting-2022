@@ -11,8 +11,8 @@ func (db *Database) InsertGame(game Game) error {
 
 func (db *Database) UpdateGame(game Game) error {
 	_, err := db.db.Exec("UPDATE GAMES SET RED_TEAM1 = $1, RED_TEAM2 = $2, BLUE_TEAM1 = $3, BLUE_TEAM2 = $4, RED_SCOUTER1 = $5, RED_SCOUTER2 = $6, BLUE_SCOUTER1 = $7, BLUE_SCOUTER2 = $8 WHERE ID = $9",
-		game.ID, game.Red1.TeamNumber, game.Red2.TeamNumber, game.Blue1.TeamNumber, game.Blue2.TeamNumber,
-		game.ScouterRed1.ID, game.ScouterRed2.ID, game.ScouterBlue1.ID, game.ScouterBlue2.ID)
+		game.Red1.TeamNumber, game.Red2.TeamNumber, game.Blue1.TeamNumber, game.Blue2.TeamNumber,
+		game.ScouterRed1.ID, game.ScouterRed2.ID, game.ScouterBlue1.ID, game.ScouterBlue2.ID, game.ID)
 	return err
 }
 

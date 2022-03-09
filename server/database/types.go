@@ -112,3 +112,20 @@ type TeamScore struct {
 	TotalDucksCount             int
 	TotalShippingElementsPlaced int
 }
+
+type SupervisorForm struct {
+	ID                   int
+	Scouter              User
+	Game                 Game
+	NearRedInterference  bool
+	NearBlueInterference bool
+
+	Red1Penalty  string
+	Red1Notes    string
+	Red2Penalty  string
+	Red2Notes    string
+	Blue1Penalty string
+	Blue1Notes   string
+	Blue2Penalty string
+	Blue2Notes   string
+}

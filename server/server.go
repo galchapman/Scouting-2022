@@ -25,7 +25,7 @@ func NewServer(TOAApiKey string, eventKey string) (*Server, error) {
 	if err != nil {
 		return nil, err
 	}
-	_, _ = db.NewUser("Admin", "password", "Admin", "Admin")
+	_ = db.NewUser("Admin", "password", "Admin", "Admin")
 
 	self = &Server{db: db, client: toa_api.NewTOAClient(TOAApiKey, "Megiddo Lions Scouting System"),
 		sessions: make(map[string]Session),

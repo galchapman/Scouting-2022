@@ -17,6 +17,7 @@ var formServMutex sync.Mutex
 var formHtml string
 var postFormHtml string
 var preFormHtml string
+var superFormHtml string
 
 func (server *Server) handleManagement(w http.ResponseWriter, req *http.Request) {
 	if currentGameScouters == nil {
@@ -56,64 +57,79 @@ func (server *Server) handleManagement(w http.ResponseWriter, req *http.Request)
 
 func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 	var session *Session
-	var team database.Team
-	var ok bool
 
 	if _, session = server.checkSession(req); session == nil {
 		http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
 		return
 	}
 
-	if team, ok = currentGameScouters[session.user.ID]; !ok {
-		game, err := server.db.GetNextGame(session.user, currentGame)
-		if err != nil {
-			if err == sql.ErrNoRows {
-				w.WriteHeader(http.StatusOK)
-				_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+	switch session.user.Role {
+	case database.ScouterRole:
+		var ok bool
+		var team database.Team
+		if team, ok = currentGameScouters[session.user.ID]; !ok {
+			game, err := server.db.GetNextGame(session.user, currentGame)
+			if err != nil {
+				if err == sql.ErrNoRows {
+					w.WriteHeader(http.StatusOK)
+					_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+				} else {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+			}
+
+			if preFormHtml == "" {
+				content, err := os.ReadFile("www/pre-form.html")
+				if err != nil {
+					http.Error(w, "Not Found", http.StatusNotFound)
+					println("ERROR index:15 " + err.Error())
+					return
+				}
+				preFormHtml = string(content)
+			}
+
+			values := make(map[string]string)
+			values["${NEXT_MATCH}"] = strconv.Itoa(game.ID)
+
+			if game.ScouterRed1.ID == session.user.ID {
+				values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red1.TeamNumber)
+				values["${GROUP_COLOR}"] = "אדומה"
+			} else if game.ScouterRed2.ID == session.user.ID {
+				values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red2.TeamNumber)
+				values["${GROUP_COLOR}"] = "אדומה"
+			} else if game.ScouterBlue1.ID == session.user.ID {
+				values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue1.TeamNumber)
+				values["${GROUP_COLOR}"] = "כחולה"
 			} else {
+				values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue2.TeamNumber)
+				values["${GROUP_COLOR}"] = "כחולה"
+			}
+
+			w.Header().Set("Content-Type", "text/html")
+			w.WriteHeader(http.StatusOK)
+			text, err := replaceAll(preFormHtml, values)
+			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
 			}
-		}
-		delete(currentGameScouters, session.user.ID)
-
-		if preFormHtml == "" {
-			content, err := os.ReadFile("www/pre-form.html")
-			if err != nil {
-				http.Error(w, "Not Found", http.StatusNotFound)
-				println("ERROR index:15 " + err.Error())
-				return
-			}
-			preFormHtml = string(content)
-		}
-
-		values := make(map[string]string)
-		values["${NEXT_MATCH}"] = strconv.Itoa(game.ID)
-
-		if game.ScouterRed1.ID == session.user.ID {
-			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red1.TeamNumber)
-			values["${GROUP_COLOR}"] = "אדומה"
-		} else if game.ScouterRed2.ID == session.user.ID {
-			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Red2.TeamNumber)
-			values["${GROUP_COLOR}"] = "אדומה"
-		} else if game.ScouterBlue1.ID == session.user.ID {
-			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue1.TeamNumber)
-			values["${GROUP_COLOR}"] = "כחולה"
-		} else {
-			values["${GROUP_NUMBER}"] = strconv.Itoa(game.Blue2.TeamNumber)
-			values["${GROUP_COLOR}"] = "כחולה"
-		}
-
-		w.Header().Set("Content-Type", "text/html")
-		w.WriteHeader(http.StatusOK)
-		text, err := replaceAll(preFormHtml, values)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			_, _ = w.Write([]byte(text))
 			return
 		}
-		_, _ = w.Write([]byte(text))
-		return
+
+		server.handleScoutForm(w, req, team)
+		break
+	case database.SupervisorRole:
+		server.handleSuperForm(w, req)
+		break
+	default:
+		http.Error(w, "You are not a part of this get out", http.StatusForbidden)
+		break
 	}
+}
+
+func (server *Server) handleScoutForm(w http.ResponseWriter, req *http.Request, team database.Team) {
+	_, session := server.checkSession(req)
 
 	formServMutex.Lock()
 	defer formServMutex.Unlock()
@@ -154,14 +170,26 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 	case http.MethodPost:
 		err := req.ParseForm()
 		if err != nil {
-			println("ERROR session:80 " + err.Error())
-			http.Error(w, "Some error", 500)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
 		ScouterID := session.user.ID
-		Team, _ := currentGameScouters[ScouterID]
-		Game := currentGame
+
+		var teamNumber int
+		var game int
+
+		teamNumber, err = strconv.Atoi(req.PostForm.Get("team"))
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		game, err = strconv.Atoi(req.PostForm.Get("game"))
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+
 		var formAnswer database.FormAnswerResponse
 
 		formAnswer, err = parseScoutFormAnswer(req.PostForm)
@@ -170,13 +198,13 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		err = server.db.InsertAnswer(ScouterID, Team.TeamNumber, Game, formAnswer)
+		err = server.db.InsertAnswer(ScouterID, teamNumber, game, formAnswer)
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
+		delete(currentGameScouters, session.user.ID)
 		w.Header().Set("Location", "/post-form.html")
 		w.WriteHeader(http.StatusSeeOther)
 		break
@@ -367,4 +395,77 @@ func (server *Server) handlePostForm(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	_, _ = w.Write([]byte(text))
+}
+
+func (server *Server) handleSuperForm(w http.ResponseWriter, req *http.Request) {
+	_, session := server.checkSession(req)
+
+	switch req.Method {
+	case http.MethodGet:
+		if superFormHtml == "" {
+			content, err := os.ReadFile("www/supervisor-form.html")
+			if err != nil {
+				http.Error(w, "Not Found", http.StatusNotFound)
+				println("ERROR index:15 " + err.Error())
+				return
+			}
+			superFormHtml = string(content)
+		}
+
+		game, _ := server.db.GetGame(currentGame)
+
+		values := make(map[string]string)
+		values["${MATCH}"] = strconv.Itoa(currentGame)
+		values["${RED1}"] = strconv.Itoa(game.Red1.TeamNumber)
+		values["${RED2}"] = strconv.Itoa(game.Red2.TeamNumber)
+		values["${BLUE1}"] = strconv.Itoa(game.Blue1.TeamNumber)
+		values["${BLUE2}"] = strconv.Itoa(game.Blue2.TeamNumber)
+
+		w.Header().Set("Content-Type", "text/html")
+		w.WriteHeader(http.StatusOK)
+		text, err := replaceAll(superFormHtml, values)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		_, _ = w.Write([]byte(text))
+		break
+	case http.MethodPost:
+		err := req.ParseForm()
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		form := database.SupervisorForm{Scouter: session.user}
+		// Update game type
+		form.Game.ID, err = strconv.Atoi(req.PostForm.Get("game"))
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		form.Game, _ = server.db.GetGame(form.Game.ID)
+		form.Game.GameType = req.PostForm.Get("gameType")
+		_ = server.db.UpdateGame(form.Game)
+
+		// Form data
+		form.NearRedInterference = req.PostForm.Get("red-interference") == "yes"
+		form.NearRedInterference = req.PostForm.Get("blue-interference") == "yes"
+
+		form.Red1Penalty = req.PostForm.Get("red1-penalty")
+		form.Red2Penalty = req.PostForm.Get("red2-penalty")
+		form.Blue1Penalty = req.PostForm.Get("blue1-penalty")
+		form.Blue2Penalty = req.PostForm.Get("blue2-penalty")
+
+		form.Red1Notes = req.PostForm.Get("red1-notes")
+		form.Red2Notes = req.PostForm.Get("red2-notes")
+		form.Blue1Notes = req.PostForm.Get("blue1-notes")
+		form.Blue2Notes = req.PostForm.Get("blue2-notes")
+
+		err = server.db.InsertSuperFormAnswer(form)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
 }
