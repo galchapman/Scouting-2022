@@ -149,25 +149,41 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 				return
 			}
 
-			game.ScouterRed1, err = server.db.GetUserByName(line[3])
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
+			if line[3] != "" {
+				game.ScouterRed1, err = server.db.GetUserByName(line[3])
+				if err != nil {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+			} else {
+				game.ScouterRed1.ID = -1
 			}
-			game.ScouterRed2, err = server.db.GetUserByName(line[5])
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
+			if line[5] != "" {
+				game.ScouterRed2, err = server.db.GetUserByName(line[5])
+				if err != nil {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+			} else {
+				game.ScouterRed2.ID = -1
 			}
-			game.ScouterBlue1, err = server.db.GetUserByName(line[7])
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
+			if line[7] != "" {
+				game.ScouterBlue1, err = server.db.GetUserByName(line[7])
+				if err != nil {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+			} else {
+				game.ScouterBlue1.ID = -1
 			}
-			game.ScouterBlue2, err = server.db.GetUserByName(line[9])
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
+			if line[9] != "" {
+				game.ScouterBlue2, err = server.db.GetUserByName(line[9])
+				if err != nil {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+			} else {
+				game.ScouterBlue2.ID = -1
 			}
 
 			err = server.db.InsertGame(game)

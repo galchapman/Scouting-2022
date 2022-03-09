@@ -75,7 +75,6 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 				return
 			}
 		}
-		delete(currentGameScouters, session.user.ID)
 
 		if preFormHtml == "" {
 			content, err := os.ReadFile("www/pre-form.html")
@@ -160,8 +159,21 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 		}
 
 		ScouterID := session.user.ID
-		Team, _ := currentGameScouters[ScouterID]
-		Game := currentGame
+
+		var teamNumber int
+		var game int
+
+		teamNumber, err = strconv.Atoi(req.PostForm.Get("team"))
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		game, err = strconv.Atoi(req.PostForm.Get("game"))
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+
 		var formAnswer database.FormAnswerResponse
 
 		formAnswer, err = parseScoutFormAnswer(req.PostForm)
@@ -170,13 +182,13 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		err = server.db.InsertAnswer(ScouterID, Team.TeamNumber, Game, formAnswer)
+		err = server.db.InsertAnswer(ScouterID, teamNumber, game, formAnswer)
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
+		delete(currentGameScouters, session.user.ID)
 		w.Header().Set("Location", "/post-form.html")
 		w.WriteHeader(http.StatusSeeOther)
 		break

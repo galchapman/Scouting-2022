@@ -58,7 +58,7 @@ func (user *User) TryLoggingIn(password string) error {
 func (db *Database) GetScouters() ([]User, error) {
 	var users []User
 
-	rows, err := db.db.Query("SELECT ID, NAME, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE ROLE != $1 AND ROLE != $2", AdminRole, ManagerRole)
+	rows, err := db.db.Query("SELECT ID, NAME, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE ROLE == $1 OR ROLE == $2", ScouterRole, ViewerRole)
 	if err != nil {
 		return nil, err
 	}
