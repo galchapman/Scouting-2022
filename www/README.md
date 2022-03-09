@@ -40,6 +40,6 @@ This lets the scouters start filling their forms.
 The form about a team performance in a match.
 This includes some more stuff like [pre-form.html](pre-form.html) and [post-form.html](post-form.html).
 
-### [Supervisor-Form](supervisur-form.html)
+### [Supervisor-Form](supervisor-form.html)
 
 The form the supervisor fills about the game. This includes more high level data like strategy.
