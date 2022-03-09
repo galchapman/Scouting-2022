@@ -1,0 +1,141 @@
+
+<!DOCTYPE HTML>
+<html lang="he">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="main.css">
+		<script>
+			function dec(id) {
+				let element = document.getElementById(id);
+				element.value = Math.max(0, parseInt(element.value)-1)
+			}
+			function inc(id) {
+				let element = document.getElementById(id);
+				element.value = Math.min(99, parseInt(element.value)+1)
+			}
+
+			
+		</script>
+		<title>{MATCH}</title>
+	</head>
+	<body>
+		<div class="form-style">
+			<form class="button-style" method="post">
+				<div>
+					
+					<h3 class="titan" style="font-size: 60px;">פרטים ואוטונומי</h3>
+					
+					<label style="font-size: 1.3cm;">תוצאת קוביה:</label><br><br>  
+				
+					<div class="toggle">
+						<input type="radio" name="cube" id="3"  value="C">
+						<label for="3">C(3/6)</label>
+						<input type="radio" name="cube" id="2"  value="B">
+						<label for="2">B(2/5)</label>
+						<input type="radio" name="cube" id="1" value="A" checked="checked">
+						<label for="1">A(1/4)</label>
+					</div><br>
+
+					<label style="font-size: 1.3cm;">האם הקבוצת הקרוסלה האדומה תפריע לתנועה?</label><br><br>  
+
+					<div class="toggle">
+						<input type="radio" name="red-bypass" id="rb1"  value="כן">
+						<label for="rb1">כן</label>
+						<input type="radio" name="red-bypass" id="rb2"  value="לא">
+						<label for="rb2">לא</label>
+					</div><br>
+
+					<label style="font-size: 1.3cm;">האם הקבוצת הקרוסלה הכחולה תפריע לתנועה?</label><br><br>  
+
+					<div class="toggle">
+						<input type="radio" name="blue-bypass" id="bb1"  value="כן">
+						<label for="bb1">כן</label>
+						<input type="radio" name="blue-bypass" id="bb2"  value="לא">
+						<label for="bb2">לא</label>
+					</div><br>
+
+
+					
+
+
+					<h3 class="titan" style="font-size: 60px;">הערות אסטרטגיה וכרטיסים</h3>
+
+					<label for="notes1" style="font-size: 2cm;">{GROUP_1}</label><br><br>
+					
+					<div class="toggle" >
+						<input type="radio" name="card1" id="red1"  value="Red">
+						<label for="red1">אדום</label>
+						<input type="radio" name="card1" id="non1" value="None" checked="checked">
+						<label for="non1">אין</label>
+						<input type="radio" name="card1" id="yellow1"  value="Yellow">
+						<label for="yellow1">צהוב</label>
+					</div><br>
+
+					
+					<textarea id="notes1" name="notes1" class="arena" style="height: 5cm; font-size: 0.7cm;" ></textarea><br><br>
+
+					<label for="notes1" style="font-size: 2cm;">{GROUP_2}</label><br><br>
+
+					<div class="toggle" >
+                        <input type="radio" name="card2" id="red2"  value="Red">
+                        <label for="red2">אדום</label>
+                        <input type="radio" name="card2" id="non2" value="None" checked="checked">
+                        <label for="non2">אין</label>
+                        <input type="radio" name="card2" id="yellow2"  value="Yellow">
+                        <label for="yellow2">צהוב</label>
+                    </div><br>
+
+					<textarea id="notes2" name="notes2" class="arena" style="height: 5cm; font-size: 0.7cm;" ></textarea><br><br>
+
+					<label for="notes1" style="font-size: 2cm;">{GROUP_3}</label><br><br>
+
+					<div class="toggle" >
+                        <input type="radio" name="card3" id="red3"  value="Red">
+                        <label for="red3">אדום</label>
+                        <input type="radio" name="card3" id="non3" value="None" checked="checked">
+                        <label for="non3">אין</label>
+                        <input type="radio" name="card3" id="yellow3"  value="Yellow">
+                        <label for="yellow3">צהוב</label>
+                    </div><br>
+        
+                
+                    <textarea id="notes3" name="notes3" class="arena" style="height: 5cm; font-size: 0.7cm;" ></textarea><br><br>
+						
+
+					<label for="notes1" style="font-size: 2cm;">{GROUP_4}</label><br><br>
+
+					<div class="toggle" >
+                        <input type="radio" name="card4" id="red4"  value="Red">
+                        <label for="red4">אדום</label>
+                        <input type="radio" name="card4" id="non4" value="None" checked="checked">
+                        <label for="non4">אין</label>
+                        <input type="radio" name="card4" id="yellow4"  value="Yellow">
+                        <label for="yellow4">צהוב</label>
+                    </div><br>
+        
+                
+                    <textarea id="notes4" name="notes4" class="arena" style="height: 5cm; font-size: 0.7cm;" ></textarea><br><br>
+
+
+
+
+        
+                
+                    
+
+
+		
+				
+
+					
+					
+
+
+					<input type="submit" value="הגשת טופס" style="width:19cm; font-size: 1.7cm; height:2.8cm ; vertical-align: middle; direction: ltr; text-align: center; font-family: Arial, Helvetica, sans-serif;"><br><br>	
+
+				</div> 
+				
+			</form>
+		</div>
+	</body>
+</html>
