@@ -34,9 +34,10 @@
 			}
 		</style>
 		<title>תוצאות</title>
+		<link rel="stylesheet" href="main.css">
 		
 	</head>
-	<body style="margin: 20px;">
+	<body style="font-size: 100%">
 		<div class="nav-bar">
 			<a href="/" class="active" style="background-color: rgb(255,108,0);">Main</a>
 			<a href="/login.html">Login</a>
@@ -46,20 +47,22 @@
 			<a href="/assign.html">Assign</a>
 			<a href="/ranking.html" class="active">Ranked</a>
 		</div>
-		<table style="width:100%">
-			<tr>
-				<th>Games Played</th>
-				<th>Team</th>
-				<th>Score</th>
-				<th>Auto Score</th>
-				<th>Auto DUCKS</th>
-				<th>Auto Tower</th>
-				<th>Tower</th>
-				<th>Shared</th>
-				<th>Ducks</th>
-				<th>Cap</th>
-			</tr>
-			${DATA}
-		  </table>
+		<div style="margin: 20px">
+			<table style="width:100%">
+				<tr>
+					<th>Games Played</th>
+					<th>Team</th>
+					<th>Score</th>
+					<th>Auto Score</th>
+					<th>Auto DUCKS</th>
+					<th>Auto Tower</th>
+					<th>Tower</th>
+					<th>Shared</th>
+					<th>Ducks</th>
+					<th>Cap</th>
+				</tr>
+				${DATA}
+			</table>
+		</div>
 	</body>
 </html>
