@@ -76,8 +76,8 @@ func (server *Server) handleRanking(w http.ResponseWriter, req *http.Request) {
 
 	for _, kv := range ss {
 		s := kv.v
-		data += fmt.Sprintf("<tr><td>%d</td><td>%d</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td></tr>",
-			s.GamesPlayed, kv.k, float32(s.TotalScore)/float32(s.GamesPlayed), float32(s.AutoTotalScore)/float32(s.GamesPlayed),
+		data += fmt.Sprintf("<tr><td>%d</td><td><a href=\"/team.html?team=%d\">%d</a></td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td></tr>",
+			s.GamesPlayed, kv.k, kv.k, float32(s.TotalScore)/float32(s.GamesPlayed), float32(s.AutoTotalScore)/float32(s.GamesPlayed),
 			float32(s.TotalDucksCountAuto)/float32(s.AutoStartedNear), float32(s.TotalTowerScoreAuto)/float32(s.AutoStartedNear),
 			float32(s.TotalTowerScore)/float32(s.GamesPlayed), float32(s.TotalSharedScore)/float32(s.GamesPlayed),
 			float32(s.TotalDucksCount)/float32(s.GamesPlayed), float32(s.TotalShippingElementsPlaced)/float32(s.GamesPlayed))
