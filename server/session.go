@@ -18,7 +18,11 @@ func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 		query := req.URL.Query()
 		if query.Has("session") {
 			w.Header().Set("Set-Cookie", "session="+query.Get("session"))
-			w.Header().Set("Location", "/")
+			if session, ok := server.sessions[query.Get("session")]; ok && session.user.Role == database.ScouterRole {
+				w.Header().Set("Location", "/form.html")
+			} else {
+				w.Header().Set("Location", "/")
+			}
 			w.WriteHeader(http.StatusSeeOther)
 		} else if query.Has("mint") {
 			if _, session := server.checkSession(req); session == nil || session.user.Role < database.ManagerRole {
@@ -29,26 +33,21 @@ func (server *Server) handleLogin(w http.ResponseWriter, req *http.Request) {
 			session := GenerateUniqueSessionValue()
 			UID, err := strconv.Atoi(query.Get("mint"))
 			if err != nil {
-				http.Error(w, "Invalid request parameters for this action", 400)
-				println("ERROR session:32 " + err.Error())
+				http.Error(w, err.Error(), http.StatusBadRequest)
 				return
 			}
 			// Get user
 			var user database.User
 			user, err = server.db.GetUser(UID)
 			if err != nil {
-				http.Error(w, "Invalid request parameters for this action", 400)
-				println("ERROR session:32 " + err.Error())
+				http.Error(w, err.Error(), http.StatusBadRequest)
 				return
 			}
 			server.addSession(session, user)
 			// Returns session
 			w.WriteHeader(http.StatusCreated)
 			w.Header().Set("Content-Type", "text/plain")
-			_, err = w.Write([]byte(session))
-			if err != nil {
-				println("ERROR session:55 " + err.Error())
-			}
+			_, _ = w.Write([]byte(session))
 		} else {
 			http.ServeFile(w, req, "www/login.html")
 		}
