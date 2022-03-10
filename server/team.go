@@ -71,11 +71,13 @@ func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
 	var notes string
 	for _, game := range games {
 		score.Add(game)
-		notes += html.EscapeString(game.Notes) + "<br>"
+		if game.Notes != "" {
+			notes += "<textbox class=\"arena\">" + html.EscapeString(game.Notes) + "</textbox><br>"
+		}
 	}
 
 	values["${NOTES}"] = notes
-	values["${AVERAGE_TOTAL}"] = strconv.Itoa(score.TotalDucksCount)
+	values["${AVERAGE_TOTAL}"] = fmt.Sprintf("%.2f", float32(score.TotalScore)/float32(len(games)))
 	values["${AVERAGE_WORK}"] = fmt.Sprintf("%.2f", float32(score.Worked)/float32(len(games)))
 	values["${AVERAGE_AUTO}"] = fmt.Sprintf("%.2f", float32(score.AutoTotalScore)/float32(len(games)))
 	values["${PERCENT_DUCK}"] = fmt.Sprintf("%.2f", 100*float32(score.TotalDucksCountAuto)/float32(score.AutoStartedNear))
@@ -89,15 +91,17 @@ func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
 	var data string
 
 	for _, game := range games {
-		data += fmt.Sprintf("<tr><td>%d</td><td>%d</td><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%s</td><td>%s</td><td>%s</td></tr>",
-			game.Game.ID, game.Scouter.ID, game.Team.TeamNumber, game.Location, game.Alliance, game.AutoDuck, game.AutoStorage, game.AutoShipping, game.CubeLevel, game.Parking, game.Storage, game.ShippingLow, game.ShippingMid, game.ShippingHigh, game.Shared, game.TeleopDucks, game.Capping, game.Worked, game.Notes)
+		data += fmt.Sprintf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%s</td><td>%s</td></tr>",
+			game.Game.ID, game.Alliance, game.Location, game.Parking, game.AutoDuck, game.AutoStorage, game.AutoShipping, game.CubeLevel, game.Parking, game.Storage, game.ShippingLow, game.ShippingMid, game.ShippingHigh, game.Shared, game.TeleopDucks, game.Capping, game.Worked)
 	}
 	values["${DATA}"] = data
 
 	var superNotes string
 	var fauls int
 	for _, superForm := range superForms {
-		superNotes += html.EscapeString(superForm.Notes) + "<br>"
+		if superForm.Notes != "" {
+			superNotes += "<textbox class=\"arena\">" + html.EscapeString(superForm.Notes) + "</textbox><br>"
+		}
 		switch superForm.Penalty {
 		case "Red":
 			fauls += 2

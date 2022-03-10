@@ -112,19 +112,19 @@ func (db *Database) GetTeamSuperForms(team Team) ([]TeamSupervisorForm, error) {
 		switch team.TeamNumber {
 		case form.Game.Red1.TeamNumber:
 			teamForm.Notes = form.Red1Notes
-			teamForm.Notes = form.Red1Penalty
+			teamForm.Penalty = form.Red1Penalty
 			break
 		case form.Game.Red2.TeamNumber:
 			teamForm.Notes = form.Red2Notes
-			teamForm.Notes = form.Red2Penalty
+			teamForm.Penalty = form.Red2Penalty
 			break
 		case form.Game.Blue1.TeamNumber:
 			teamForm.Notes = form.Blue1Notes
-			teamForm.Notes = form.Blue1Penalty
+			teamForm.Penalty = form.Blue1Penalty
 			break
 		case form.Game.Blue2.TeamNumber:
 			teamForm.Notes = form.Blue2Notes
-			teamForm.Notes = form.Blue2Penalty
+			teamForm.Penalty = form.Blue2Penalty
 			break
 		}
 

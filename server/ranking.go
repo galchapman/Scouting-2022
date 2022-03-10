@@ -31,6 +31,12 @@ func (server *Server) handleRanking(w http.ResponseWriter, req *http.Request) {
 	var games []database.FormAnswer
 	var scores map[int]database.TeamScore
 
+	err = req.ParseForm()
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
 	games, err = server.db.GetTeamsGames()
 	scores = make(map[int]database.TeamScore)
 	if err != nil {
@@ -53,9 +59,18 @@ func (server *Server) handleRanking(w http.ResponseWriter, req *http.Request) {
 		ss = append(ss, kv{k, v})
 	}
 
-	sort.Slice(ss, func(i, j int) bool {
-		return ss[i].v.TotalScore > ss[j].v.TotalScore
-	})
+	switch req.Form.Get("filter") {
+	case "auto":
+		sort.Slice(ss, func(i, j int) bool {
+			return ss[i].v.AutoTotalScore > ss[j].v.AutoTotalScore
+		})
+		break
+	default:
+		sort.Slice(ss, func(i, j int) bool {
+			return ss[i].v.TotalScore > ss[j].v.TotalScore
+		})
+		break
+	}
 	// Write them
 	var data string
 
