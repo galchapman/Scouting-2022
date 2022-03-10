@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="main.css">
 		
-		<title>${GROUP_NUMBER} - ${TEAM_NAME}</title>
+		<title>${GROUP_NUMBER}</title>
 	</head>
 	<style>
 		table, td {
@@ -16,7 +16,11 @@
 				text-align: center;
 				vertical-align: middle;
 				color: black;
-				padding: 1px;
+				padding: 0px;
+				margin: 0px;
+				font-size: 30px;
+				font-weight: 500;
+				
 			}
 
 			th{
@@ -28,54 +32,90 @@
 				vertical-align: middle;
 				top: 0;
 				color: black;
-				font-size: 20px;
+				font-size: 15px;
+				font-weight: 700;
 			}
 	</style>
-	<!--
-		${GROUP_NUMBER}
-		${TEAM_NAME}
-		${MATCHES}
-	 -->
+	
 	<body  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-		<div class="form-style">
+		<div class="form-style" >
 			<div>
 				<h1 >${GROUP_NUMBER} - ${TEAM_NAME}</h1>
-				<h2 style="font-size: 140%; ">מקצים: ${MATCHES}</h2>
-			</div>
-				<h2 style="font-size: 140%; ">ממוצעים:</h2>
-				<label>ניקוד ממוצע: ${AVERAGE_TOTAL}</label><br>
-				<label>עבודה ממוצע: ${AVERAGE_WORK}</label><br><br>
-				<label>אוטונומי ממוצע: ${AVERAGE_AUTO}</label><br>
-				<label>הצלחה בברווזים: ${PERCENT_DUCK}</label><br>
-				<label>אלמטים אוטונומי ממוצע: ${AVERAGE_ELEMENTS_AUTO}</label><br><br>
-				<label>משותף ממוצע: ${AVERAGE_SHARED}</label><br>
-				<label>מגדל ממוצע: ${AVERAGE_TOWER}</label><br>
-				<label>ברווזים ממוצע: ${AVERAGE_DUCKS}</label><br>
-				<label>הצלחה בכאפ: ${PERCENT_CUP}</label><br><br>
+				<h2 style="font-size: 140%; margin-bottom: 0px; ">מקצים: ${MATCHES}</h2>
+				<h2 style="font-size: 140%; margin-top: 0px; ">פאולים: ${FAULS}</h2>
+			</div><br>
+				<!-- <h2 style="font-size: 140%; ">ממוצעים:</h2> -->
+				<button onclick="ToggleAverages()" class="tubbon" style="width: 200px; height: 80px; font-size: 40px;">ממוצעים</button>
+				<div id="hint2" style="display: none;">
+					<label>ניקוד ממוצע: ${AVERAGE_TOTAL}</label><br>
+					<label>עבודה ממוצע: ${AVERAGE_WORK}</label><br><br>
+					<label>אוטונומי ממוצע: ${AVERAGE_AUTO}</label><br>
+					<label>הצלחה בברווזים: ${PERCENT_DUCK}</label><br>
+					<label>אלמטים אוטונומי ממוצע: ${AVERAGE_ELEMENTS_AUTO}</label><br><br>
+					<label>משותף ממוצע: ${AVERAGE_SHARED}</label><br>
+					<label>מגדל ממוצע: ${AVERAGE_TOWER}</label><br>
+					<label>ברווזים ממוצע: ${AVERAGE_DUCKS}</label><br>
+					<label>הצלחה בכאפ: ${PERCENT_CUP}</label><br><br>
+				</div><br><br>
 
+				<button onclick="ToggleTable()"  style="width: 240px; height: 80px; font-size: 40px;">טבלת מקצים</button>
+				<div id="hint3" style="display: none; align-items: center; padding-right: 2.3cm;">
+				<table style="direction: ltr; width: 90%; align-items: center;">
+					<tr>
+						<th>Match</th>
+						<th>Color</th>
+						<th>Location</th>
+						<th>Line</th>
+						<th>AutoData</th>
+						<th>AutoSto</th>
+						<th>AutoShip</th>
+						<th>CubeLvl</th>
+						<th>Parking</th>
+						<th>Storage</th>
+						<th>Tower1</th>
+						<th>Tower2</th>
+						<th>Tower3</th>
+						<th>Shared</th>
+						<th>Ducks</th>
+						<th>Cap</th>
+						<th>Work</th>
+					</tr>
+					
+	 
+	
+	
+					${DATA}
+				</table>
+
+			</div>
+			<br><br>
+			
+
+			<button onclick="ToggleNotes()"  style="width: 300px; height: 80px; font-size: 40px;">הערות אחראיים</button>
+			<p id="hint1" style="display: none;">
+
+				<label>הערות סקאוטרים</label><br>
+
+				${Notes_Scout_1}<br>
+				${Notes_Scout_2}<br>
+				${Notes_Scout_3}<br>
+				${Notes_Scout_4}<br>
+				${Notes_Scout_5}<br>
+				${Notes_Scout_6}<br>
+
+
+				<label>הערות אחראיים</label><br>
 				
-			<table style="direction: ltr; width: 90%;">
-				<tr>
-					<th>Match</th>
-					<th>Alliance</th>
-					<th>Location</th>
-					<th>DottedLine</th>
-					<th>AutoData</th>
-					<th>AutoStorage</th>
-					<th>AutoShipping</th>
-					<th>CubeLevel</th>
-					<th>Parking</th>
-					<th>Storage</th>
-					<th>Shipping1</th>
-					<th>Shipping2</th>
-					<th>Shipping3</th>
-					<th>Shared</th>
-					<th>Ducks</th>
-					<th>Capping</th>
-					<th>Work</th>
-				</tr>
-				${DATA}
-			</table>
+				${Notes_Super_1}<br>
+				${Notes_Super_2}<br>
+				${Notes_Super_3}<br>
+				${Notes_Super_4}<br>
+				${Notes_Super_5}<br>
+				${Notes_Super_6}<br>
+			
+			</p><br><br>
+				
+			
 
 			<div>
 				<img src="/robots.html?team=${GROUP_NUMBER}" class="robot-image" style="direction: ltr;" alt="<insert robot image here>">
@@ -84,4 +124,33 @@
 
 
 	</body>
+	<script>
+		
+		function ToggleNotes(){
+		  var x = document.getElementById("hint1");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+
+		function ToggleAverages(){
+		  var x = document.getElementById("hint2");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+
+		function ToggleTable(){
+		  var x = document.getElementById("hint3");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+	</script>
 </html>
