@@ -6,6 +6,15 @@
 		<title>User Creation</title>
 	</head>
 	<body style="margin-top:0; direction: ltr;">
+		<div class="nav-bar">
+			<a href="/" class="active" style="background-color: rgb(255,108,0);">Main</a>
+			<a href="/login.html">Login</a>
+			<a href="/users.html">Users</a>
+			<a href="/create-user.html">Creat User</a>
+			<a href="/management.html">Start Game</a>
+			<a href="/assign.html" class="active">Assign</a>
+			<a href="/ranking.html">Ranked</a>
+		</div>
 		<div class="login-style" style="margin-top:0;">
 			<form method="POST" action="create-user.html">
 				<h2 class="titan">Create User</h2>
@@ -14,7 +23,7 @@
 				<label for="screen-name-field">Screen Name</label>
 				<input id="screen-name-field" type="text" name="screen-name" placeholder="Screen Name" required>
 				<label for="password-field">Password</label>
-				<input id="password-field" type="password" name="password" placeholder="Password" required>
+				<input id="password-field" type="password" name="password" placeholder="Password">
 				<label for="password-field">Level</label>
 				<div class="select" style="direction: ltr;margin-bottom: 10px; margin-top: 10px;">
 					<select name="role">
