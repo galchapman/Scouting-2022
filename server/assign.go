@@ -136,17 +136,17 @@ func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
 				return
 			}
 
-			if game.Red2, err = server.db.GetTeam(Red1); err != nil {
+			if game.Red2, err = server.db.GetTeam(Red2); err != nil {
 				http.Error(w, strconv.Itoa(Red2)+" Team was not Found", http.StatusNotFound)
 				return
 			}
 
-			if game.Blue1, err = server.db.GetTeam(Red1); err != nil {
+			if game.Blue1, err = server.db.GetTeam(Blue1); err != nil {
 				http.Error(w, strconv.Itoa(Blue1)+" one Team was not Found", http.StatusNotFound)
 				return
 			}
 
-			if game.Blue2, err = server.db.GetTeam(Red1); err != nil {
+			if game.Blue2, err = server.db.GetTeam(Blue2); err != nil {
 				http.Error(w, strconv.Itoa(Blue2)+" Team was not Found", http.StatusNotFound)
 				return
 			}
