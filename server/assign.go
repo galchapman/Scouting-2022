@@ -16,6 +16,11 @@ import (
 var assignHtml string
 
 func (server *Server) handleAssign(w http.ResponseWriter, req *http.Request) {
+	if _, session := server.checkSession(req); session == nil || session.user.Role < database.ManagerRole {
+		http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+		return
+	}
+
 	switch req.Method {
 	case http.MethodGet:
 		if req.Header.Get("Content-Type") == "text/csv" {
