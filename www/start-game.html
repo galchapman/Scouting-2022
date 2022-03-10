@@ -6,13 +6,22 @@
 		<title>Start Games</title>
 	</head>
 	<body style="margin-top:0px ;direction: ltr; align-items: center;">
+		<div class="nav-bar">
+			<a href="/" class="active" style="background-color: rgb(255,108,0);">Main</a>
+			<a href="/login.html">Login</a>
+			<a href="/users.html">Users</a>
+			<a href="/create-user.html">Creat User</a>
+			<a href="/management.html" class="active">Start Game</a>
+			<a href="/assign.html">Assign</a>
+			<a href="/ranking.html">Ranked</a>
+		</div>
 		<div class="login-style button-style" style="margin-top:0px ;">
 			<h2 class="titan" style="margin-bottom: 20px;">Start Games</h2>
 			<h3 class="titan" style="text-align:center; margin-top: 0 ;margin-bottom: 0;">Match</h3><br>
 			<div class="counter fit" dir="ltr">
-				<input type="button" onclick="dec()" value="-" style="font-size: 120px; height: 120px; width: 120px;"/>
+				<input type="button" onclick="dec()" style="font-size: 120px; height: 120px; width: 120px;" value="-"/>
 				<input type="number" value="0" id="currentGame" style="width: 120px; height: 120px;" />
-				<input type="button" onclick="inc()" value="+" style="font-weight:bold; font-size:110px; height:120px;  width: 120px;"/>
+				<input type="button" onclick="inc()" style="font-weight:bold; font-size:120px; height:120px;  width: 120px;" value="+"/>
 			</div><br>
 				<button style="margin: 0; width: 300px; height: 150px; font-size: 100px; display: block; margin-left: auto; margin-right: auto;" onclick="startGame()">Start</button>
 
