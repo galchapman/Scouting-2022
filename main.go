@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	s, err := server.NewServer(secrets.TOA_API_KEY, "2122-ISR-IIS1")
+	s, err := server.NewServer(secrets.TOA_API_KEY, "2122-ISR-IIC")
 
 	if err != nil {
 		panic(err)
