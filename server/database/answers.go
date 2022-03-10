@@ -88,3 +88,57 @@ func (db *Database) InsertSuperFormAnswer(answer SupervisorForm) error {
 		answer.Blue1Penalty, answer.Blue1Notes, answer.Blue2Penalty, answer.Blue2Notes)
 	return err
 }
+
+func (db *Database) GetTeamSuperForms(team Team) ([]TeamSupervisorForm, error) {
+	rows, err := db.db.Query("SELECT SUPERVISOR_FORM.ID, SUPERVISOR_FORM.SCOUTER, SUPERVISOR_FORM.GAME, RED_TEAM1, RED_TEAM2, BLUE_TEAM1, BLUE_TEAM2, FORM_ANSWERS.Location, NEAR_RED_INTERFERENCE, NEAR_BLUE_INTERFERENCE, RED1_PENALTY, RED1_NOTES, RED2_PENALTY, RED2_NOTES, BLUE1_PENALTY, BLUE1_NOTES, BLUE2_PENALTY, BLUE2_NOTES FROM SUPERVISOR_FORM INNER JOIN GAMES ON SUPERVISOR_FORM.GAME = GAMES.ID INNER JOIN FORM_ANSWERS ON GAMES.ID = FORM_ANSWERS.GAME AND FORM_ANSWERS.TEAM = $1 WHERE GAMES.RED_TEAM1 = $1 OR GAMES.RED_TEAM2 = $1 OR GAMES.BLUE_TEAM1 = $1 OR GAMES.BLUE_TEAM2 = $1",
+		team.TeamNumber)
+	if err != nil {
+		return nil, err
+	}
+
+	var forms []TeamSupervisorForm
+	for rows.Next() {
+		var form SupervisorForm
+		var location string
+		err = rows.Scan(&form.ID, &form.Scouter.ID, &form.Game.ID, &form.Game.Red1.TeamNumber, &form.Game.Red2.TeamNumber,
+			&form.Game.Blue1.TeamNumber, &form.Game.Blue2.TeamNumber, &location, &form.NearRedInterference, &form.NearBlueInterference,
+			&form.Red1Penalty, &form.Red1Notes, &form.Red2Penalty, &form.Red2Notes,
+			&form.Blue1Penalty, &form.Blue1Notes, &form.Blue2Penalty, &form.Blue2Notes)
+		if err != nil {
+			return nil, err
+		}
+
+		var teamForm TeamSupervisorForm
+		switch team.TeamNumber {
+		case form.Game.Red1.TeamNumber:
+			teamForm.Notes = form.Red1Notes
+			teamForm.Notes = form.Red1Penalty
+			break
+		case form.Game.Red2.TeamNumber:
+			teamForm.Notes = form.Red2Notes
+			teamForm.Notes = form.Red2Penalty
+			break
+		case form.Game.Blue1.TeamNumber:
+			teamForm.Notes = form.Blue1Notes
+			teamForm.Notes = form.Blue1Penalty
+			break
+		case form.Game.Blue2.TeamNumber:
+			teamForm.Notes = form.Blue2Notes
+			teamForm.Notes = form.Blue2Penalty
+			break
+		}
+
+		if location == "Near" {
+			if form.Game.Red1.TeamNumber == team.TeamNumber || form.Game.Red2.TeamNumber == team.TeamNumber {
+				teamForm.Interference = form.NearRedInterference
+			} else {
+				teamForm.Interference = form.NearBlueInterference
+			}
+		} else {
+			teamForm.Interference = false
+		}
+
+		forms = append(forms, teamForm)
+	}
+	return forms, nil
+}
