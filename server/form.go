@@ -73,6 +73,7 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 				if err == sql.ErrNoRows {
 					w.WriteHeader(http.StatusOK)
 					_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+					return
 				} else {
 					http.Error(w, err.Error(), http.StatusInternalServerError)
 					return
