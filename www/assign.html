@@ -20,7 +20,7 @@
 		</style>
 		<link rel="stylesheet" href="main.css">
 	</head>
-	<body style="padding: 20px;font-size: small; direction: ltr;">
+	<body style="font-size: small; direction: ltr;">
 		<div class="nav-bar">
 			<a href="/" class="active" style="background-color: rgb(255,108,0);">Main</a>
 			<a href="/login.html">Login</a>
@@ -39,26 +39,28 @@
 			</form>
 			<button class="blue-button" style="height: 1cm; font-size: large; width: 4cm" onclick="download()">Download</button>
 		</div>
-		<table style="width:100%; margin: 30px 0 0 0;" dir="ltr">
-			<colgroup>
-				<col span="2" style="background-color: rgb(219, 219, 219)">
-				<col span="4" style="background-color: #fd8383">
-				<col span="4" style="background-color: #8e82ff">
-			</colgroup>
-			<tr>
-				<th class="grey-dag">Match</th>
-				<th class="grey-dag">Cube</th>
-				<th class="red-dag">Red Team 1</th>
-				<th class="red-dag">Scouter</th>
-				<th class="red-dag">Red Team 2</th>
-				<th class="red-dag">Scouter</th>
-				<th class="blue-dag">Blue Team 1</th>
-				<th class="blue-dag">Scouter</th>
-				<th class="blue-dag">Blue Team 2</th>
-				<th class="blue-dag">Scouter</th>
-			</tr>
-		${DATA}
-		</table>
+		<div style="padding: 0 20px 0 20px;">
+			<table style="width:100%; margin: 30px 0 0 0;" dir="ltr">
+				<colgroup>
+					<col span="2" style="background-color: rgb(219, 219, 219)">
+					<col span="4" style="background-color: #fd8383">
+					<col span="4" style="background-color: #8e82ff">
+				</colgroup>
+				<tr>
+					<th class="grey-dag">Match</th>
+					<th class="grey-dag">Cube</th>
+					<th class="red-dag">Red Team 1</th>
+					<th class="red-dag">Scouter</th>
+					<th class="red-dag">Red Team 2</th>
+					<th class="red-dag">Scouter</th>
+					<th class="blue-dag">Blue Team 1</th>
+					<th class="blue-dag">Scouter</th>
+					<th class="blue-dag">Blue Team 2</th>
+					<th class="blue-dag">Scouter</th>
+				</tr>
+			${DATA}
+			</table>
+		</div>
 	</body>
 	<script>
 		const downloadElement = document.createElement('a');
