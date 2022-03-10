@@ -43,7 +43,7 @@ body {
 
 .nav-bar { 
 	/* background-color: #161b22; */
-	background-color: #ffb7a1;
+	background-color: #515b69;
 	margin: 0 0 10px 0; 
 	overflow: hidden;
 }
@@ -55,7 +55,7 @@ body {
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 17px;
-	border: 0.8px solid rgb(255, 140, 58);
+	border: 0.8px solid #484f58;
 }
 
 .nav-bar a:hover {
@@ -64,7 +64,7 @@ body {
 }
 
 .nav-bar a.active {
-	background-color: rgb(255, 150, 74);
+	/* background-color: rgb(255, 150, 74); */
 	color: white;
 }
 
