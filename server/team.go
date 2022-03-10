@@ -77,7 +77,7 @@ func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
 	}
 
 	values["${NOTES}"] = notes
-	values["${AVERAGE_TOTAL}"] = strconv.Itoa(score.TotalDucksCount)
+	values["${AVERAGE_TOTAL}"] = fmt.Sprintf("%.2f", float32(score.TotalScore)/float32(len(games)))
 	values["${AVERAGE_WORK}"] = fmt.Sprintf("%.2f", float32(score.Worked)/float32(len(games)))
 	values["${AVERAGE_AUTO}"] = fmt.Sprintf("%.2f", float32(score.AutoTotalScore)/float32(len(games)))
 	values["${PERCENT_DUCK}"] = fmt.Sprintf("%.2f", 100*float32(score.TotalDucksCountAuto)/float32(score.AutoStartedNear))
