@@ -129,3 +129,10 @@ type SupervisorForm struct {
 	Blue2Penalty string
 	Blue2Notes   string
 }
+
+type TeamSupervisorForm struct {
+	ID           int
+	Interference bool
+	Penalty      string
+	Notes        string
+}

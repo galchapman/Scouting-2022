@@ -3,6 +3,7 @@ package server
 import (
 	"Scouting-2022/server/database"
 	"fmt"
+	"html"
 	"net/http"
 	"os"
 	"strconv"
@@ -30,7 +31,7 @@ func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
 	var values map[string]string
 	var team database.Team
 	var games []database.FormAnswer
-	//var superForms []database.SupervisorForm
+	var superForms []database.TeamSupervisorForm
 	var score database.TeamScore
 
 	values = make(map[string]string)
@@ -61,10 +62,19 @@ func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	for _, game := range games {
-		score.Add(game)
+	superForms, err = server.db.GetTeamSuperForms(team)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
+	var notes string
+	for _, game := range games {
+		score.Add(game)
+		notes += html.EscapeString(game.Notes) + "<br>"
+	}
+
+	values["${NOTES}"] = notes
 	values["${AVERAGE_TOTAL}"] = strconv.Itoa(score.TotalDucksCount)
 	values["${AVERAGE_WORK}"] = fmt.Sprintf("%.2f", float32(score.Worked)/float32(len(games)))
 	values["${AVERAGE_AUTO}"] = fmt.Sprintf("%.2f", float32(score.AutoTotalScore)/float32(len(games)))
@@ -84,9 +94,27 @@ func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
 	}
 	values["${DATA}"] = data
 
+	var superNotes string
+	var fauls int
+	for _, superForm := range superForms {
+		superNotes += html.EscapeString(superForm.Notes) + "<br>"
+		switch superForm.Penalty {
+		case "Red":
+			fauls += 2
+			break
+		case "Yellow":
+			fauls++
+			break
+		}
+	}
+
+	values["${SUPER_NOTES}"] = superNotes
+	values["${FAULS}"] = strconv.Itoa(fauls)
+
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
 	text, err := replaceAll(teamPageHtml, values)
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
