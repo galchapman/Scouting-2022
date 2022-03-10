@@ -49,6 +49,10 @@ func (server *Server) handleRanking(w http.ResponseWriter, req *http.Request) {
 	}
 	// Sort them
 	var ss []kv
+	for k, v := range scores {
+		ss = append(ss, kv{k, v})
+	}
+
 	sort.Slice(ss, func(i, j int) bool {
 		return ss[i].v.TotalScore > ss[j].v.TotalScore
 	})
@@ -66,5 +70,5 @@ func (server *Server) handleRanking(w http.ResponseWriter, req *http.Request) {
 
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
-	_, _ = w.Write([]byte(strings.Replace(matchDataHtml, "${DATA}", data, 1)))
+	_, _ = w.Write([]byte(strings.Replace(rankingHtml, "${DATA}", data, 1)))
 }
