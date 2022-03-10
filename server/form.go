@@ -71,8 +71,7 @@ func (server *Server) handleForm(w http.ResponseWriter, req *http.Request) {
 			game, err := server.db.GetNextGame(session.user, currentGame)
 			if err != nil {
 				if err == sql.ErrNoRows {
-					w.WriteHeader(http.StatusOK)
-					_, _ = w.Write([]byte("ברכותי סיימת להיום"))
+					http.ServeFile(w, req, "www/done-page.html")
 					return
 				} else {
 					http.Error(w, err.Error(), http.StatusInternalServerError)
