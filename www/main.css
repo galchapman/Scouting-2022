@@ -448,3 +448,14 @@ pic-form-input input {
 	display:none;
 	margin-bottom:30px;
 }
+
+.bla {
+	background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);
+	width:200px;
+	height:60px;
+	color: white;
+	font-size: 30px;
+	padding-top: 0px;
+
+	
+}
