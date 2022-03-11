@@ -7,7 +7,9 @@
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
 		--color-placeholder: rgb(66, 66, 66);
-		--shadow-color: lightgrey
+		--shadow-color: lightgrey;
+		--id-table-color: rgb(255, 255, 255);
+		--blue-border: #0c2d6b;
 		
 	}
 }
@@ -18,7 +20,9 @@
 		--color-input-box: #323335;
 		--color-input-border: var(--color-background-color);
 		--color-placeholder: lightgrey;
-		--shadow-color:	black
+		--shadow-color:	black;
+		--id-table-color: #303031;
+		--blue-border: #0044c4;
 	}
 }
 
