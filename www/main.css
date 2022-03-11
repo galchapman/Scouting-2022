@@ -60,7 +60,7 @@ body {
 
 .nav-bar a:hover {
 	background-color: #484f58;
-	color: black;
+	color: rgb(184, 184, 184);
 }
 
 .nav-bar a.active {
