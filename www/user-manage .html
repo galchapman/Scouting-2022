@@ -58,17 +58,18 @@
         <tr>
             <td>1</td>
             <td>Megiddo</td>
-            <td><form style="align-items: center; text-align: center;"><input type=submit value=&#9998 style="width:20%; font-weight: 400; height: 40px; font-size: 75%;  "></form></td>
             <td><form style="align-items: center; text-align: center;">
-                <select name="cars" id="cars">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                <select class="select"  name="role">
+                    <option value="Scouter" style="background-color: rgb(42, 43, 48); color: white;">Scouter</option>
+                    <option value="Viewer" style="background-color: rgb(42, 43, 48);color: white;">Viewer</option>
+                    <option value="Supervisor" style="background-color: rgb(42, 43, 48);color: white;">Supervisor</option>
+                    <option value="ManagerRole" style="background-color: rgb(42, 43, 48);color: white;">Manager</option>
+                    <option value="Admin" style="background-color: rgb(42, 43, 48);">Admin</option>
                 </select>
             
             </form></td>
-            <td ><form><input type=submit value=&#128465; style="width:30%; font-weight: 600; height: 40%; font-size: 75%;"></form></td>
+            <td><form style="align-items: center; text-align: center;"><input type=submit value=&#9998 style="width:20%; font-weight: 400; height: 40px; font-size: 75%;  "></form></td>
+            <td><form><input type=submit value=&#128465; style="width:30%; font-weight: 600; height: 40%; font-size: 75%;"></form></td>
         </tr>
         ${USERS}
     </table>
@@ -90,6 +91,59 @@
         background-color: var(--id-table-color);
         color: var(--color-text);
     }
+
+    select {
+		/* Reset Select */
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		outline: 0;
+		box-shadow: none;
+        border: 0;
+		/* Personalize */
+		flex: 1;
+		padding: 0 1em;
+		color: var(--color-text);
+		cursor: pointer;
+		text-align: center;
+		font-size: 100%;
+        background: var(--id-table-color);
+        		
+ 	}
+
+  	/* Remove IE arrow */
+  	select::-ms-expand {
+		display: none;
+	
+ 	}
+
+	/* Custom Select wrapper */
+	.select {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 100%;
+		border-radius: .25em;
+		overflow: hidden;
+        
+	
+	
+	
+	
+  }
+
+  	/* Arrow */
+  	.select::after {
+		content: '\25BC';
+		position: absolute;
+		text-align: center;
+		top: 0;
+		right: 0;
+		padding: 7px 1em;
+		pointer-events: none;
+		color: var(--color-text);
+		font-size: 30px;
+  	}
     
 </style>
 </html>
