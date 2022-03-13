@@ -10,9 +10,11 @@
 		--shadow-color: lightgrey;
 		--id-table-color: rgb(255, 255, 255);
 		--blue-border: #0c2d6b;
+		--backround-gradiant: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+		;
 		
 		
-	}
+	} 
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -24,7 +26,18 @@
 		--shadow-color:	black;
 		--id-table-color: #303031;
 		--blue-border: #0044c4;
+		--backround-gradiant: linear-gradient(45deg, rgba(81,66,255,1) 0%, rgba(18,131,233,1) 50%, rgba(64,200,255,1) 90%);
 	}
+}
+
+
+/* General */
+
+:root {
+--orange-button: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+--blue-button: linear-gradient(45deg, rgba(81,66,255,1) 0%, rgba(18,131,233,1) 50%, rgba(64,200,255,1) 90%);
+	
+
 }
 
 
@@ -43,6 +56,8 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	opacity: 1; /* Firefox */
   }
+
+
 
 /* Nav-Bar Styling */
 
@@ -73,6 +88,9 @@ body {
 	color: white;
 }
 
+
+
+
 /* QR Code Styling */
 
 .qr-code-container {
@@ -100,6 +118,9 @@ body {
 	border-radius: 1.25px;
 	
 }
+
+
+
 /* Login Style */
 
 .login-style {
@@ -124,7 +145,7 @@ body {
 
 
 
-.login-style form input[type=text], .login-style form input[type=password], .login-style form button, .blue-button {
+.login-style form input[type=text], .login-style form input[type=password], .login-style form button{
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -137,8 +158,8 @@ body {
 	
 }
 
-.blue-button {
-	background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%) !important;
+.la-blue {
+	background: var(--blue-button) !important;
 }
 
 
@@ -182,6 +203,7 @@ body {
 }
 
 /* Random Chrome stuff */
+
 .form-style input::-webkit-outer-spin-button, .fit input::-webkit-outer-spin-button,
 .form-style input::-webkit-inner-spin-button, .fit input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
@@ -200,10 +222,10 @@ body {
 
 /* Button Style Class */
 
-.form-style button, .button-style button, .button-style input[type=button], .button-style input[type=submit] {
+.form-style button, .button-style button, .button-style input[type=button], .button-style input[type=submit], .la-blue  {
 	display: inline;
 	user-select: none;
-	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+	background: var(--orange-button);
 	border-radius: 0.5cm;
 	border-style: none;
 	box-sizing: border-box;
@@ -220,6 +242,18 @@ body {
 	touch-action: manipulation;
 	box-shadow: 0 0 0 0;
 }
+
+.create {
+	background: var(--blue-button);
+	width:200px;
+	height:60px;
+	color: white;
+	font-size: 30px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+
 
 /* Toggle Class */
 
@@ -277,6 +311,8 @@ body {
 	padding: 1rem 2rem !important;
 }
 
+
+
 /* Counter Class */
 
 .counter {
@@ -284,6 +320,8 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+
 
 /* Titan Class */
 
@@ -294,30 +332,7 @@ body {
 	text-align: center;
 }
 
-.custom-file-input::-webkit-file-upload-button {
-	visibility: hidden;
-  }
-.custom-file-input::before {
-	content: 'Select some files';
-	display: inline-block;
-	background: linear-gradient(top, #f9f9f9, #e3e3e3);
-	border: 1px solid #999;
-	border-radius: 3px;
-	padding: 5px 8px;
-	outline: none;
-	white-space: nowrap;
-	/* -webkit-user-select: none; */
-	cursor: pointer;
-	text-shadow: 1px 1px #fff;
-	font-weight: 700;
-	font-size: 10pt;
-  }
-  .custom-file-input:hover::before {
-	border-color: black;
-  }
-  .custom-file-input:active::before {
-	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-  }
+
 
 /* Assign Design */
 
@@ -344,6 +359,10 @@ body {
 
 }
 
+
+
+/* TextBox Design */
+
 .arena {
 	width: 21cm; 
 	font-size: 1.1cm;
@@ -361,7 +380,10 @@ body {
 }
 
 
-select {
+
+/* Drop Down Design */
+
+  select {
 	/* Reset Select */
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -374,18 +396,20 @@ select {
 	padding: 0 1em;
 	color: white;
 	/* background-color: #ff6600; */
-	background-image: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+	background-image: var(--orange-button);
 	/* background-image: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);; */
 	cursor: pointer;
 	text-align: center;
 	font-size: 30px;
 	
   }
+
   /* Remove IE arrow */
   select::-ms-expand {
 	display: none;
 	
   }
+
   /* Custom Select wrapper */
   .select {
 	position: relative;
@@ -399,6 +423,7 @@ select {
 	
 	
   }
+
   /* Arrow */
   .select::after {
 	content: '\25BC';
@@ -412,7 +437,10 @@ select {
 	font-size: 30px;
   }
 
+
+
 /* Upload */
+
 .pic-center {
 	height:100%;
 	display:flex;
@@ -454,13 +482,7 @@ pic-form-input input {
 	margin-bottom:30px;
 }
 
-.bla {
-	background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);
-	width:200px;
-	height:60px;
-	color: white;
-	font-size: 30px;
-	padding-top: 0px;
-	padding-bottom: 0px;
+
 	
-	
+
+
