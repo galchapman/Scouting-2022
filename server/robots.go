@@ -30,7 +30,7 @@ func (server *Server) handleRobots(w http.ResponseWriter, req *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		file, header, err := req.FormFile("image")
+		file, _, err := req.FormFile("image")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -45,7 +45,7 @@ func (server *Server) handleRobots(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		if strings.Count(header.Filename, "..") != 0 {
+		if strings.Count(filename[0], "..") != 0 {
 			http.Error(w, "File name cannot contain ..", http.StatusBadRequest)
 			return
 		}
