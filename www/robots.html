@@ -8,9 +8,6 @@
 <body style="align-items: center; display: flex; justify-content:center; text-align: center;">
 	<div class="button-style">
 		<form method="post" enctype="multipart/form-data">
-			<!-- <label for="file" class="titan">Input Image</label><br>
-			<input type="file" name="content" accept="image/jpeg" id="file" style="display: none;" hidden required/>
-			<input type="submit" value="Submit" style="font-size:20px; width: 4cm; height: 1cm;"><br> -->
 			<br>
 			<div class="pic-center">
 				<div class="pic-form-input">
@@ -22,7 +19,7 @@
 							</div><br>
 							<img id="file-ip-1-preview">
 							<label for="file-ip-1">Upload Image</label>
-							<input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" hidden required>
+							<input name="image" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" hidden required>
 							
 							<button type="submit"  style="width: 200px; height: 45px; border-radius: 5px; font-size:  25px; font-weight: 500; margin-top: 25px; background: var(--blue-button);">Submit</button>				
 					</div>  
