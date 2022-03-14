@@ -12,3 +12,16 @@ func (db *Database) GetTeam(team int) (Team, error) {
 	err := row.Scan(&Team.Name)
 	return Team, err
 }
+
+func (db *Database) GetTeamNotes(team Team) (string, error) {
+	row := db.db.QueryRow("SELECT NOTES FROM TEAMS WHERE TEAM = $1", team.TeamNumber)
+
+	var notes string
+	err := row.Scan(&notes)
+	return notes, err
+}
+
+func (db *Database) SetTeamNotes(team Team, notes string) error {
+	_, err := db.db.Exec("UPDATE TEAMS SET NOTES = $1 WHERE TEAM = $2", notes, team.TeamNumber)
+	return err
+}

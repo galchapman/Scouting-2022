@@ -76,7 +76,11 @@ func (server *Server) handleTeamPage(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 
+	var pitNotes string
+	pitNotes, err = server.db.GetTeamNotes(team)
+
 	values["${NOTES}"] = notes
+	values["${PITS_NOTES}"] = html.EscapeString(pitNotes)
 	values["${AVERAGE_TOTAL}"] = fmt.Sprintf("%.2f", float32(score.TotalScore)/float32(len(games)))
 	values["${AVERAGE_WORK}"] = fmt.Sprintf("%.2f", float32(score.Worked)/float32(len(games)))
 	values["${AVERAGE_AUTO}"] = fmt.Sprintf("%.2f", float32(score.AutoTotalScore)/float32(len(games)))
