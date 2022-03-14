@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"sort"
 	"strings"
 )
 
@@ -44,40 +43,18 @@ func (server *Server) handleRanking(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	// Calculate scores
-	type kv struct {
-		k int
-		v database.TeamScore
-	}
 	for _, game := range games {
 		score, _ := scores[game.Team.TeamNumber]
 		score.Add(game)
 		scores[game.Team.TeamNumber] = score
 	}
-	// Sort them
-	var ss []kv
-	for k, v := range scores {
-		ss = append(ss, kv{k, v})
-	}
-
-	switch req.Form.Get("filter") {
-	case "auto":
-		sort.Slice(ss, func(i, j int) bool {
-			return ss[i].v.AutoTotalScore > ss[j].v.AutoTotalScore
-		})
-		break
-	default:
-		sort.Slice(ss, func(i, j int) bool {
-			return ss[i].v.TotalScore > ss[j].v.TotalScore
-		})
-		break
-	}
 	// Write them
 	var data string
 
-	for _, kv := range ss {
-		s := kv.v
+	for team, score := range scores {
+		s := score
 		data += fmt.Sprintf("<tr><td>%d</td><td><a href=\"/team.html?team=%d\">%d</a></td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td></tr>",
-			s.GamesPlayed, kv.k, kv.k, float32(s.TotalScore)/float32(s.GamesPlayed), float32(s.AutoTotalScore)/float32(s.GamesPlayed),
+			s.GamesPlayed, team, team, float32(s.TotalScore)/float32(s.GamesPlayed), float32(s.AutoTotalScore)/float32(s.GamesPlayed),
 			float32(s.TotalDucksCountAuto)/float32(s.AutoStartedNear), float32(s.TotalTowerScoreAuto)/float32(s.AutoStartedNear),
 			float32(s.TotalTowerScore)/float32(s.GamesPlayed), float32(s.TotalSharedScore)/float32(s.GamesPlayed),
 			float32(s.TotalDucksCount)/float32(s.GamesPlayed), float32(s.TotalShippingElementsPlaced)/float32(s.GamesPlayed))

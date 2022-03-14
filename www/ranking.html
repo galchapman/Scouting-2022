@@ -21,7 +21,7 @@
 				top: 0;
 			}
 
-			.head-button{
+			button{
 				width: 100%;
 				height: 100%;
 				font-size: 100%;
@@ -33,7 +33,8 @@
 				font-family: Arial, Helvetica, sans-serif;
 				font-weight: 600;
 				font-style: normal;
-     		}
+				align-items: center;
+	 		}
 
 			@media (prefers-color-scheme: light) {
 				body {
@@ -67,378 +68,59 @@
 			
 			</div>
 			
-			<table style="width:100%">
+			<table style="width:95%; margin: 2.5%;" id="ranking">
 				<tr>
-					<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Games Played" onclick="SortTablePlayed()"></th>
-          			<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Team" onclick="SortTableTeam()"></th>
-          			<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Score" onclick="SortTableScore()"></th>
-					<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Auto Score" onclick="SortTableAutoScore()"></th>
-					<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Auto Ducks" onclick="SortTableAutoDucks()"></th>
-					<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Auto Tower" onclick="SortTableAutoTower()"></th>
-					<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Tower" onclick="SortTableTower()"></th>
-					<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Shared" onclick="SortTableShared()"></th>
-					<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Ducks" onclick="SortTableDucks()"></th>
-          			<th><input type="button" style="align-items: center; text-align: center;" type=button class="head-button" value="Cap" onclick="SortTableCup()"></th>
+					<th><button onclick="SortTable(0)">Games</button></th>
+					<th><button onclick="SortTable(1)">Team</button></th>
+					<th><button onclick="SortTable(2)">Score</button></th>
+					<th><button onclick="SortTable(3)">Auto Score</button></th>
+					<th><button onclick="SortTable(4)">Auto Duck</button></th>
+					<th><button onclick="SortTable(5)">Auto Tower</button></th>
+					<th><button onclick="SortTable(6)">Tower</button></th>
+					<th><button onclick="SortTable(7)">Shared</button></th>
+					<th><button onclick="SortTable(8)">Ducks</button></th>
+					<th><button onclick="SortTable(9)">Cap</button></th>
 				</tr>
 				${DATA}
 			</table>
 		</div>
 	</body>
-<script>
-		function SortTablePlayed() {
+	<script>
+		function SortTable(col) {
 			var table, rows, switching, i, x, y, shouldSwitch;
 			table = document.getElementById("ranking");
 			switching = true;
 			/*Make a loop that will continue until
 			no switching has been done:*/
 			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[0];
-			  y = rows[i + 1].getElementsByTagName("TD")[0];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
+				//start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/*Loop through all table rows (except the
+				first, which contains table headers):*/
+				for (i = 1; i < (rows.length - 1); i++) {
+					//start by saying there should be no switching:
+					shouldSwitch = false;
+					/*Get the two elements you want to compare,
+					one from current row and one from the next:*/
+					x = rows[i].getElementsByTagName("TD")[col];
+					y = rows[i + 1].getElementsByTagName("TD")[col];
+					//check if the two rows should switch place:
+					if (Number(x.innerHTML) < Number(y.innerHTML)) {
+					//if so, mark as a switch and break the loop:
+					shouldSwitch = true;
+					break;
+					}
+				}
+				if (shouldSwitch) {
+					/*If a switch has been marked, make the switch
+					and mark that a switch has been done:*/
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+				}
 			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
 		}
-	  
-		function SortTableTeam() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[1];
-			  y = rows[i + 1].getElementsByTagName("TD")[1];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableScore() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[2];
-			  y = rows[i + 1].getElementsByTagName("TD")[2];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableAutoScore() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[3];
-			  y = rows[i + 1].getElementsByTagName("TD")[3];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableAutoDucks() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[4].innerHTML;
-			  x = x.substr(0, x.length-1)
-			  y = rows[i + 1].getElementsByTagName("TD")[4].innerHTML;
-			  y = y.substr(0, y.length-1)
-			  //check if the two rows should switch place:
-			  if (Number(x) < Number(y)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableAutoTower() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[5];
-			  y = rows[i + 1].getElementsByTagName("TD")[5];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableTower() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[6];
-			  y = rows[i + 1].getElementsByTagName("TD")[6];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableShared() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[7];
-			  y = rows[i + 1].getElementsByTagName("TD")[7];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableDucks() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[8];
-			  y = rows[i + 1].getElementsByTagName("TD")[8];
-			  //check if the two rows should switch place:
-			  if (Number(x.innerHTML) < Number(y.innerHTML)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		function SortTableCup() {
-			var table, rows, switching, i, x, y, shouldSwitch;
-			table = document.getElementById("ranking");
-			switching = true;
-			/*Make a loop that will continue until
-			no switching has been done:*/
-			while (switching) {
-			//start by saying: no switching is done:
-			switching = false;
-			rows = table.rows;
-			/*Loop through all table rows (except the
-			first, which contains table headers):*/
-			for (i = 1; i < (rows.length - 1); i++) {
-			  //start by saying there should be no switching:
-			  shouldSwitch = false;
-			  /*Get the two elements you want to compare,
-			  one from current row and one from the next:*/
-			  x = rows[i].getElementsByTagName("TD")[9].innerHTML;
-			  x = x.substr(0, x.length-1)
-			  y = rows[i + 1].getElementsByTagName("TD")[9].innerHTML;
-			  y = y.substr(0, y.length-1)
-			  //check if the two rows should switch place:
-			  if (Number(x) < Number(y)) {
-				//if so, mark as a switch and break the loop:
-				shouldSwitch = true;
-				break;
-			  }
-			}
-			if (shouldSwitch) {
-			  /*If a switch has been marked, make the switch
-			  and mark that a switch has been done:*/
-			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			  switching = true;
-			}
-		  }
-		}
-	  
-		
+
+		SortTable(0);
 </script>
 </html>
