@@ -26,7 +26,7 @@
 				<input id="password-field" type="password" name="password" placeholder="Password">
 				<label for="password-field">Level</label>
 				<div class="select" style="direction: ltr;margin-bottom: 10px; margin-top: 10px;">
-					<select name="role">
+					<select class="select"  name="role">
 					    <option value="Scouter" style="background-color: rgb(42, 43, 48);">Scouter</option>
 						<option value="Viewer" style="background-color: rgb(42, 43, 48);">Viewer</option>
 						<option value="Supervisor" style="background-color: rgb(42, 43, 48);">Supervisor</option>
@@ -34,8 +34,63 @@
 						<option value="Admin" style="background-color: rgb(42, 43, 48);">Admin</option>
 					</select>
 				</div>
-				<button type="submit"  class="bla" style="border: 0px; border-radius:5px; color: white; font-weight: 300; text-align: center;">Create</button>
+				<button type="submit"  class="create" style="border: 0px; border-radius:5px;color: white; font-weight: 300; text-align: center; ">Create</button>
 			</form>
 		</div>
 	</body>
+	<style>
+	select {
+		/* Reset Select */
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		outline: 0;
+		border: 0;
+		box-shadow: none;
+		/* Personalize */
+		flex: 1;
+		padding: 0 1em;
+		color: white;
+		/* background-color: #ff6600; */
+		background-image: var(--orange-button);
+		/* background-image: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);; */
+		cursor: pointer;
+		text-align: center;
+		font-size: 30px;
+		
+ 	}
+
+  	/* Remove IE arrow */
+  	select::-ms-expand {
+		display: none;
+	
+ 	}
+
+	/* Custom Select wrapper */
+	.select {
+		position: relative;
+		display: flex;
+		width: 400px;
+		height: 50px;
+		border-radius: .25em;
+		overflow: hidden;
+	
+	
+	
+	
+  }
+
+  	/* Arrow */
+  	.select::after {
+		content: '\25BC';
+		position: absolute;
+		text-align: center;
+		top: 0;
+		right: 0;
+		padding: 7px 1em;
+		pointer-events: none;
+		color: white;
+		font-size: 30px;
+  	}
+	</style>
 </html>

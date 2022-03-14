@@ -7,9 +7,29 @@
 		--color-input-box: rgb(255, 255, 255);
 		--color-input-border: rgb(0,0,0);
 		--color-placeholder: rgb(66, 66, 66);
-		--shadow-color: lightgrey
+		--shadow-color: lightgrey;
+		--id-table-color: rgb(255, 255, 255);
+		--blue-border: #0c2d6b;
+		--backround-gradiant: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+		--nav-border:none;
+		--nav-backround:none;
+		--nav-text: rgb(0, 0, 0);
+		--nav-hover-text:black;
+		--nav-decor:underline;
+		--nav-weight: bold;
+
+		/* --nav-border:rgb(223, 100, 56);
+		--nav-backround:rgb(255, 169, 111);
+		--nav-text: black;
+		--nav-hover-text:black; */
+
+
 		
-	}
+		
+		
+		
+		
+	} 
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -18,8 +38,30 @@
 		--color-input-box: #323335;
 		--color-input-border: var(--color-background-color);
 		--color-placeholder: lightgrey;
-		--shadow-color:	black
+		--shadow-color:	black;
+		--id-table-color: #303031;
+		--blue-border: #0044c4;
+		--backround-gradiant: linear-gradient(45deg, rgba(81,66,255,1) 0%, rgba(18,131,233,1) 50%, rgba(64,200,255,1) 90%);
+		/* --backround-gradiant: linear-gradient(45deg, rgba(68,3,64,1) 0%, rgba(130,20,170,1) 70%, rgba(183,77,255,1) 91%);; */
+		--nav-border: rgb(34, 34, 34);
+		--nav-backround:rgb(22, 22, 22);
+		--nav-text: white;
+		--nav-hover-text:rgb(184, 184, 184);
+		--nav-decor:none;
+		--nav-weight: 100;
+		
+		
 	}
+}
+
+
+/* General */
+
+:root {
+--orange-button: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+--blue-button: linear-gradient(45deg, rgba(81,66,255,1) 0%, rgba(18,131,233,1) 50%, rgba(64,200,255,1) 90%);
+	
+
 }
 
 
@@ -39,34 +81,50 @@ body {
 	opacity: 1; /* Firefox */
   }
 
+
+
 /* Nav-Bar Styling */
 
 .nav-bar { 
 	/* background-color: #161b22; */
-	background-color: #515b69;
+	background-color: var(--nav-backround);
 	margin: 0 0 10px 0; 
 	overflow: hidden;
+	
 }
 
 .nav-bar a {
 	float: left;
-	color: #f2f2f2;
+	color: var(--nav-text);
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-	font-size: 17px;
-	border: 0.8px solid #484f58;
+	font-size: 18px;
+	border: 1.2px solid var(--nav-border);
+	
+	
 }
 
 .nav-bar a:hover {
-	background-color: #484f58;
-	color: black;
+	background-color: var(--nav-border);
+	color: var(--nav-hover-text);
+	font-weight: var(--nav-weight);
+	
+	
 }
 
 .nav-bar a.active {
-	/* background-color: rgb(255, 150, 74); */
-	color: white;
+	background-color:  var(--nav-border);
+	color: var(--nav-text);
+	font-weight: 900;
+	text-decoration: var(--nav-decor);
 }
+
+
+
+
+
+
 
 /* QR Code Styling */
 
@@ -95,6 +153,9 @@ body {
 	border-radius: 1.25px;
 	
 }
+
+
+
 /* Login Style */
 
 .login-style {
@@ -119,7 +180,7 @@ body {
 
 
 
-.login-style form input[type=text], .login-style form input[type=password], .login-style form button, .blue-button {
+.login-style form input[type=text], .login-style form input[type=password], .login-style form button{
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -132,8 +193,8 @@ body {
 	
 }
 
-.blue-button {
-	background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%) !important;
+.la-blue {
+	background: var(--blue-button) !important;
 }
 
 
@@ -177,6 +238,7 @@ body {
 }
 
 /* Random Chrome stuff */
+
 .form-style input::-webkit-outer-spin-button, .fit input::-webkit-outer-spin-button,
 .form-style input::-webkit-inner-spin-button, .fit input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
@@ -195,10 +257,10 @@ body {
 
 /* Button Style Class */
 
-.form-style button, .button-style button, .button-style input[type=button], .button-style input[type=submit] {
+.form-style button, .button-style button, .button-style input[type=button], .button-style input[type=submit], .la-blue  {
 	display: inline;
 	user-select: none;
-	background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
+	background: var(--orange-button);
 	border-radius: 0.5cm;
 	border-style: none;
 	box-sizing: border-box;
@@ -215,6 +277,18 @@ body {
 	touch-action: manipulation;
 	box-shadow: 0 0 0 0;
 }
+
+.create {
+	background: var(--blue-button);
+	width:200px;
+	height:60px;
+	color: white;
+	font-size: 30px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+
 
 /* Toggle Class */
 
@@ -272,6 +346,8 @@ body {
 	padding: 1rem 2rem !important;
 }
 
+
+
 /* Counter Class */
 
 .counter {
@@ -279,6 +355,8 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+
 
 /* Titan Class */
 
@@ -289,30 +367,7 @@ body {
 	text-align: center;
 }
 
-.custom-file-input::-webkit-file-upload-button {
-	visibility: hidden;
-  }
-.custom-file-input::before {
-	content: 'Select some files';
-	display: inline-block;
-	background: linear-gradient(top, #f9f9f9, #e3e3e3);
-	border: 1px solid #999;
-	border-radius: 3px;
-	padding: 5px 8px;
-	outline: none;
-	white-space: nowrap;
-	/* -webkit-user-select: none; */
-	cursor: pointer;
-	text-shadow: 1px 1px #fff;
-	font-weight: 700;
-	font-size: 10pt;
-  }
-  .custom-file-input:hover::before {
-	border-color: black;
-  }
-  .custom-file-input:active::before {
-	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-  }
+
 
 /* Assign Design */
 
@@ -339,6 +394,10 @@ body {
 
 }
 
+
+
+/* TextBox Design */
+
 .arena {
 	width: 21cm; 
 	font-size: 1.1cm;
@@ -356,58 +415,9 @@ body {
 }
 
 
-select {
-	/* Reset Select */
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	outline: 0;
-	border: 0;
-	box-shadow: none;
-	/* Personalize */
-	flex: 1;
-	padding: 0 1em;
-	color: white;
-	/* background-color: #ff6600; */
-	background-image: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
-	/* background-image: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);; */
-	cursor: pointer;
-	text-align: center;
-	font-size: 30px;
-	
-  }
-  /* Remove IE arrow */
-  select::-ms-expand {
-	display: none;
-	
-  }
-  /* Custom Select wrapper */
-  .select {
-	position: relative;
-	display: flex;
-	width: 400px;
-	height: 50px;
-	border-radius: .25em;
-	overflow: hidden;
-	
-	
-	
-	
-  }
-  /* Arrow */
-  .select::after {
-	content: '\25BC';
-	position: absolute;
-	text-align: center;
-	top: 0;
-	right: 0;
-	padding: 7px 1em;
-	pointer-events: none;
-	color: white;
-	font-size: 30px;
-  }
 
 /* Upload */
+
 .pic-center {
 	height:100%;
 	display:flex;
@@ -449,14 +459,7 @@ pic-form-input input {
 	margin-bottom:30px;
 }
 
-.bla {
-	background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgb(70, 185, 252) 75%);
-	width:200px;
-	height:60px;
-	color: white;
-	font-size: 30px;
-	padding-top: 0px;
-	padding-bottom: 0px;
+
 	
-	
-}
+
+
