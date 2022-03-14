@@ -10,21 +10,24 @@ import (
 
 func (server *Server) handleRobots(w http.ResponseWriter, req *http.Request) {
 
-	if _, session := server.checkSession(req); session == nil || session.user.Role < database.SupervisorRole {
-		http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
-		return
-	}
-
 	switch req.Method {
 	case http.MethodGet:
 		query := req.URL.Query()
 		if query.Has("team") {
 			http.ServeFile(w, req, "robots/"+query.Get("team")+".jpeg")
 		} else {
+			if _, session := server.checkSession(req); session == nil || session.user.Role < database.SupervisorRole {
+				http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+				return
+			}
 			http.ServeFile(w, req, "www/robots.html")
 		}
 		break
 	case http.MethodPost:
+		if _, session := server.checkSession(req); session == nil || session.user.Role < database.SupervisorRole {
+			http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
+			return
+		}
 		err := req.ParseMultipartForm(1 << 25)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
