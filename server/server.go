@@ -28,12 +28,12 @@ func NewServer(TOAApiKey string, eventKey string) (*Server, error) {
 	}
 	_ = db.NewUser("Admin", "password", "Admin", "Admin")
 
-	self = &Server{db: db, client: toa_api.NewTOAClient(TOAApiKey, "Megiddo Lions Scouting System"),
+	self = &Server{db: db, // client: toa_api.NewTOAClient(TOAApiKey, "Megiddo Lions Scouting System"),
 		sessions: make(map[string]Session),
 		http:     http.Server{Addr: ":80"},
 		servMux:  http.NewServeMux()}
 	// get event info from The orange alliance api
-	_, err = self.getEvent(eventKey)
+	// _, err = self.getEvent(eventKey)
 	if err != nil {
 		return nil, err
 	}
@@ -67,6 +67,7 @@ func (server *Server) configHTTP() {
 	server.servMux.HandleFunc("/team.html", server.handleTeamPage)
 	server.servMux.HandleFunc("/ranking.html", server.handleRanking)
 	server.servMux.HandleFunc("/user-management.html", server.handleUserManagement)
+	server.servMux.HandleFunc("/pit-form.html", server.handlePitForm)
 
 	// API
 	server.servMux.HandleFunc("/api/get_team_games", server.handleGetTeamGames)
