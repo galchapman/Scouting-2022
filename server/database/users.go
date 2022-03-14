@@ -7,7 +7,7 @@ import (
 )
 
 func (db *Database) NewUser(name string, password string, screenName string, role string) error {
-	roleValue := parseRole(role)
+	roleValue := ParseRole(role)
 	if roleValue == -1 {
 		return errors.New("Invalid role: " + role)
 	}
@@ -74,6 +74,25 @@ func (db *Database) GetScouters() ([]User, error) {
 	return users, nil
 }
 
+func (db *Database) GetUsers() ([]User, error) {
+	var users []User
+
+	rows, err := db.db.Query("SELECT ID, NAME, PASSWORD, SCREEN_NAME, ROLE FROM USERS WHERE ID >= 0")
+	if err != nil {
+		return nil, err
+	}
+
+	for rows.Next() {
+		var user User
+		err = rows.Scan(&user.ID, &user.Name, &user.hashedPassword, &user.ScreenName, &user.Role)
+		if err != nil {
+			return nil, err
+		}
+		users = append(users, user)
+	}
+	return users, nil
+}
+
 func (db *Database) GetNextGame(scouter User, currentGame int) (Game, error) {
 	var gameID int
 
@@ -85,4 +104,14 @@ func (db *Database) GetNextGame(scouter User, currentGame int) (Game, error) {
 	}
 
 	return db.GetGame(gameID)
+}
+
+func (db *Database) DeleteUser(user User) error {
+	_, err := db.db.Exec("DELETE FROM USERS WHERE ID = $1", user.ID)
+	return err
+}
+
+func (db *Database) ModifyUser(user User) error {
+	_, err := db.db.Exec("UPDATE USERS SET SCREEN_NAME = $1, ROLE = $2 WHERE ID = $3", user.ScreenName, user.Role, user.ID)
+	return err
 }
