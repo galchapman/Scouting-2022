@@ -1,0 +1,26 @@
+<html lang="he">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="main.css">
+		<title>PIT FORM</title>
+	</head>
+	<body>
+		<h1 style="color: white;text-align: center;">PIT FORM</h1>
+		<form class="form-style" method="post">
+			<label for="team">Team number</label><br>
+			<input type="number" name="team" id="team" style="width: 6ch; height: 1.5ch; padding: 0.5ch;" value="${TEAM}" required><br>
+			<label for="notes" style="font-size: 1.5cm;">הערות</label><br><br>
+			<textarea id="notes" name="notes" style="width: 21cm; font-size: 1.1cm; height:8.7cm; direction: rtl; text-align: right; padding-right: 5px; font-family: Arial, Helvetica, sans-serif; border-radius: 0.1cm; border-color: var(border-color); background-color: var(--color-input-box); color:var(--text)" required>${NOTES}</textarea><br><br><br>
+			<input type="submit" value="שמירה" class="la-blue" style="width: 40rem; height: 10rem;">
+		</form>
+	</body>
+	<script>
+		if (document.getElementById("team").value === "$" + "{TEAM}") {
+			document.getElementById("team").value = ""
+		}
+
+		if (document.getElementById("notes").value === "$" + "{NOTES}") {
+			document.getElementById("notes").value = ""
+		}
+	</script>
+</html>
