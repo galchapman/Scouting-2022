@@ -251,8 +251,8 @@ body {
 
 .form-style .robot-image {
 	border-radius: 10px;
-	max-width: 780px;
-	max-height: 780px;
+	width: 780px;
+	height: 780px;
 }
 
 /* Button Style Class */
