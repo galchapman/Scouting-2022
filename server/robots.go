@@ -2,9 +2,11 @@ package server
 
 import (
 	"Scouting-2022/server/database"
+	"errors"
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -15,14 +17,27 @@ func (server *Server) handleRobots(w http.ResponseWriter, req *http.Request) {
 		query := req.URL.Query()
 		if query.Has("team") {
 			http.ServeFile(w, req, "robots/"+query.Get("team")+".jpeg")
+			return
+		} else if query.Has("missing") {
+			teams, _ := server.db.GetTeams()
+			var data string
+			for _, team := range teams {
+				if _, err := os.Stat("www/" + strconv.Itoa(team.TeamNumber) + ".jpeg"); errors.Is(err, os.ErrNotExist) {
+					data += team.Name + " - " + strconv.Itoa(team.TeamNumber) + "<br>"
+				}
+			}
+			w.Header().Set("Content-Type", "text/html")
+			w.WriteHeader(http.StatusOK)
+			_, _ = w.Write([]byte(data))
+			return
 		} else {
 			if _, session := server.checkSession(req); session == nil || session.user.Role < database.SupervisorRole {
 				http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
 				return
 			}
 			http.ServeFile(w, req, "www/robots.html")
+			return
 		}
-		break
 	case http.MethodPost:
 		if _, session := server.checkSession(req); session == nil || session.user.Role < database.SupervisorRole {
 			http.Error(w, "You must be logged in to preform this action", http.StatusForbidden)
