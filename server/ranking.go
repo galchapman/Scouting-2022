@@ -34,6 +34,7 @@ func (server *Server) handleRanking(w http.ResponseWriter, req *http.Request) {
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	games, err = server.db.GetTeamsGames()
