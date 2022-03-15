@@ -88,3 +88,33 @@ func (db *Database) GetGame(ID int) (Game, error) {
 
 	return game, nil
 }
+
+func (db *Database) GetTeamSchedule(currentGame int, team Team) ([]Game, error) {
+	var games []Game
+	var err error
+	var rows *sql.Rows
+
+	var Red1 int
+	var Red2 int
+	var Blue1 int
+	var Blue2 int
+
+	rows, err = db.db.Query("SELECT ID, RED_TEAM1, RED_TEAM2, BLUE_TEAM1, BLUE_TEAM2 FROM GAMES WHERE ID > $1 AND (RED_TEAM1 = $2 OR RED_TEAM2 = $2 OR BLUE_TEAM1 = $2 OR BLUE_TEAM2 = $2)", currentGame, team.TeamNumber)
+
+	for rows.Next() {
+		var game Game
+		err = rows.Scan(&game.ID, &Red1, &Red2, &Blue1, &Blue2)
+		if err != nil {
+			return nil, err
+		}
+
+		game.Red1, _ = db.GetTeam(Red1)
+		game.Red2, _ = db.GetTeam(Red2)
+		game.Blue1, _ = db.GetTeam(Blue1)
+		game.Blue2, _ = db.GetTeam(Blue2)
+
+		games = append(games, game)
+	}
+
+	return games, nil
+}

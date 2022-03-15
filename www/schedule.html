@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Schedule</title>
+		<style>
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+				vertical-align: middle;
+				color: rgb(0, 0, 0);
+				font-weight: 500;
+			}
+		</style>
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<table style="width:95%; margin: 30px 2.5% 2.5% 0;" dir="ltr" id="table">
+			<colgroup>
+				<col span="1" style="background-color: rgb(219, 219, 219)">
+				<col span="2" style="background-color: #fd8383">
+				<col span="2" style="background-color: #8e82ff">
+			</colgroup>
+			<tr>
+				<th class="grey-dag">Match</th>
+				<th class="red-dag">Red Team 1</th>
+				<th class="red-dag">Red Team 2</th>
+				<th class="blue-dag">Blue Team 1</th>
+				<th class="blue-dag">Blue Team 2</th>
+			</tr>
+		${DATA}
+		</table>
+	</body>
+	<script>
+		const table = document.getElementById("table");
+		for (let i = 1; i < table.rows.length; i++) {
+			for (let j = 1; j < table.rows[i].cells.length; j++) {
+				table.rows[i].cells[j].href = "/team.html?team=" + table.rows[i].cells[j].href;
+			}
+		}
+	</script>
+</html>
