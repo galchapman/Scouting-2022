@@ -4,6 +4,7 @@ import (
 	"Scouting-2022/server/database"
 	"database/sql"
 	"fmt"
+	"html"
 	"io"
 	"net/http"
 	"strings"
@@ -69,7 +70,7 @@ func (server *Server) handleRunSQL(w http.ResponseWriter, req *http.Request) {
 					element = fmt.Sprint(value)
 				}
 
-				data += "<td>" + element + "</td>"
+				data += "<td>" + html.EscapeString(element) + "</td>"
 			}
 
 			data += "</tr>"
