@@ -7,7 +7,7 @@
 		<textarea style="width: 100%;" id="query"></textarea><br><br>
 		<button style="text-align: center;" onclick="runSql()">Run SQL</button>
 		<h3 style="font-size: 30px;">Result:</h3>
-		<div id="resualt"></div>
+		<div id="result"></div>
 	</body>
 	<style>
 	table {  
@@ -50,18 +50,17 @@
 		-moz-user-select: none;
 		user-select: none;
 		background: linear-gradient(45deg, rgba(255,54,13,1) 0%, rgba(255,115,27,1) 70%, rgba(255,171,40,1) 100%);
-		color: #ffffff;
 	}
 
 	</style>
 	<script>
 		const query = document.getElementById("query");
-		const resualt = document.getElementById("resualt")
+		const result = document.getElementById("result")
 		function runSql() {
 			var xmlHttp = new XMLHttpRequest();
 			xmlHttp.open( "POST", "sql.html", false ); // false for synchronous request
 			xmlHttp.send( query.value );
-			resualt.innerHTML = xmlHttp.responseText;
+			result.innerHTML = xmlHttp.responseText;
 		}
 	</script>
 </html>

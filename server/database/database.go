@@ -25,3 +25,7 @@ func NewDataBase(path string) (*Database, error) {
 
 	return &db, nil
 }
+
+func (db *Database) Query(query string) (*sql.Rows, error) {
+	return db.db.Query(query)
+}
