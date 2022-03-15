@@ -22,7 +22,7 @@ func (server *Server) handleRobots(w http.ResponseWriter, req *http.Request) {
 			teams, _ := server.db.GetTeams()
 			var data string
 			for _, team := range teams {
-				if _, err := os.Stat("www/" + strconv.Itoa(team.TeamNumber) + ".jpeg"); errors.Is(err, os.ErrNotExist) {
+				if _, err := os.Stat("robots/" + strconv.Itoa(team.TeamNumber) + ".jpeg"); errors.Is(err, os.ErrNotExist) {
 					data += team.Name + " - " + strconv.Itoa(team.TeamNumber) + "<br>"
 				}
 			}
